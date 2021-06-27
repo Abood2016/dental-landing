@@ -6,7 +6,7 @@ use App\Http\Controllers\dashboard\ServiceController;
 use App\Http\Controllers\dashboard\SettingController;
 use App\Http\Controllers\dashboard\UserController;
 use Illuminate\Support\Facades\Route;
-
+use \App\Http\Controllers\dashboard\GeneralController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +50,9 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'dashboard'], function () 
         Route::get('/edit/{id}', [ServiceController::class, 'edit']);
         Route::post('/update', [ServiceController::class, 'update']);
         Route::get('/delete/{id}', [ServiceController::class, 'destroy']);
+    });
+    Route::group(['prefix'=>'general'],function(){
+        Route::get('/',[GeneralController::class,'index'])->name('general.index');
     });
 
     Route::group(['prefix' => 'settings'], function () {
