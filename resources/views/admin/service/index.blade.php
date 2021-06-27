@@ -258,11 +258,11 @@
                     
                     },
                     columns: [
-                    { data: 'id', name: 'id' },
+                    { data: 'service_id', name: 'service_id' },
                     { data: 'title', name: 'title' },
                     { data: 'image', name: 'image' },
                     { data: 'description', name: 'description' },
-                    { data: 'user', name: 'user' ,class:'user_item' },
+                    { data: 'username', name: 'username' ,class:'user_item' },
                     { data: 'Date', name: 'Date' },
                     {data: 'actions', name: 'actions',orderable:false,serachable:false,sClass:'text-center'},
                     ],

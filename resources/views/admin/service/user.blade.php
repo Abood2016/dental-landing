@@ -1,4 +1,4 @@
-<span class="badge badge-success user" >{{ $services->user->name }}</span>
+<span class="badge badge-success user" >{{ $services->username }}</span>
 
 <style>
 .user{
