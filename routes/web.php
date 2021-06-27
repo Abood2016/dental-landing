@@ -3,6 +3,7 @@
 use App\Http\Controllers\dashboard\consultionController;
 use App\Http\Controllers\dashboard\dashboardController;
 use App\Http\Controllers\dashboard\ServiceController;
+use App\Http\Controllers\dashboard\SettingController;
 use App\Http\Controllers\dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,12 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'dashboard'], function () 
         Route::get('/edit/{id}', [ServiceController::class, 'edit']);
         Route::post('/update', [ServiceController::class, 'update']);
         Route::get('/delete/{id}', [ServiceController::class, 'destroy']);
+    });
+
+    Route::group(['prefix' => 'settings'], function () {
+        Route::get('/', [SettingController::class, 'index'])->name('settings.index');
+        Route::get('/edit/{id}', [SettingController::class, 'edit']);
+        Route::post('/update', [SettingController::class, 'update']);
     });
 
 });
