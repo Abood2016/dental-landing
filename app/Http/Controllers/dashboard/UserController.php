@@ -70,7 +70,6 @@ class UserController extends Controller
 
     public function edit($id)
     {
-
         if (request()->ajax()) {
             $whereID = array('id' => $id);
             $data = User::where($whereID)->first();

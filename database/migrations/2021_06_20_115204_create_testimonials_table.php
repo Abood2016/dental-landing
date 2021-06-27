@@ -15,7 +15,6 @@ class CreateTestimonialsTable extends Migration
     {
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
             $table->text('testimonial');
             $table->timestamps();
         });

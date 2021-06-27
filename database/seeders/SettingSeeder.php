@@ -17,7 +17,7 @@ class SettingSeeder extends Seeder
         $settings = Setting::create([
             'title' => 'Global',
             'twitter_url' => 'https://twitter.com',
-            'google_url' => 'https://google.com',
+            'instagram_url' => 'https://intagram.com',
             'facebook_url' => 'https://facebook.com',
             'contact_number' => '33 41 50 18-44 44 77 89',
         ]);
