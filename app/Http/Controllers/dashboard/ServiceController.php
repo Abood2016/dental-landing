@@ -22,25 +22,28 @@ class ServiceController extends Controller
         $Draw = $request->input("Draw");
         
         if (request()->ajax()) {
-            $services = Service::select([
-                    'id', 'title', 'description', 'image','user_id',
-                    DB::raw("DATE_FORMAT(services.created_at, '%Y-%m-%d') as Date")
-                ])->orderBy('id', 'DESC')->get();
+            $services = DB::table('services')
+                ->join("users", "users.id", "=", "services.user_id") 
+            ->select([
+                'services.id as service_id', 'services.title', 'users.name as username', 'services.description', 'services.user_id', 'services.image',
+                DB::raw("DATE_FORMAT(services.created_at, '%Y-%m-%d') as Date"),
+            ])->orderBy('service_id', 'DESC')->get();
+
 
             return DataTables::of($services)
                 ->addColumn('actions', function ($services) {
-                    return '<button type="button" class="btn btn-success btn-sm editservice" data-toggle="modal" data-target="#editServiceModal" id="editService" data-id="' . $services->id . '">تعديل</button>
-                    <button type="button" data-id="' . $services->id . '" data-servicetitle="' . $services->title . '" data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm " id="getDeleteId">حذف</button>';
+                    return '<button type="button" class="btn btn-success btn-sm editservice" data-toggle="modal" data-target="#editServiceModal" id="editService" data-id="' . $services->service_id . '">تعديل</button>
+                    <button type="button" data-id="' . $services->service_id . '" data-servicetitle="' . $services->title . '" data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm " id="getDeleteId">حذف</button>';
                 })
                 ->addColumn('image', function ($services) {
                     $url = asset('images/service/' . $services->image);
                     return '<img src="' . $url . '" border="0" style="border-radius: 10px;" width="80" class="img-rounded" align="center" />';
-           
-                })->editColumn('user', function ($services) {
-                    return view('admin.service.user', compact('services'));
             
-                })->rawColumns(['image', 'actions','user'])->make(true);
-            return response()->json(["data" => $services, 'draw' => $Draw]);
+                    })->editColumn('username', function ($services) {
+                    return view('admin.service.user', compact('services'));
+                
+                })->rawColumns(['image', 'actions', 'username'])->make(true);
+            return response()->json(["data" => $services , 'draw' => $Draw]);
         }
         return view('admin.service.index');
     }
