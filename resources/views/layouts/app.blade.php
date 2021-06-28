@@ -187,7 +187,9 @@
     <!--end::Demo Panel-->
 
     @include('layouts.footer-meta')
+
     @stack('js')
+
     <!--end::Page Scripts-->
 </body>
 <!--end::Body-->

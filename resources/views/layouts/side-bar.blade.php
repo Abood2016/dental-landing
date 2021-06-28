@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li class="menu-section">
-                <h4 class="menu-text">Custom</h4>
+                <h4 class="menu-text">صفحة الهبوط</h4>
                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
             </li>
             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">

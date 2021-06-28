@@ -53,6 +53,10 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'dashboard'], function () 
     });
     Route::group(['prefix'=>'general'],function(){
         Route::get('/',[GeneralController::class,'index'])->name('general.index');
+        Route::get('/testimonials',[GeneralController::class,'getTestimonials'])->name('testimonial.get');
+        Route::post('/testimonials/set',[GeneralController::class,'setTestimonials'])->name('testimonial.set');
+        Route::get('/appoinments',[GeneralController::class,'getappoinments'])->name('appoinments.get');
+        Route::post('/appointments/set',[GeneralController::class,'setAppoinments'])->name('appoinments.set');
     });
 
     Route::group(['prefix' => 'settings'], function () {

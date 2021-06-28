@@ -8,6 +8,7 @@
 <!--end::Fonts-->
 <!--begin::Page Vendors Styles(used by this page)-->
 <link href="{{ asset('backend_assets/plugins/custom/fullcalendar/fullcalendar.bundle.rtl.css') }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{{asset('backend_assets/css/bootstrap-timepicker.min.rtl.css')}}">
 <!--end::Page Vendors Styles-->
 <!--begin::Global Theme Styles(used by all pages)-->
 <link href="{{ asset('backend_assets/plugins/global/plugins.bundle.rtl.css') }}" rel="stylesheet" type="text/css" />
@@ -28,7 +29,7 @@
         width: 180px;
         border-radius: 40px;
     }
-   
+
 </style>
 
 <style>
@@ -41,7 +42,7 @@
         position: absolute;
         top: 0px;
         left: -1px;
-    
+
         width: 100%;
         height: 100%;
         background-color: #000000db;
