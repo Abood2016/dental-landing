@@ -7,6 +7,8 @@ use App\Http\Controllers\dashboard\SettingController;
 use App\Http\Controllers\dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\dashboard\GeneralController;
+use App\Http\Controllers\dashboard\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,8 +28,12 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
 
-Route::group(['prefix' => 'dashboard', 'namespace' => 'dashboard'], function () {
-    Route::get('/', [dashboardController::class, 'index']);
+Route::get('/login',   [LoginController::class, 'index'])->name('login');
+Route::post('/login-store',   [LoginController::class, 'login'])->name('login.store');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => 'dashboard'], function () {
+    Route::get('/', [dashboardController::class, 'index'])->name('dashboard.index');
 
     Route::group(['prefix' => 'consultions'], function () {
         Route::get('/', [consultionController::class, 'index'])->name('consultion.index');
@@ -42,6 +48,9 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'dashboard'], function () 
         Route::get('/edit/{id}', [UserController::class, 'edit']);
         Route::post('/update', [UserController::class, 'update']);
         Route::get('/delete/{id}', [UserController::class, 'destroy']);
+        Route::get('/show-profile/{id}', [UserController::class, 'profile'])->name('profile.show');
+        Route::post('/update-profile', [UserController::class, 'updateProfile'])->name('profile.update');
+
     });
 
     Route::group(['prefix' => 'services'], function () {

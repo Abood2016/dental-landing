@@ -5,7 +5,7 @@
         <!--begin::Menu Nav-->
         <ul class="menu-nav">
             <li class="menu-item menu-item-active" aria-haspopup="true">
-                <a href="index.html" class="menu-link">
+                <a href="{{ route('dashboard.index') }}" class="menu-link">
                     <span class="svg-icon menu-icon">
                         <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
                         <svg xmlns="{{ asset('backend_assets/media/svg/icons/Design/Layers.svg') }}"
