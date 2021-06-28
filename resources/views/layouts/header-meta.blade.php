@@ -25,6 +25,7 @@
 <link href="{{ asset('backend_assets/plugins/custom/datatables/datatables.bundle.rtl.css') }}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="{{asset('backend_assets/css/sweetalert.css')}}">
 <style>
+
     .thumb {
         width: 180px;
         border-radius: 40px;

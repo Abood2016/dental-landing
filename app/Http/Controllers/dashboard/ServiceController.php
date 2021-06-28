@@ -53,7 +53,7 @@ class ServiceController extends Controller
         $file_name =  $this->saveImages($request->image, 'images/service');
         $service =   Service::create([
             'image' => $file_name,
-            'user_id' => 2,
+            'user_id' => auth()->user()->id,
             'title' => $request->title,
             'description' => $request->description,
         ]);
