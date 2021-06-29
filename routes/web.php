@@ -79,6 +79,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
         Route::get('/', [AppoinmentsController::class, 'index'])->name('appoinments.index');
         Route::get('/edit/{id}', [AppoinmentsController::class, 'edit']);
         Route::post('/update', [AppoinmentsController::class, 'update']);
+        Route::get('/delete/{id}', [AppoinmentsController::class, 'delete']);
     });
 
 });
