@@ -8,6 +8,7 @@ use App\Http\Controllers\dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\dashboard\GeneralController;
 use App\Http\Controllers\dashboard\LoginController;
+use App\Http\Controllers\dashboard\AppoinmentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
         Route::get('/', [SettingController::class, 'index'])->name('settings.index');
         Route::get('/edit/{id}', [SettingController::class, 'edit']);
         Route::post('/update', [SettingController::class, 'update']);
+    });
+    Route::group(['prefix' => 'appoinments'], function () {
+        Route::get('/', [AppoinmentsController::class, 'index'])->name('appoinments.index');
+        Route::get('/edit/{id}', [AppoinmentsController::class, 'edit']);
+        Route::post('/update', [AppoinmentsController::class, 'update']);
     });
 
 });

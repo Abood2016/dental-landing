@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('bar_title')
-المستخدمين    
+المستخدمين
 @endsection
 @section('sub-header')
 <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
@@ -220,16 +220,16 @@
                             <input type="file" name="image" class="form-control-file" id="file-image">
                         </div>
                      <small id="image_error" class="form-text text-danger"></small>
-                      
+
                     <img id="modal-preview" style="border-radius: 10px" src="https://via.placeholder.com/150" alt="Preview"
                             class="form-group" width="100" height="90">
-                
+
                     </div>
-                   
+
                 </form>
 
                 <!--end::Form-->
-               
+
             </div>
             <div class="modal-footer">
                 <button type="button" id="CancelBtn" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
@@ -237,7 +237,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 @endsection
 
 @push('js')
@@ -269,7 +269,7 @@
                 visible: true
                 } ],
                 "language": {
-                  
+
                  emptyTable:"لا يوجد بيانات لعرضها",
                 "sProcessing": "جارٍ التحميل...",
                 "sLengthMenu": "أظهر _MENU_ مدخلات",
@@ -294,7 +294,7 @@
                     type: "GET",
                     contentType: "application/json",
                     url: '/dashboard/users',
-                    
+
                     },
                     columns: [
                     { data: 'id', name: 'id' },
@@ -305,7 +305,7 @@
                     { data: 'Date', name: 'Date' },
                     {data: 'actions', name: 'actions',orderable:false,serachable:false,sClass:'text-center'},
                     ],
-                  
+
                     fnDrawCallback: function () {
                     }
            });
@@ -321,16 +321,16 @@
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
     });
-    
+
    $("#btn_show_modal").click(function() {
-    $("#modelHeading").html("أضافة مستخدم جديد");    
+    $("#modelHeading").html("أضافة مستخدم جديد");
     $("#modelHeading").html("أضافة خدمة جديد");
     $("#user_form").trigger('reset');//to clear the form
     $("#thumb-output").html('');
-     $("#UserModal").modal('show');  
+     $("#UserModal").modal('show');
    });
     $(document).on('click','#saveBtn',function() {
-        
+
         $('#name_error').text('');
         $('#email_error').text('');
         $('#phone_error').text('');
@@ -346,7 +346,7 @@
         processData: false,
         contentType: false,
         cache: false,
-        
+
         success: function (response) {
             if (response.status == 200) {
                 Swal.fire(
@@ -423,7 +423,7 @@
             title: 'تم',
             text: response.success,
             timer: 2000,
-            
+
             showCancelButton: false,
             showConfirmButton: false
             })
