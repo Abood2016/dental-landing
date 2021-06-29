@@ -18,6 +18,7 @@ class CreateSettingsTable extends Migration
             $table->string('logo')->nullable();
             $table->string('bg_image')->nullable();
             $table->string('title');
+            $table->string('sub_title');
             $table->string('contact_number');
             $table->string('emergency_contact_number');
             $table->string('facebook_url');

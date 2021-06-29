@@ -22,7 +22,7 @@ class SettingController extends Controller
 
         if (request()->ajax()) {
             $settings = DB::table('settings')->select([
-                'id', 'title', 'logo', 'contact_number',
+                'id', 'title', 'logo', 'contact_number', 'sub_title',
                 DB::raw("DATE_FORMAT(settings.created_at, '%Y-%m-%d') as Date"),
             ])->orderBy('id', 'DESC')->get();
 
@@ -72,6 +72,10 @@ class SettingController extends Controller
 
         if ($request->facebook_url != $setting->facebook_url) {
             $array['facebook_url'] = $request->facebook_url;
+        }
+
+        if ($request->sub_title != $setting->sub_title) {
+            $array['sub_title'] = $request->sub_title;
         }
 
         if ($request->twitter_url != $setting->twitter_url) {

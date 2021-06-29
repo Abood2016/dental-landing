@@ -16,6 +16,7 @@ class SettingSeeder extends Seeder
     {
         $settings = Setting::create([
             'title' => 'Global',
+            'sub_title' => 'جودة طبية فائقة بالإضافة الى عناية صحية وسرعة وثقة عالية',
             'twitter_url' => 'https://twitter.com',
             'instagram_url' => 'https://intagram.com',
             'facebook_url' => 'https://facebook.com',

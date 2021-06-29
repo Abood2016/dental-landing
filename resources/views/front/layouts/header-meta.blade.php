@@ -7,6 +7,6 @@
 <link rel="stylesheet" href="{{ asset('front_assets/css/index.css') }}">
 <link rel="stylesheet" href="{{ asset('front_assets/css/all.css') }}">
 <link rel="stylesheet" href="{{ asset('front_assets/css/hover-min.css') }}">
-<title>Global Medical Group</title>
+<title>{{$setting->title}}</title>
 <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('front_assets/css/aos.css') }}">

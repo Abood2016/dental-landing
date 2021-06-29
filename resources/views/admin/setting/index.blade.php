@@ -124,6 +124,12 @@
                                     placeholder="" />
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label>العنوان الرئيسي :</label>
+                            <div class="input-icon input-icon-right">
+                                <input name="sub_title" type="text" id="sub_title" class="form-control" placeholder="" />
+                            </div>
+                        </div>
                         <input type="hidden" name="hidden_image" id="hidden_image">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">اللوجو</label>
@@ -236,6 +242,7 @@
                 $('#editSettingModal').modal('show');
                 $('#setting_id').val(data.result.id);
                 $('#title').val(data.result.title);
+                $('#sub_title').val(data.result.sub_title);
                 $('#contact_number').val(data.result.contact_number);
                 $('#facebook_url').val(data.result.facebook_url);
                 $('#twitter_url').val(data.result.twitter_url);

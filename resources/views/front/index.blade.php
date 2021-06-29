@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row nav-container">
             <div class="col-sm-3 col-12">
-                <img src="{{ asset('front_assets/images/logo.png') }}" class="logo" width="206px" height="63px" alt="">
+                <img src="{{ URL::asset('/images/logo/'. $setting->logo )}}" class="logo" width="206px" height="63px" alt="">
             </div>
             <div class="col-sm-9 col-12">
 
@@ -21,11 +21,9 @@
                         </span>
                         <div class="num-call d-flex flex-column">
                             <span>
-                                1-800-1234-567
+                                {{ $setting->contact_number }}
                             </span>
-                            <span>
-                                1-800-1234-567
-                            </span>
+                          
                         </div>
 
 
@@ -38,7 +36,7 @@
         <div class="row header-content">
             <div class="col-sm-8 header-content-word" data-aos="fade-left" data-aos-easing="linear"
                 data-aos-duration="1200">
-                جودة طبية فائقة بالإضافة الى عناية صحية وسرعة وثقة عالية
+                {{$setting->sub_title}}
             </div>
             <div class="col-sm-4 d-flex flex-column card-header-box" data-aos-easing="linear" data-aos-duration="1200"
                 data-aos="zoom-out">
@@ -216,15 +214,15 @@
                             <div class="col-sm-12 text-start sat-to-thurs"
                                 style="font-family: Droid-kofi; margin-top: 3em;font-size: 1.2em;text-transform: none;text-decoration: none!important;">
                                 <a class="emergency-num" href="tel:1-800-1234-567"
-                                    style="text-decoration: none">1-800-1234-567</a>
+                                    style="text-decoration: none">{{ $setting->emergency_contact_number }}</a>
                             </div>
                             <div class="col-sm-12 text-start our-accounts">
                                 حسابنا على فيسبوك
                             </div>
 
-                            <a href="index.html" class=" social-icon social-icon-general">
+                            <a href="{{ $setting->facebook_url }}" class=" social-icon social-icon-general">
                                 <span class="fab fa-facebook-f  social-itself">
-
+                                    
                                 </span>
                             </a>
                         </div>
@@ -238,7 +236,7 @@
     <footer class="container-fluid" style="background-color: #18afd3">
         <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-offset="0">
             <div class="col-sm-5 d-flex justify-content-center footer-logo-mobile">
-                <img src="{{ asset('front_assets/images/logo.png') }}" class="footer-logo" width="206px" height="63px" alt="">
+                <img src="{{ URL::asset('/images/logo/'. $setting->logo )}}" class="footer-logo" width="206px" height="63px" alt="">
             </div>
             <div class="col-sm-4 all-right d-flex flex-column">
                 جميع الحقوق محفوظة.
@@ -247,18 +245,18 @@
                 </a>
             </div>
             <div class="col-sm-3 d-flex flex-row pt-4 pb-4 mr">
-                <span style="" class="social-icon">
+                <a href="{{ $setting->facebook_url }}" style="" class="social-icon">
                     <span class="fab fa-facebook-f social-itself">
                     </span>
-                </span>
-                <span style="" class="social-icon">
+                </a>
+                <a  href="{{ $setting->twitter_url}}" style="" class="social-icon">
                     <span class="fab fa-twitter social-itself">
                     </span>
-                </span>
-                <span style="" class="social-icon">
+                </a>
+                <a href="{{ $setting->instagram_url }}" style="" class="social-icon">
                     <span class="fab fa-instagram social-itself">
                     </span>
-                </span>
+                </a>
             </div>
         </div>
     </footer>
