@@ -20,6 +20,7 @@ class SettingSeeder extends Seeder
             'instagram_url' => 'https://intagram.com',
             'facebook_url' => 'https://facebook.com',
             'contact_number' => '33 41 50 18-44 44 77 89',
+            'emergency_contact_number' => '22 55 50 18-44 44 77 89',
         ]);
     }
 }
