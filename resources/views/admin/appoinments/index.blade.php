@@ -36,6 +36,7 @@
                                             <th width="13%">الحالة</th>
                                             <th width="10%">تاريخ الحجز</th>
                                             <th width="10%">التاريخ</th>
+                                            <th width="10%">الاجراء</th>
                                         </tr>
                                         </thead>
                                     </table>
@@ -114,12 +115,56 @@
                     { data: 'status', name: 'status' },
                     { data: 'appoinments_Date', name: 'appoinments_Date' },
                     { data: 'Date', name: 'Date' },
-                    // {data: 'actions', name: 'actions',orderable:false,serachable:false,sClass:'text-center'},
+                    {data: 'actions', name: 'actions',orderable:false,serachable:false,sClass:'text-center'},
                 ],
 
                 fnDrawCallback: function () {
                 }
             });
         }
+    </script>
+    <script>
+
+        var SITEURL = '{{URL::to('')}}';
+        $(document).on('click', '.btn-delete', function(){
+         var   deleteID = $(this).data('id');
+            Swal.fire({
+                title: 'هل أنت متأكد ؟',
+                text: "هل أنت متأكد من الحذف",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonText: 'إلغاء',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'نعم , إحذف'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "get",
+                        url: SITEURL + "/dashboard/appoinments/delete/" + deleteID,
+                        success: function (response) {
+                            if (response.status == 200) {
+                                Swal.fire(
+                                    'تم',
+                                    response.success,
+                                    'success'
+                                )
+                            }
+                            var oTable = $('#appoinments_table').dataTable();
+                            oTable.fnDraw(false);
+                        },
+                        error: function (response) {
+                            if (response.status == 504) {
+                                Swal.fire(
+                                    'خطأ',
+                                    response.error,
+                                    'error'
+                                )}
+                        }});
+                }})
+        });
+        setTimeout(function (){
+            $('.container-box').fadeOut();
+        },1000)
     </script>
 @endpush
