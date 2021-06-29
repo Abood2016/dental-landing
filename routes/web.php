@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\dashboard\GeneralController;
 use App\Http\Controllers\dashboard\LoginController;
 use App\Http\Controllers\dashboard\AppoinmentsController;
+use App\Http\Controllers\front\frontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,4 +82,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
         Route::get('/delete/{id}', [AppoinmentsController::class, 'delete']);
     });
 
+});
+
+Route::group(['namespace' => 'front'], function () {
+    Route::get('/', [frontController::class, 'index'])->name('front.index');
 });
