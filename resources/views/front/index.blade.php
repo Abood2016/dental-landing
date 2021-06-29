@@ -45,7 +45,7 @@
                 <div class=" free-consult" style="height: 3px!important;">
                     احجز الآن
                 </div>
-                <form action="" class="mt-5  form-consult">
+                <form action="" id="form_appoinments" class="mt-5  form-consult">
                     <label for="email" class="form-group d-flex flex-column">
                         <span class="text-white input-label">
                             الاسم
@@ -64,20 +64,18 @@
                             الفرع
                         </span>
                         <select class="form-control mt-2">
-                            <option selected disabled>حدد الفرع</option>
-                            <option value="">جباليا</option>
-                            <option value="">جباليا</option>
-                            <option value="">جباليا</option>
-                            <option value="">جباليا</option>
-                            <option value="">جباليا</option>
-                            <option value="">جباليا</option>
+                            <option selected disabled>اختيار الفرع</option>
+                          @foreach($result as $r)
+                                <option value="{{$r->id}}">{{$r->branchName}}</option>
+                            @endforeach
                         </select>
                     </label>
                     <label class="form-group d-flex flex-column mt-2">
                         <span class="text-white input-label">
                             تاريخ الحجز
                         </span>
-                        <input id="datepicker" type="text" class="form-control mt-2">
+                        <input class="form-control mt-2 text-start" type="date"  id="date-input">
+
                     </label>
                     <label for="email" class="form-group d-flex flex-column mt-3">
                         <span class="text-white input-label">
@@ -85,7 +83,7 @@
                         </span>
                         <textarea rows="2" type="text" class="form-control mt-2 mb-4"></textarea>
                     </label>
-                    <button class="button-card btn btn-primary mb-4">
+                    <button class="button-card btn btn-primary mb-4" id="reserve-appoinments">
                         احجز الآن
                     </button>
                 </form>
@@ -264,6 +262,9 @@
     </footer>
 
     @include('front.layouts.footer-meta')
+  <script>
+        $(document).on()
+  </script>
 </body>
 
 </html>
