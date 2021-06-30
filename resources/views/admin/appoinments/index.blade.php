@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('bar_title')
+    الحجوزات
+@endsection
+
 @push('css')
     <style>
         .center-check{

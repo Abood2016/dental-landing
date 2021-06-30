@@ -116,18 +116,31 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
 
-                        <div class="form-group">
-                            <label>الفيسبوك :</label>
-                            <div class="input-icon input-icon-right">
-                                <input name="facebook_url" type="text" id="facebook_url" class="form-control"
-                                    placeholder="" />
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>الفيسبوك :</label>
+                                    <div class="input-icon input-icon-right">
+                                        <input name="facebook_url" type="text" id="facebook_url" class="form-control"
+                                            placeholder="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>رقم الطوارئ :</label>
+                                    <div class="input-icon input-icon-right">
+                                        <input name="emergency_contact_number" type="text" id="emergency_contact_number" class="form-control" placeholder="" />
+                                    </div>
+                            </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>العنوان الرئيسي :</label>
                             <div class="input-icon input-icon-right">
-                                <input name="sub_title" type="text" id="sub_title" class="form-control" placeholder="" />
+                                <input name="sub_title" type="text" id="sub_title" class="form-control"
+                                    placeholder="" />
                             </div>
                         </div>
                         <input type="hidden" name="hidden_image" id="hidden_image">
@@ -244,6 +257,7 @@
                 $('#title').val(data.result.title);
                 $('#sub_title').val(data.result.sub_title);
                 $('#contact_number').val(data.result.contact_number);
+                $('#emergency_contact_number').val(data.result.emergency_contact_number);
                 $('#facebook_url').val(data.result.facebook_url);
                 $('#twitter_url').val(data.result.twitter_url);
                 $('#instagram_url').val(data.result.instagram_url);

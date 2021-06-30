@@ -184,16 +184,24 @@
                                     <th width="13%">الإسم</th>
                                     <th width="14%">الهاتف</th>
                                     <th width="13%">تاريخ الحجز</th>
+                                    <th width="13%">الحالة</th>
                                     <th width="10%">الفرع</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($appoinments as $appoinment)
-                                    <tr>
+                                    <tr style="text-align: center">
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $appoinment->name }}</td>
                                         <td>{{$appoinment->phone}}</td>
                                         <td>{{$appoinment->date}}</td>
+                                        <td >
+                                            @if ($appoinment->status == '1')
+                                                <span class="badge badge-success">تمت المراجعة</span>
+                                            @else
+                                            <span class="badge badge-primary">قيد المراجعة</span>    
+                                            @endif
+                                        </td>
                                         <td>{{ $appoinment->branch_id }}</td>
                                     </tr>
                                 @empty

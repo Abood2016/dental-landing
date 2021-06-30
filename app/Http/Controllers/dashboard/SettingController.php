@@ -70,6 +70,10 @@ class SettingController extends Controller
             $array['contact_number'] = $request->contact_number;
         }
 
+        if ($request->emergency_contact_number != $setting->emergency_contact_number) {
+            $array['emergency_contact_number'] = $request->emergency_contact_number;
+        }
+
         if ($request->facebook_url != $setting->facebook_url) {
             $array['facebook_url'] = $request->facebook_url;
         }

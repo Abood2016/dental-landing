@@ -2,97 +2,98 @@
 <html lang="ar" dir="rtl">
 
 <head>
-  @include('front.layouts.header-meta')
+    @include('front.layouts.header-meta')
 </head>
 
 <body>
-  <header class="header-box" style="">
-    <div class="container">
-        <div class="row nav-container">
-            <div class="col-sm-3 col-12">
-                <img src="{{ URL::asset('/images/logo/'. $setting->logo )}}" class="logo" width="206px" height="63px" alt="">
-            </div>
-            <div class="col-sm-9 col-12">
+    <header class="header-box" style="">
+        <div class="container">
+            <div class="row nav-container">
+                <div class="col-sm-3 col-12">
+                    <img src="{{ URL::asset('/images/logo/'. $setting->logo )}}" class="logo" width="206px"
+                        height="63px" alt="">
+                </div>
+                <div class="col-sm-9 col-12">
 
-                <div class="float-end header-icon-mobile">
-                    <div class="d-flex flex-row">
-                        <span class="icon">
-                            <span class="fa fa-phone-alt" style="font-weight: 200;"></span>
-                        </span>
-                        <div class="num-call d-flex flex-column">
-                            <span class="contact-number">
-                                {{ $setting->contact_number }}
+                    <div class="float-end header-icon-mobile">
+                        <div class="d-flex flex-row">
+                            <span class="icon">
+                                <span class="fa fa-phone-alt" style="font-weight: 200;"></span>
                             </span>
+                            <div class="num-call d-flex flex-column">
+                                <span class="contact-number">
+                                    {{ $setting->contact_number }}
+                                </span>
+
+                            </div>
+
 
                         </div>
-
 
                     </div>
 
                 </div>
-
             </div>
-        </div>
-        <div class="row header-content">
-            <div class="col-sm-8 header-content-word" data-aos="fade-left" data-aos-easing="linear"
-                data-aos-duration="1200">
-                {{$setting->sub_title}}
-            </div>
-            <div class="col-sm-4 d-flex flex-column card-header-box" data-aos-easing="linear" data-aos-duration="1200"
-                data-aos="zoom-out">
-                <div class=" free-consult" style="height: 3px!important;">
-                    احجز الآن
+            <div class="row header-content">
+                <div class="col-sm-8 header-content-word" data-aos="fade-left" data-aos-easing="linear"
+                    data-aos-duration="1200">
+                    {{$setting->sub_title}}
                 </div>
-                <form  id="form_appoinments" class="mt-5  form-consult">
-                    <label for="email" class="form-group d-flex flex-column">
-                        <span class="text-white input-label">
-                            الاسم
-                        </span>
-                        <input name="name" placeholder="ادخل اسم الشخص المراد الحجز له" id="name" type="text"
-                            class="form-control mt-2">
-                        <small id="name_error" class="text-danger badge badge-danger text-start"></small>
-                    </label>
-                    <label class="form-group d-flex flex-column mt-2">
-                        <span class="text-white input-label">
-                            رقم الجوال
-                        </span>
-                        <input name="phone" placeholder="ادخل رقم الجوال" type="text" class="form-control mt-2">
-                        <small id="phone_error" class="text-danger badge badge-danger text-start"></small>
-                    </label>
-                    <label class="form-group d-flex flex-column mt-2">
-                        <span class="text-white input-label">
-                            الفرع
-                        </span>
-                        <select name="branch_id" class="form-control mt-2">
-                            <option selected disabled>اختيار الفرع</option>
-                          @foreach($result as $r)
-                                <option value="{{$r->id}}">{{$r->branchName}}</option>
-                            @endforeach
-                        </select>
-                        <small id="branch_id_error" class="text-danger badge badge-danger text-start"></small>
-                    </label>
-                    <label class="form-group d-flex flex-column mt-2">
-                        <span class="text-white input-label">
-                            تاريخ الحجز
-                        </span>
-                        <input name="reserve_date" class="form-control mt-2 text-start" type="date"  id="date-input">
-                        <small class="text-danger badge badge-danger text-start" id="reserve_date_error"></small>
-                    </label>
-                    <label for="email" class="form-group d-flex flex-column mt-3">
-                        <span class="text-white input-label">
-                            طبيعة الاستشارة
-                        </span>
-                        <textarea name="consultation" rows="2" type="text" class="form-control mt-2"></textarea>
-                        <small class="text-danger badge badge-danger text-start" id="consultation_error"></small>
-                    </label>
-                    <button class="button-card btn btn-primary mb-4 mt-4" id="reserve-appoinments">
+                <div class="col-sm-4 d-flex flex-column card-header-box" data-aos-easing="linear"
+                    data-aos-duration="1200" data-aos="zoom-out">
+                    <div class=" free-consult" style="height: 3px!important;">
                         احجز الآن
-                    </button>
-                </form>
+                    </div>
+                    <form id="form_appoinments" class="mt-5  form-consult">
+                        <label for="email" class="form-group d-flex flex-column">
+                            <span class="text-white input-label">
+                                الاسم
+                            </span>
+                            <input name="name" placeholder="ادخل اسم الشخص المراد الحجز له" id="name" type="text"
+                                class="form-control mt-2">
+                            <small id="name_error" class="text-danger badge badge-danger text-start"></small>
+                        </label>
+                        <label class="form-group d-flex flex-column mt-2">
+                            <span class="text-white input-label">
+                                رقم الجوال
+                            </span>
+                            <input name="phone" placeholder="ادخل رقم الجوال" type="text" class="form-control mt-2">
+                            <small id="phone_error" class="text-danger badge badge-danger text-start"></small>
+                        </label>
+                        <label class="form-group d-flex flex-column mt-2">
+                            <span class="text-white input-label">
+                                الفرع
+                            </span>
+                            <select name="branch_id" class="form-control mt-2">
+                                <option selected disabled>اختيار الفرع</option>
+                                @foreach($result as $r)
+                                <option value="{{$r->id}}">{{$r->branchName}}</option>
+                                @endforeach
+                            </select>
+                            <small id="branch_id_error" class="text-danger badge badge-danger text-start"></small>
+                        </label>
+                        <label class="form-group d-flex flex-column mt-2">
+                            <span class="text-white input-label">
+                                تاريخ الحجز
+                            </span>
+                            <input name="reserve_date" class="form-control mt-2 text-start" type="date" id="date-input">
+                            <small class="text-danger badge badge-danger text-start" id="reserve_date_error"></small>
+                        </label>
+                        <label for="email" class="form-group d-flex flex-column mt-3">
+                            <span class="text-white input-label">
+                                طبيعة الاستشارة
+                            </span>
+                            <textarea name="consultation" rows="2" type="text" class="form-control mt-2"></textarea>
+                            <small class="text-danger badge badge-danger text-start" id="consultation_error"></small>
+                        </label>
+                        <button class="button-card btn btn-primary mb-4 mt-4" id="reserve-appoinments">
+                            احجز الآن
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
     <main>
         <div class="container">
             <div class="row about-box" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="800">
@@ -102,11 +103,7 @@
                     </div>
                     <hr class="divider">
                     <p class="about-para">
-                        نحن عيادة أسنان تركز على الأسرة ، تأسست في عام 1997 مع التركيز القوي على الرعاية الوقائية وطب
-                        الأسنان العام لمساعدتك أنت وعائلتك على تحقيق ابتسامة صحية والحفاظ عليها مدى الحياة. أثناء
-                        استشارتك ، نود أن نأخذ الوقت الكافي لمناقشة جميع الخيارات المتاحة معك لحل مشاكل الأسنان الخاصة
-                        بك حتى نتمكن من توفير العلاج الأنسب لك. نحن ملتزمون بحضور دورات وندوات التعليم المستمر التي تغطي
-                        جميع مجالات طب الأسنان من أجل ضمان حصول جميع المرضى على أفضل وأحدث العلاجات المتاحة.
+                       {{ $testimonial->testimonial }}
                     </p>
                 </div>
             </div>
@@ -123,30 +120,18 @@
                     نحن نقدم خدمات رعاية صحية عالية الجودة لجميع أفراد الأسرة.
                 </div>
                 <div class="col-sm-12 row mt-5 mobile-service">
-                    <div class="col-sm-4 col-12 d-flex justify-content-center service-out">
-                        <div class="col-sm-10 d-flex flex-column">
-                            <img src="{{ asset('front_assets/images/service_one.jpg') }}" width="320" height="320" alt="service photo">
-                            <a href="index.html" class="service-button btn hvr-bounce-to-right">
-                                عناية عامة
-                            </a>
+                    @foreach ($services as $service)
+                        <div class="col-sm-4 col-12 d-flex justify-content-center service-out">
+                            <div class="col-sm-10 d-flex flex-column">
+                                <img src="{{ URL::asset('/images/service/'.$service->image) }}" width="320" height="320"
+                                    alt="service photo">
+                                <a href="index.html" class="service-button btn hvr-bounce-to-right">
+
+                                    {{ $service->title }}
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4 col-12 d-flex justify-content-center service-out">
-                        <div class="col-sm-10  d-flex flex-column">
-                            <img src="{{ asset('front_assets/images/service_two.jpg') }}" width="320" height="320" alt="service photo">
-                            <a href="index.html" class="service-button btn hvr-bounce-to-right">
-                                طب الأسنان التجميلية
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-12 d-flex justify-content-center service-out">
-                        <div class="col-sm-10 d-flex flex-column">
-                            <img src="{{ asset('front_assets/images/service_three.jpg') }}" width="320" height="320" alt="service photo">
-                            <a href="index.html" class="service-button btn hvr-bounce-to-right">
-                                طب الأسنان الترميمي
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
 
                 </div>
             </div>
@@ -194,10 +179,10 @@
                             </span>
                             <div class="col-sm-12 col-12 row sat-to-thurs">
                                 <div class="col-sm-7 col-7 text-start" style="font-family: Droid-kofi">
-                                    السبت- الخميس
+                                  من {{ $hoursDaily->from_day }} - الى {{ $hoursDaily->to_day }} 
                                 </div>
                                 <div class="col-sm-5 col-5 text-start general-text" style="font-family: Droid-kofi">
-                                    12:00م-8م
+                                    {{ \Carbon\Carbon::parse($hoursDaily->from_time)->format('h:i')}} - {{ \Carbon\Carbon::parse($hoursDaily->to_time)->format('h:i')}}
                                 </div>
                             </div>
                         </div>
@@ -238,7 +223,8 @@
     <footer class="container-fluid" style="background-color: #18afd3">
         <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-offset="0">
             <div class="col-sm-5 d-flex justify-content-center footer-logo-mobile">
-                <img src="{{ URL::asset('/images/logo/'. $setting->logo )}}" class="footer-logo" width="206px" height="63px" alt="">
+                <img src="{{ URL::asset('/images/logo/'. $setting->logo )}}" class="footer-logo" width="206px"
+                    height="63px" alt="">
             </div>
             <div class="col-sm-4 all-right d-flex flex-column">
                 جميع الحقوق محفوظة.
@@ -251,7 +237,7 @@
                     <span class="fab fa-facebook-f social-itself">
                     </span>
                 </a>
-                <a  href="{{ $setting->twitter_url}}" style="" class="social-icon">
+                <a href="{{ $setting->twitter_url}}" style="" class="social-icon">
                     <span class="fab fa-twitter social-itself">
                     </span>
                 </a>
@@ -264,14 +250,14 @@
     </footer>
 
     @include('front.layouts.footer-meta')
-  <script>
-      $.ajaxSetup({
+    <script>
+        $.ajaxSetup({
           headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           }
       });
-  </script>
-  <script>
+    </script>
+    <script>
         $(document).on('click',"#reserve-appoinments",function (event){
             event.preventDefault()
             let form_appoinments = document.getElementById('form_appoinments')
@@ -319,7 +305,7 @@
 
             })
         })
-  </script>
+    </script>
 </body>
 
 </html>

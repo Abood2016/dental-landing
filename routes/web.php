@@ -80,6 +80,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
         Route::post('/update', [AppoinmentsController::class, 'update']);
         Route::get('/delete/{id}', [AppoinmentsController::class, 'delete']);
         Route::get('/change_status',[AppoinmentsController::class,'changeStatus']);
+        Route::get('/done-appoinments', [AppoinmentsController::class, 'doneAppoinment'])->name('appoinments.done');
+
     });
 
 });
