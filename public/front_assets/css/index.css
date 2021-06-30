@@ -9,6 +9,20 @@
 html,body{
     overflow-x: hidden;
 }
+.navbar-brand{
+    margin-right: 2em;
+}
+.navbar{
+    background-color: #18afd3;
+}
+.header-icon-content{
+    margin-left: 4em;
+}
+.nav-link{
+    color: #ffffff!important;
+    font-size: 1em;
+    font-weight: 500;
+}
 input[type="date"]:before {
     content: attr(placeholder) !important;
     color: #aaa;
