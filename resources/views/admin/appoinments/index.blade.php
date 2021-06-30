@@ -1,23 +1,24 @@
 @extends('layouts.app')
+@push('css')
+    <style>
+        .center-check{
 
+           text-align: center!important;
+
+        }
+    </style>
+@endpush
 @section('content')
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <div class="container">
             <div class="card card-custom gutter-b">
                 <div class="card-header flex-wrap py-3">
                     <div class="card-title">
-                        <h3 class="card-label">المستخدمين
-                            <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; المستخدمين</span>
+                        <h3 class="card-label">مواعيد قيد المراجعة
+                            <span class="d-block text-muted pt-2 font-size-sm">عرض جميع المواعيد</span>
                         </h3>
                     </div>
-                    <div class="card-toolbar">
-                        <!--begin::Button-->
-                        <a href="#" id="btn_show_modal" class="btn btn-primary font-weight-bolder">
-                        <span class="svg-icon svg-icon-md">
-                            <i class="ki ki-plus icon-sm"></i>
-                        </span>تسجيل جديد </a>
-                        <!--end::Button-->
-                    </div>
+
                 </div>
                 <div class="card-body">
                     <!--begin: Datatable-->
@@ -112,7 +113,7 @@
                     { data: 'name', name: 'name' },
                     { data: 'phone', name: 'phone',class:'image_css' },
                     { data: 'branch_id', name: 'branch_id' },
-                    { data: 'status', name: 'status' },
+                    { data: 'status', name: 'status',class: 'center-check' },
                     { data: 'appoinments_Date', name: 'appoinments_Date' },
                     { data: 'Date', name: 'Date' },
                     {data: 'actions', name: 'actions',orderable:false,serachable:false,sClass:'text-center'},
@@ -166,5 +167,36 @@
         setTimeout(function (){
             $('.container-box').fadeOut();
         },1000)
+    </script>
+    <script>
+        $(document).on('click','.change-status',function (){
+            let id = $(this).attr('data-id')
+            $.ajax({
+                url:'appoinments/change_status',
+                method:'get',
+                data:{
+                    'id':id
+                },
+                success:function (res){
+                    if (res.status == 200){
+                        Swal.fire({
+
+                            icon: 'success',
+                            title: 'تم',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        var oTable = $('#appoinments_table').dataTable();
+                        oTable.fnDraw(false);
+                    }
+                    else {
+                        swal.fire(
+                            "حدث خطأ ما","",'error'
+                        )
+                    }
+
+                }
+            })
+        })
     </script>
 @endpush

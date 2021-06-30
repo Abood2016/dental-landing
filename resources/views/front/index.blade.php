@@ -20,10 +20,10 @@
                             <span class="fa fa-phone-alt" style="font-weight: 200;"></span>
                         </span>
                         <div class="num-call d-flex flex-column">
-                            <span>
+                            <span class="contact-number">
                                 {{ $setting->contact_number }}
                             </span>
-                          
+
                         </div>
 
 
@@ -43,45 +43,49 @@
                 <div class=" free-consult" style="height: 3px!important;">
                     احجز الآن
                 </div>
-                <form action="" id="form_appoinments" class="mt-5  form-consult">
+                <form  id="form_appoinments" class="mt-5  form-consult">
                     <label for="email" class="form-group d-flex flex-column">
                         <span class="text-white input-label">
                             الاسم
                         </span>
-                        <input placeholder="ادخل اسم الشخص المراد الحجز له" id="name" type="text"
+                        <input name="name" placeholder="ادخل اسم الشخص المراد الحجز له" id="name" type="text"
                             class="form-control mt-2">
+                        <small id="name_error" class="text-danger badge badge-danger text-start"></small>
                     </label>
                     <label class="form-group d-flex flex-column mt-2">
                         <span class="text-white input-label">
                             رقم الجوال
                         </span>
-                        <input placeholder="ادخل رقم الجوال" type="text" class="form-control mt-2">
+                        <input name="phone" placeholder="ادخل رقم الجوال" type="text" class="form-control mt-2">
+                        <small id="phone_error" class="text-danger badge badge-danger text-start"></small>
                     </label>
                     <label class="form-group d-flex flex-column mt-2">
                         <span class="text-white input-label">
                             الفرع
                         </span>
-                        <select class="form-control mt-2">
+                        <select name="branch_id" class="form-control mt-2">
                             <option selected disabled>اختيار الفرع</option>
                           @foreach($result as $r)
                                 <option value="{{$r->id}}">{{$r->branchName}}</option>
                             @endforeach
                         </select>
+                        <small id="branch_id_error" class="text-danger badge badge-danger text-start"></small>
                     </label>
                     <label class="form-group d-flex flex-column mt-2">
                         <span class="text-white input-label">
                             تاريخ الحجز
                         </span>
-                        <input class="form-control mt-2 text-start" type="date"  id="date-input">
-
+                        <input name="reserve_date" class="form-control mt-2 text-start" type="date"  id="date-input">
+                        <small class="text-danger badge badge-danger text-start" id="reserve_date_error"></small>
                     </label>
                     <label for="email" class="form-group d-flex flex-column mt-3">
                         <span class="text-white input-label">
                             طبيعة الاستشارة
                         </span>
-                        <textarea rows="2" type="text" class="form-control mt-2 mb-4"></textarea>
+                        <textarea name="consultation" rows="2" type="text" class="form-control mt-2"></textarea>
+                        <small class="text-danger badge badge-danger text-start" id="consultation_error"></small>
                     </label>
-                    <button class="button-card btn btn-primary mb-4" id="reserve-appoinments">
+                    <button class="button-card btn btn-primary mb-4 mt-4" id="reserve-appoinments">
                         احجز الآن
                     </button>
                 </form>
@@ -220,7 +224,7 @@
 
                             <a href="{{ $setting->facebook_url }}" class=" social-icon social-icon-general">
                                 <span class="fab fa-facebook-f  social-itself">
-                                    
+
                                 </span>
                             </a>
                         </div>
@@ -261,7 +265,60 @@
 
     @include('front.layouts.footer-meta')
   <script>
-        $(document).on()
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+  </script>
+  <script>
+        $(document).on('click',"#reserve-appoinments",function (event){
+            event.preventDefault()
+            let form_appoinments = document.getElementById('form_appoinments')
+            let form_Data = new FormData(form_appoinments)
+            $('#name_error').text("");
+            $('#phone_error').text("");
+            $('#branch_id_error').text("");
+            $('#reserve_date_error').text("");
+            $('#consultation_error').text("");
+            $.ajax({
+                url:'/appoinments/set',
+                method:'post',
+                data:form_Data,
+                success:function (response){
+                if (response.status == 200){
+
+                    Swal.fire({
+
+                        icon: 'success',
+                        title: 'تم حجز الموعد بنجاح',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    $("#form_appoinments").trigger("reset");
+
+                }else {
+                    Swal.fire({
+
+                        icon: 'error',
+                        title: 'حدث خطأ ما',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                }
+                },
+                error:function (reject){
+                    var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors, function (key, val) {
+                        $("#" + key + "_error").text(val[0]); //# معناها اختار لي اسم الايررور
+                    });
+                },
+                contentType: false,
+                cache: false,
+                processData: false,
+
+            })
+        })
   </script>
 </body>
 

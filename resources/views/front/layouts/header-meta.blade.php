@@ -10,3 +10,5 @@
 <title>{{$setting->title}}</title>
 <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('front_assets/css/aos.css') }}">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<link rel="stylesheet" href="{{asset('backend_assets/css/sweetalert.css')}}">

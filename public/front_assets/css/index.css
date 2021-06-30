@@ -31,6 +31,9 @@ textarea{
     z-index: 5;
     padding-top: 1.8em;
 }
+.contact-number{
+    margin-top: 17%;
+}
 .icon{
     width: 50px;
     height: 50px;
@@ -349,6 +352,9 @@ footer{
     color: #ffffff;
 }
 @media screen and (max-width: 767px) {
+    .contact-number{
+        margin-top: 10%;
+    }
     .service-out{
         margin-top: 3em;
     }

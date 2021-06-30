@@ -29,7 +29,6 @@ use App\Http\Controllers\front\frontController;
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
-
 Route::get('/login',   [LoginController::class, 'index'])->name('login');
 Route::post('/login-store',   [LoginController::class, 'login'])->name('login.store');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
@@ -80,10 +79,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
         Route::get('/edit/{id}', [AppoinmentsController::class, 'edit']);
         Route::post('/update', [AppoinmentsController::class, 'update']);
         Route::get('/delete/{id}', [AppoinmentsController::class, 'delete']);
+        Route::get('/change_status',[AppoinmentsController::class,'changeStatus']);
     });
 
 });
 
 Route::group(['namespace' => 'front'], function () {
     Route::get('/', [frontController::class, 'index'])->name('front.index');
+    Route::post('/appoinments/set',[frontController::class,'setAppoinments']);
+
 });
