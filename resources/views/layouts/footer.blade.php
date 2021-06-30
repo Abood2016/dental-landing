@@ -4,7 +4,7 @@
         <!--begin::Copyright-->
         <div class="text-dark order-2 order-md-1">
             <span class="text-muted font-weight-bold mr-2">{{date("Y")}}©</span>
-            <a href="{{url::to('/')}}"
+            <a href=""
                 class="text-dark-75 text-hover-primary">GMG</a>
         </div>
         <!--end::Copyright-->

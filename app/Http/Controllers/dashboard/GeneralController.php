@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 
 class GeneralController extends Controller
 {
+    
     public function index(){
        return view('admin.general.index');
     }
+
+
     public function getTestimonials(){
        $testimonials = Testimonial::first();
         return response()->json([
@@ -18,13 +21,13 @@ class GeneralController extends Controller
             'data'=>$testimonials
         ]);
     }
+
     public function setTestimonials(Request $request){
-     $testimonials  =Testimonial::first();
+     $testimonials  = Testimonial::first();
      $testimonials->testimonial =$request->input('testimonial');
      $testimonials->update();
         return response()->json([
             'status'=>200,
-
         ]);
     }
 

@@ -51,8 +51,6 @@ class UserController extends Controller
     }
 
 
-
-
     public function store(UserRequest $request)
     {
         $file_name =  $this->saveImages($request->image, 'images/users');
@@ -118,6 +116,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
+       
+        if (File::exists(public_path('images/users/') . $user->image)) {
+            File::delete(public_path('images/users/') .  $user->image);
+        }
+       
         $result = $user->delete($id);
         if ($result) {
             return response()->json(['status' => 200, 'success' => 'تم الحذف بنجاح']);
