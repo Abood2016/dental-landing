@@ -41,14 +41,7 @@
                         <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; الإستشارات</span>
                     </h3>
                 </div>
-                <div class="card-toolbar">
-                    <!--begin::Button-->
-                    <a href="#" class="btn btn-primary font-weight-bolder">
-                        <span class="svg-icon svg-icon-md">
-                            <i class="ki ki-plus icon-sm"></i>
-                        </span>تسجيل جديد </a>
-                    <!--end::Button-->
-                </div>
+               
             </div>
             <div class="card-body">
                 <!--begin: Datatable-->

@@ -23,6 +23,9 @@
         #refresh_table:hover{
             color:darksalmon  
         }
+        /* td{
+            text-align: center !important;
+        } */
     </style>
 @endpush
 @section('content')

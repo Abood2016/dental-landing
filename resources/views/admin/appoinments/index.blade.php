@@ -1,39 +1,43 @@
 @extends('layouts.app')
 
 @section('bar_title')
-    الحجوزات
+الحجوزات
 @endsection
 
 @push('css')
-    <style>
-        .center-check{
+<style>
+    .center-check {
 
-           text-align: center!important;
+        text-align: center !important;
 
-        }
-    </style>
+    }
+</style>
 @endpush
 @section('content')
-    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-        <div class="container">
-            <div class="card card-custom gutter-b">
-                <div class="card-header flex-wrap py-3">
-                    <div class="card-title">
-                        <h3 class="card-label">مواعيد قيد المراجعة
-                            <span class="d-block text-muted pt-2 font-size-sm">عرض جميع المواعيد</span>
-                        </h3>
-                    </div>
-
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="container">
+        <div class="card card-custom gutter-b">
+            <div class="card-header flex-wrap py-3">
+                <div class="card-title">
+                    <h3 class="card-label">مواعيد قيد المراجعة
+                        <span class="d-block text-muted pt-2 font-size-sm">عرض جميع المواعيد</span>
+                    </h3>
                 </div>
-                <div class="card-body">
-                    <!--begin: Datatable-->
-                    <div id="" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="card-body table-responsive p-0">
-                                    <table class="table  table-condensed table-hover text-nowrap table-bordered"
-                                           id="appoinments_table">
-                                        <thead>
+                <a href="#" title="أنقر لتحديث الجدول" id="refresh_table"
+                    class="btn btn-primary-light font-weight-bolder mr-2">
+                    <span class="svg-icon svg-icon-md">
+                        <i class="ki ki-refresh icon-sm"></i>
+                    </span>تحديث الجدول </a>
+            </div>
+            <div class="card-body">
+                <!--begin: Datatable-->
+                <div id="" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card-body table-responsive p-0">
+                                <table class="table  table-condensed table-hover text-nowrap table-bordered"
+                                    id="appoinments_table">
+                                    <thead>
                                         <tr>
                                             <th width="3%">#</th>
                                             <th width="13%">الإسم</th>
@@ -44,21 +48,21 @@
                                             <th width="10%">التاريخ</th>
                                             <th width="10%">الاجراء</th>
                                         </tr>
-                                        </thead>
-                                    </table>
-                                </div>
+                                    </thead>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <!--end: Datatable-->
                 </div>
+                <!--end: Datatable-->
             </div>
         </div>
     </div>
+</div>
 @endsection
 @push('js')
-    <script>
-        var oTable;
+<script>
+    var oTable;
         $(function(){
             BindDataTable();
         });
@@ -127,10 +131,9 @@
                 }
             });
         }
-    </script>
-    <script>
-
-        var SITEURL = '{{URL::to('')}}';
+</script>
+<script>
+    var SITEURL = '{{URL::to('')}}';
         $(document).on('click', '.btn-delete', function(){
          var   deleteID = $(this).data('id');
             Swal.fire({
@@ -171,9 +174,9 @@
         setTimeout(function (){
             $('.container-box').fadeOut();
         },1000)
-    </script>
-    <script>
-        $(document).on('click','.change-status',function (){
+</script>
+<script>
+    $(document).on('click','.change-status',function (){
             let id = $(this).attr('data-id')
             $.ajax({
                 url:'appoinments/change_status',
@@ -202,5 +205,12 @@
                 }
             })
         })
-    </script>
+</script>
+
+<script>
+$(document).on('click','#refresh_table',function () {
+   var oTable = $('#appoinments_table').dataTable();
+        oTable.fnDraw(false);
+});
+</script>
 @endpush

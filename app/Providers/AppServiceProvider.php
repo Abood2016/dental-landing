@@ -30,6 +30,6 @@ class AppServiceProvider extends ServiceProvider
         view()->share('setting', Setting::orderBy('created_at', 'desc')->limit(1)->get()->first());
         view()->share('hoursDaily', opening::orderBy('created_at', 'desc')->limit(1)->get()->first());
         view()->share('testimonial', Testimonial::orderBy('created_at', 'desc')->limit(1)->get()->first());
-        view()->share('services', Service::orderBy('created_at', 'desc')->get());
+        view()->share('services', Service::orderBy('created_at', 'desc')->limit(3)->get());
     }
 }
