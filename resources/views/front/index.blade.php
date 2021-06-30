@@ -63,7 +63,7 @@
                         <span class="text-white input-label">
                             الفرع
                         </span>
-                        <select name="branch_id" class="form-control mt-2">
+                        <select name="branch_id" class="form-select mt-2">
                             <option selected disabled>اختيار الفرع</option>
                           @foreach($result as $r)
                                 <option value="{{$r->id}}">{{$r->branchName}}</option>
@@ -75,7 +75,7 @@
                         <span class="text-white input-label">
                             تاريخ الحجز
                         </span>
-                        <input name="reserve_date" class="form-control mt-2 text-start" type="date"  id="date-input">
+                        <input onfocus="(this.type='date')" class="form-control" placeholder="ادخل تاريخ الحجز">
                         <small class="text-danger badge badge-danger text-start" id="reserve_date_error"></small>
                     </label>
                     <label for="email" class="form-group d-flex flex-column mt-3">
