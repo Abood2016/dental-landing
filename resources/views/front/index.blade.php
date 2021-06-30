@@ -95,7 +95,7 @@
 </header>
     <main>
         <div class="container">
-            <div class="row about-box" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="800">
+            <div class="row about-box" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="1000">
                 <div class="col-sm-12 d-flex flex-column">
                     <div class="about-title">
                         قالوا عنا
@@ -111,7 +111,7 @@
                 </div>
             </div>
         </div>
-        <div class="container services-box" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="800">
+        <div class="container services-box" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1000">
             <div class="row">
                 <div class="col-sm-12 text-center services-title">
                     خدماتنا
@@ -181,7 +181,7 @@
         <div class="container general-box">
             <div class="row">
                 <div class="col-sm-12 row justify-content-center">
-                    <div class="col-sm-5 d-flex flex-row" data-aos="fade-left" data-aos-duration="800">
+                    <div class="col-sm-5 d-flex flex-row" data-aos="fade-left" data-aos-duration="1000">
                         <div class="box-one-general" style="">
                             <div class="right-box-general" style="">
                                 ساعات الدوام
@@ -203,7 +203,7 @@
                         </div>
                     </div>
                     <div class="col-sm-5 d-flex flex-row mobile-edition " data-aos="fade-right" data-aos-offset="100"
-                        data-aos-duration="800">
+                        data-aos-duration="1000">
                         <div class="box-one-general" style="">
                             <div class="right-box-general" style="">
                                 للطوارىء
@@ -236,7 +236,7 @@
         </div>
     </main>
     <footer class="container-fluid" style="background-color: #18afd3">
-        <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-offset="0">
+        <div class="row" data-aos="fade-left" data-aos-duration="1200" data-aos-offset="0">
             <div class="col-sm-5 d-flex justify-content-center footer-logo-mobile">
                 <img src="{{ URL::asset('/images/logo/'. $setting->logo )}}" class="footer-logo" width="206px" height="63px" alt="">
             </div>
