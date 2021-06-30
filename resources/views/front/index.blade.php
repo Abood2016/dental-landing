@@ -24,7 +24,6 @@
             </div>
 
             <div class="col-sm-9 col-12">
->>>>>>> faa5ace476230c699cc686fd4cf15ee41a6336a6
 
                     <div class="float-end header-icon-mobile">
                         <div class="d-flex flex-row">
@@ -50,11 +49,9 @@
                     data-aos-duration="1200">
                     {{$setting->sub_title}}
                 </div>
-<<<<<<< HEAD
                 <div class="col-sm-4 d-flex flex-column card-header-box" data-aos-easing="linear"
                     data-aos-duration="1200" data-aos="zoom-out">
                     <div class=" free-consult" style="height: 3px!important;">
-=======
                 <form  id="form_appoinments" class="mt-5  form-consult">
                     <label for="email" class="form-group d-flex flex-column">
                         <span class="text-white input-label">
@@ -98,7 +95,6 @@
                         <small class="text-danger badge badge-danger text-start" id="consultation_error"></small>
                     </label>
                     <button class="button-card btn btn-primary mb-4 mt-4" id="reserve-appoinments">
->>>>>>> faa5ace476230c699cc686fd4cf15ee41a6336a6
                         احجز الآن
                     </div>
                     <form id="form_appoinments" class="mt-5  form-consult">
