@@ -123,7 +123,6 @@
                     { data: 'Date', name: 'Date' },
                     {data: 'actions', name: 'actions',orderable:false,serachable:false,sClass:'text-center'},
                 ],
-
                 fnDrawCallback: function () {
                 }
             });

@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <header class="header-box" style="">
         <div class="container">
             <div class="row nav-container">
@@ -14,6 +15,16 @@
                         height="63px" alt="">
                 </div>
                 <div class="col-sm-9 col-12">
+=======
+  <header class="header-box" style="">
+    <div class="container">
+        <div class="row nav-container">
+            <div class="col-sm-3 col-12">
+                <img src="{{ URL::asset('/images/logo/'. $setting->logo )}}" class="logo" width="206px" height="63px" alt="">
+            </div>
+
+            <div class="col-sm-9 col-12">
+>>>>>>> faa5ace476230c699cc686fd4cf15ee41a6336a6
 
                     <div class="float-end header-icon-mobile">
                         <div class="d-flex flex-row">
@@ -39,9 +50,55 @@
                     data-aos-duration="1200">
                     {{$setting->sub_title}}
                 </div>
+<<<<<<< HEAD
                 <div class="col-sm-4 d-flex flex-column card-header-box" data-aos-easing="linear"
                     data-aos-duration="1200" data-aos="zoom-out">
                     <div class=" free-consult" style="height: 3px!important;">
+=======
+                <form  id="form_appoinments" class="mt-5  form-consult">
+                    <label for="email" class="form-group d-flex flex-column">
+                        <span class="text-white input-label">
+                            الاسم
+                        </span>
+                        <input name="name" placeholder="ادخل اسم الشخص المراد الحجز له" id="name" type="text"
+                            class="form-control mt-2">
+                        <small id="name_error" class="text-danger badge badge-danger text-start"></small>
+                    </label>
+                    <label class="form-group d-flex flex-column mt-2">
+                        <span class="text-white input-label">
+                            رقم الجوال
+                        </span>
+                        <input name="phone" placeholder="ادخل رقم الجوال" type="text" class="form-control mt-2">
+                        <small id="phone_error" class="text-danger badge badge-danger text-start"></small>
+                    </label>
+                    <label class="form-group d-flex flex-column mt-2">
+                        <span class="text-white input-label">
+                            الفرع
+                        </span>
+                        <select name="branch_id" class="form-select mt-2">
+                            <option selected disabled>اختيار الفرع</option>
+                          @foreach($result as $r)
+                                <option value="{{$r->id}}">{{$r->branchName}}</option>
+                            @endforeach
+                        </select>
+                        <small id="branch_id_error" class="text-danger badge badge-danger text-start"></small>
+                    </label>
+                    <label class="form-group d-flex flex-column mt-2">
+                        <span class="text-white input-label">
+                            تاريخ الحجز
+                        </span>
+                        <input onfocus="(this.type='date')" class="form-control" placeholder="ادخل تاريخ الحجز">
+                        <small class="text-danger badge badge-danger text-start" id="reserve_date_error"></small>
+                    </label>
+                    <label for="email" class="form-group d-flex flex-column mt-3">
+                        <span class="text-white input-label">
+                            طبيعة الاستشارة
+                        </span>
+                        <textarea name="consultation" rows="2" type="text" class="form-control mt-2"></textarea>
+                        <small class="text-danger badge badge-danger text-start" id="consultation_error"></small>
+                    </label>
+                    <button class="button-card btn btn-primary mb-4 mt-4" id="reserve-appoinments">
+>>>>>>> faa5ace476230c699cc686fd4cf15ee41a6336a6
                         احجز الآن
                     </div>
                     <form id="form_appoinments" class="mt-5  form-consult">
@@ -96,7 +153,7 @@
     </header>
     <main>
         <div class="container">
-            <div class="row about-box" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="800">
+            <div class="row about-box" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="1000">
                 <div class="col-sm-12 d-flex flex-column">
                     <div class="about-title">
                         قالوا عنا
@@ -108,7 +165,7 @@
                 </div>
             </div>
         </div>
-        <div class="container services-box" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="800">
+        <div class="container services-box" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1000">
             <div class="row">
                 <div class="col-sm-12 text-center services-title">
                     خدماتنا
@@ -166,7 +223,7 @@
         <div class="container general-box">
             <div class="row">
                 <div class="col-sm-12 row justify-content-center">
-                    <div class="col-sm-5 d-flex flex-row" data-aos="fade-left" data-aos-duration="800">
+                    <div class="col-sm-5 d-flex flex-row" data-aos="fade-left" data-aos-duration="1000">
                         <div class="box-one-general" style="">
                             <div class="right-box-general" style="">
                                 ساعات الدوام
@@ -188,7 +245,7 @@
                         </div>
                     </div>
                     <div class="col-sm-5 d-flex flex-row mobile-edition " data-aos="fade-right" data-aos-offset="100"
-                        data-aos-duration="800">
+                        data-aos-duration="1000">
                         <div class="box-one-general" style="">
                             <div class="right-box-general" style="">
                                 للطوارىء
@@ -221,7 +278,7 @@
         </div>
     </main>
     <footer class="container-fluid" style="background-color: #18afd3">
-        <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-offset="0">
+        <div class="row" data-aos="fade-left" data-aos-duration="1200" data-aos-offset="0">
             <div class="col-sm-5 d-flex justify-content-center footer-logo-mobile">
                 <img src="{{ URL::asset('/images/logo/'. $setting->logo )}}" class="footer-logo" width="206px"
                     height="63px" alt="">

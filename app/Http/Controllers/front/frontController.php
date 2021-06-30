@@ -43,4 +43,7 @@ class frontController extends Controller
         $appointments->save();
         return response()->json(['status'=>200]);
     }
+    public function serviceShow($id){
+        return view('front.service_detail');
+    }
 }

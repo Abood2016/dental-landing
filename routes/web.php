@@ -89,5 +89,5 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
 Route::group(['namespace' => 'front'], function () {
     Route::get('/', [frontController::class, 'index'])->name('front.index');
     Route::post('/appoinments/set',[frontController::class,'setAppoinments']);
-
+    Route::get('/service/{id}',[frontController::class,'serviceShow']);
 });
