@@ -135,7 +135,7 @@
                     @foreach ($services as $service)
                     <div class="col-sm-4 col-12 d-flex justify-content-center service-out">
                         <div class="col-sm-10 d-flex flex-column">
-                            <img src="{{ URL::asset('/images/service/'.$service->image) }}" width="320" height="320"
+                            <img src="{{ URL::asset('/images/service/'.$service->image) }}" width="320" height="320" style="border-radius: 10px"
                                 alt="service photo">
                             <a href="{{ route('service.show',['id' => $service->id]) }}" class="service-button btn hvr-bounce-to-right">
                                 {{ $service->title }}
