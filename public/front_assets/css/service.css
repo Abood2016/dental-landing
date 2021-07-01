@@ -24,3 +24,12 @@
 .nav-link{
     margin-right: 1em!important;
 }
+@media (max-width: 767px) {
+    .title-content-service{
+        margin-right: 0.7em;
+        margin-top: 1em;
+    }
+    .content-contetn-service{
+        margin-right: 0.8em;
+    }
+}

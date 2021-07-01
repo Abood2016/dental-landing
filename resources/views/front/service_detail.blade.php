@@ -45,14 +45,14 @@
  <main>
     <div class="container-fluid service-content">
         <div class="row">
-            <div class="col-sm-6 text-center">
+            <div class="col-sm-6 col-12 text-center">
                 <img class="service-image" src="{{asset('front_assets/images/service_three.jpg')}}" alt="">
             </div>
-            <div class="col-sm-6 row d-flex flex-column">
+            <div class="col-sm-6 col-12 row d-flex flex-column">
             <div class="col-sm-12 title-content-service">
                 طب الأسنان الترميمي
             </div>
-                <div class="col-sm-12  text-justify content-contetn-service">
+                <div class="col-sm-12 col-12  text-justify content-contetn-service">
                     شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح
                 </div>
             </div>
