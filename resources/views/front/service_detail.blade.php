@@ -73,7 +73,7 @@
         <div class="col-sm-4 all-right d-flex flex-column">
             جميع الحقوق محفوظة.
             <a href="/" class=" col-5 text-center mt-2 link-footer">
-                لدى G.M.G
+                {{date("Y")}}
             </a>
         </div>
         <div class="col-sm-3 d-flex flex-row pt-4 pb-4 mr">

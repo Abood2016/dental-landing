@@ -6,7 +6,7 @@
     <style>
         #bg_image::before{
             background-image: url({{ URL::asset('/images/bg_image/'. $setting->bg_image )}});
-            
+
         }
     </style>
 </head>
@@ -20,7 +20,6 @@
                      height="63px" alt="">
             </div>
             <div class="col-sm-9 col-12">
-
                 <div class="float-end header-icon-mobile">
                     <div class="d-flex flex-row">
                             <span class="icon">
@@ -38,6 +37,23 @@
                     </div>
 
                 </div>
+                <a href="http://www.fcaebook.com" class="float-end header-icon-mobile header-icon-facebook">
+                    <div class="d-flex flex-row">
+                            <span class="icon icon-facebook">
+                                <span class="fab fa-facebook-f"  style="font-weight: 200;"></span>
+
+                            </span>
+                        <div class="num-call d-flex flex-column">
+                                <span class="contact-number">
+                                   فيسبوك
+                                </span>
+
+                        </div>
+
+
+                    </div>
+
+                </a>
 
             </div>
         </div>
@@ -114,7 +130,7 @@
                     @isset($testimonial->testimonial)
                      {!! $testimonial->testimonial !!}
                     @endisset
-                            
+
                     </p>
                 </div>
             </div>
