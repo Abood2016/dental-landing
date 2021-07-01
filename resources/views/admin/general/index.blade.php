@@ -32,7 +32,7 @@
             </button>
         </form>
 
-        <form class="col-sm-5 d-flex  flex-column  ml-5 card" id="form-opening">
+        <form class="col-sm-5 offset-1   d-flex  flex-column  card" id="form-opening">
             {{csrf_field()}}
             <h1 class="h1 mt-5">
                 المواعيد
@@ -41,7 +41,7 @@
                 <div class="form-group col-sm-6 d-flex flex-column">
 
                     <label for="example-time-input" class=" col-form-label">من الوقت</label>
-                    <div class="col-10">
+                    <div class="col-sm-9">
                         <input class="form-control" name="from_time"  type="time" id="example-time-input">
                     </div>
                 </div>
