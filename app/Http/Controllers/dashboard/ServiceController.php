@@ -109,4 +109,10 @@ class ServiceController extends Controller
         }
         return response()->json(['status' => 200, 'success' => 'تم التحديث بنجاح']);
     }
+
+    public function serviceShow($id)
+    {
+        $service = Service::findOrFail($id);
+        return view('front.service_detail',compact('service'));
+    }
 }

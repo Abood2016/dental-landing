@@ -23,7 +23,7 @@
                         <span class="d-block text-muted pt-2 font-size-sm">عرض جميع المواعيد</span>
                     </h3>
                 </div>
-                <a href="#" title="أنقر لتحديث الجدول" id="refresh_table"
+                <a href="" title="أنقر لتحديث الجدول" id="refresh_table"
                     class="btn btn-primary-light font-weight-bolder mr-2">
                     <span class="svg-icon svg-icon-md">
                         <i class="ki ki-refresh icon-sm"></i>
@@ -208,7 +208,8 @@
 </script>
 
 <script>
-$(document).on('click','#refresh_table',function () {
+$(document).on('click','#refresh_table',function (event) {
+    event.preventDefault();
    var oTable = $('#appoinments_table').dataTable();
         oTable.fnDraw(false);
 });

@@ -3,10 +3,16 @@
 
 <head>
     @include('front.layouts.header-meta')
+    <style>
+        #bg_image::before{
+            background-image: url({{ URL::asset('/images/bg_image/'. $setting->bg_image )}});
+            
+        }
+    </style>
 </head>
 
 <body>
-<header class="header-box" style="">
+<header id="bg_image" class="header-box" style="">
     <div class="container">
         <div class="row nav-container">
             <div class="col-sm-3 col-12">
@@ -96,7 +102,6 @@
     </div>
 </header>
 
-
     <main>
         <div class="container">
             <div class="row about-box" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="1000">
@@ -107,7 +112,7 @@
                     <hr class="divider">
                     <p class="about-para">
                     @isset($testimonial->testimonial)
-                     {{ $testimonial->testimonial }}
+                     {!! $testimonial->testimonial !!}
                     @endisset
                             
                     </p>

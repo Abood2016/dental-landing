@@ -50,14 +50,14 @@
                     </h3>
                 </div>
                 <div class="card-toolbar">
-                    <a href="#" title="أنقر لتحديث الجدول" id="refresh_table" class="btn btn-primary-light font-weight-bolder mr-2">
+                    <a href="" title="أنقر لتحديث الجدول" id="refresh_table" class="btn btn-primary-light font-weight-bolder mr-2">
                         <span class="svg-icon svg-icon-md">
                             <i class="ki ki-refresh icon-sm"></i>
                         </span>تحديث الجدول </a>
                     <!--end::Button-->
                     
                     <!--begin::Button-->
-                    <a href="#" id="btn_show_modal" class="btn btn-primary font-weight-bolder">
+                    <a href="" id="btn_show_modal" class="btn btn-primary font-weight-bolder">
                         <span class="svg-icon svg-icon-md">
                             <i class="ki ki-plus icon-sm"></i>
                         </span>خدمة جديد </a>
@@ -326,7 +326,8 @@
     }
     });
     
-   $("#btn_show_modal").click(function() {
+   $("#btn_show_modal").click(function(event) {
+       event.preventDefault();
     $("#modelHeading").html("أضافة خدمة جديد");    
     $("#service_form").trigger('reset');//to clear the form
     $("#thumb-output").html('');
@@ -441,7 +442,8 @@
 </script>
 
 <script>
-    $(document).on('click','#refresh_table',function() {
+    $(document).on('click','#refresh_table',function(event) {
+    event.preventDefault();
         var oTable = $('#service_datatable').dataTable();
         oTable.fnDraw(false);
     })

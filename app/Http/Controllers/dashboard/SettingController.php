@@ -62,6 +62,16 @@ class SettingController extends Controller
             $array = ['logo' => $fileName] + $array;
         }
 
+        if ($request->hasFile('bg_image')) {
+            $file = $request->file('bg_image');
+            $fileName = time() . Str::random(12) . '.' . $file->getClientOriginalExtension();
+            if (File::exists(public_path('/images/bg_image/') . $setting->bg_image)) {
+                File::delete(public_path('/images/bg_image/') . $setting->bg_image);
+            }
+            $file->move(public_path('/images/bg_image/'), $fileName);
+            $array = ['bg_image' => $fileName] + $array;
+        }
+
         if ($request->title != $setting->title) {
             $array['title'] = $request->title;
         }

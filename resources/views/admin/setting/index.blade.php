@@ -131,9 +131,10 @@
                                 <div class="form-group">
                                     <label>رقم الطوارئ :</label>
                                     <div class="input-icon input-icon-right">
-                                        <input name="emergency_contact_number" type="text" id="emergency_contact_number" class="form-control" placeholder="" />
+                                        <input name="emergency_contact_number" type="text" id="emergency_contact_number"
+                                            class="form-control" placeholder="" />
                                     </div>
-                            </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -143,15 +144,24 @@
                                     placeholder="" />
                             </div>
                         </div>
-                        <input type="hidden" name="hidden_image" id="hidden_image">
+                        <input type="hidden" name="hidden_image" id="bg_hidden_image">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">اللوجو</label>
                             <div id="thumb-output"></div><br>
                             <input type="file" name="logo" class="form-control-file" id="file-image">
                         </div>
                         <small id="image_error" class="form-text text-danger"></small>
-
                         <img id="modal-preview" style="border-radius: 10px" src="https://via.placeholder.com/150"
+                            alt="Preview" class="form-group" width="100" height="90">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">صورة الخلفية الرئيسية</label>
+                            <div id="thumb-output"></div><br>
+                            <input type="file" name="bg_image" class="form-control-file" id="bg_file-image">
+                        </div>
+                        <small id="bg_image_error" class="form-text text-danger"></small>
+
+
+                        <img id="bg_modal-preview" style="border-radius: 10px" src="https://via.placeholder.com/150"
                             alt="Preview" class="form-group" width="100" height="90">
 
                     </div>
@@ -265,6 +275,11 @@
                 $('#modal-preview').attr('src', SITEURL +'/images/logo/'+data.result.logo);
                 $('#hidden_image').attr('src', SITEURL +'/images/logo/'+data.result.logo);
                 }
+
+                if(data.result.bg_image){
+                $('#bg_modal-preview').attr('src', SITEURL +'/images/bg_image/'+data.result.bg_image);
+                $('#bg_hidden_image').attr('src', SITEURL +'/images/bg_image/'+data.result.logo);
+                }
            }
        })
         });
@@ -276,7 +291,7 @@
             method:'post',
             data:form_data,
             dataType:'json',
-           success:function (response){
+            success:function (response){
             if (response.status == 504){
             Swal.fire({
             icon: 'error',
@@ -297,6 +312,8 @@
             })
             var oTable = $('#settings_datatable').dataTable();
             oTable.fnDraw(false);
+            $('#thumb-output').html("");
+            $("#bg_file-image").html("");
             $('#editSettingModal').modal('hide');
             }
             },
