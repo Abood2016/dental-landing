@@ -37,7 +37,7 @@
                     </div>
 
                 </div>
-                <a href="http://www.fcaebook.com" class="float-end header-icon-mobile header-icon-facebook">
+                <a href="{{ $setting->facebook_url }}" class="float-end header-icon-mobile header-icon-facebook">
                     <div class="d-flex flex-row">
                             <span class="icon icon-facebook">
                                 <span class="fab fa-facebook-f"  style="font-weight: 200;"></span>
