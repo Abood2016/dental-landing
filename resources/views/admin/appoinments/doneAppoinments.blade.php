@@ -39,8 +39,8 @@
                                             <th width="13%">الإسم</th>
                                             <th width="14%">الهاتف</th>
                                             <th width="13%">الفرع</th>
-                                            <th width="13%">الحالة</th>
                                             <th width="10%">تاريخ الحجز</th>
+                                            <th width="13%">الحالة</th>
                                         </tr>
                                     </thead>
                                 </table>
@@ -116,8 +116,8 @@
                     { data: 'name', name: 'name' },
                     { data: 'phone', name: 'phone',class:'image_css' },
                     { data: 'branch_id', name: 'branch_id' },
-                    { data: 'status', name: 'status',class: 'center-check' },
                     { data: 'appoinments_Date', name: 'appoinments_Date' },
+                    { data: 'status', name: 'status',class: 'center-check' },
                 ],
 
                 fnDrawCallback: function () {

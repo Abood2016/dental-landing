@@ -2,9 +2,9 @@
 
 <style>
 .user{
-    background-color: #1e1e2d;
+    background-color: rgb(60, 60, 250)
 }
-.user_item{
+td{
     text-align: center !important;
 }
 </style>

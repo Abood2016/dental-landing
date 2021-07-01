@@ -26,6 +26,13 @@
 <link rel="stylesheet" href="{{asset('backend_assets/css/sweetalert.css')}}">
 <style>
 
+    td {
+        text-align: center !important;
+    }
+</style>
+
+<style>
+
     .thumb {
         width: 180px;
         border-radius: 40px;
