@@ -137,7 +137,7 @@
                         <div class="col-sm-10 d-flex flex-column">
                             <img src="{{ URL::asset('/images/service/'.$service->image) }}" width="320" height="320"
                                 alt="service photo">
-                            <a href="index.html" class="service-button btn hvr-bounce-to-right">
+                            <a href="{{ route('service.show',['id' => $service->id]) }}" class="service-button btn hvr-bounce-to-right">
                                 {{ $service->title }}
                             </a>
                         </div>

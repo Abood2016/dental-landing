@@ -4,6 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
+use App\Models\Service;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,10 @@ class frontController extends Controller
         $appointments->save();
         return response()->json(['status'=>200]);
     }
-    public function serviceShow($id){
-        return view('front.service_detail');
+
+    public function serviceShow($id)
+    {
+        $service = Service::findOrFail($id);
+        return view('front.service_detail', compact('service'));
     }
 }
