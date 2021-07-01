@@ -1,0 +1,35 @@
+.item-itself-nav{
+    margin-left: 0.3em;
+    margin-top: 0.4em;
+    border-bottom: 3px solid #ffffff;
+}
+.service-content{
+    margin-top: 7em;
+}
+.service-image{
+    width: 370px;
+    height: 370px;
+    border-radius: 10px;
+}
+.title-content-service{
+    font-size: 1.8em;
+    font-family: Cairo, sans-serif;
+    font-weight: 600;
+}
+.content-contetn-service{
+    font-size: 1.1em;
+    margin-top: 1.5em;
+    font-family: Cairo, sans-serif;
+}
+.nav-link{
+    margin-right: 1em!important;
+}
+@media (max-width: 767px) {
+    .title-content-service{
+        margin-right: 0.7em;
+        margin-top: 1em;
+    }
+    .content-contetn-service{
+        margin-right: 0.8em;
+    }
+}

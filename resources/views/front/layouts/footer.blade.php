@@ -1,3 +1,4 @@
+
 <div class="row" data-aos="fade-left" data-aos-duration="1200" data-aos-offset="0">
     <div class="col-sm-5 d-flex justify-content-center footer-logo-mobile">
         <img src="{{ URL::asset('/images/logo/'. $setting->logo )}}" class="footer-logo" width="206px" height="63px"
