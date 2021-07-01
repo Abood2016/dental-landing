@@ -33,3 +33,9 @@
         margin-right: 0.8em;
     }
 }
+@media (max-width: 380px) {
+    .service-image{
+        width: 280px;
+        height: 280px;
+    }
+}
