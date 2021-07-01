@@ -106,7 +106,10 @@
                     </div>
                     <hr class="divider">
                     <p class="about-para">
-                        {{ $testimonial->testimonial }}
+                    @isset($testimonial->testimonial)
+                     {{ $testimonial->testimonial }}
+                    @endisset
+                            
                     </p>
                 </div>
             </div>
@@ -123,18 +126,19 @@
                     نحن نقدم خدمات رعاية صحية عالية الجودة لجميع أفراد الأسرة.
                 </div>
                 <div class="col-sm-12 row mt-5 mobile-service">
+                    @isset($services)
                     @foreach ($services as $service)
                     <div class="col-sm-4 col-12 d-flex justify-content-center service-out">
                         <div class="col-sm-10 d-flex flex-column">
                             <img src="{{ URL::asset('/images/service/'.$service->image) }}" width="320" height="320"
                                 alt="service photo">
                             <a href="index.html" class="service-button btn hvr-bounce-to-right">
-
                                 {{ $service->title }}
                             </a>
                         </div>
                     </div>
                     @endforeach
+                    @endisset
 
                 </div>
             </div>
