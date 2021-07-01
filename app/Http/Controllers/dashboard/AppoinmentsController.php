@@ -48,6 +48,32 @@ class AppoinmentsController extends Controller
             return response()->json(['status' => 504, 'error' => 'حدث خطأ ما ']);
         }
     }
+
+    public function doneAppoinment()
+    {
+        $branches = \Http::get("http://globaldentaldata.com/api/get_branches");
+        $branches = json_decode($branches);
+
+        if (request()->ajax()) {
+            $appoinments = DB::table('appointments')
+                ->where('status', '=', '1')
+                ->select([
+                    'id', 'name', 'phone', 'branch_id', 'status',
+                    DB::raw("DATE_FORMAT(appointments.date, '%Y-%m-%d') as appoinments_Date"),
+                ])->orderBy('id', 'DESC')->get();
+            foreach ($appoinments as $item) {
+                $item->branch_id = $branches[$item->branch_id - 1]->branchName;
+            }
+            return  DataTables::of($appoinments)
+                ->editColumn('status', function ($appoinments) {
+                    return view('admin.appoinments.done_status', compact('appoinments'));
+                })->rawColumns(['actions', 'status'])
+                ->make(true);
+        }
+        return view('admin.appoinments.doneAppoinments');
+    }
+
+
     public function changeStatus(Request $request)
     {
         try {

@@ -61,8 +61,8 @@
                                             <th width="3%">#</th>
                                             <th width="13%">الإسم</th>
                                             <th width="13%">ألصورة</th>
-                                            <th width="14%">الهاتف</th>
                                             <th width="13%">الإيميل</th>
+                                            <th width="14%">الهاتف</th>
                                             <th width="10%">التاريخ</th>
                                             <th width="10%">الإجراء</th>
                                         </tr>
