@@ -10,8 +10,7 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="{{URL::to("/")}}">                <img src="{{ URL::asset('/images/logo/'. $setting->logo )}}" class="logo" width="206px" height="63px" alt="">
         </a>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{URL::to('/')}}">  <span style="margin-left: 0.3em;margin-top: 0.4em">الرجوع</span><span class="fas fa-chevron-circle-left"></span></a>

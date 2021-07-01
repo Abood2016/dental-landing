@@ -375,6 +375,10 @@ footer{
     color: #ffffff;
 }
 @media screen and (max-width: 767px) {
+    .navbar{
+        display: flex;
+        flex-direction: row;
+    }
     .contact-number{
         margin-top: 10%;
     }

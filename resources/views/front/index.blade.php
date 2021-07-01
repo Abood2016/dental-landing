@@ -12,9 +12,8 @@
             <div class="col-sm-3 col-12">
                 <img src="{{ URL::asset('/images/logo/'. $setting->logo )}}" class="logo" width="206px" height="63px" alt="">
             </div>
-
+{{--here is comment--}}
             <div class="col-sm-9 col-12">
-
                 <div class="float-end header-icon-mobile">
                     <div class="d-flex flex-row">
                         <span class="icon">
