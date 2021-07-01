@@ -27,12 +27,12 @@
                 قالوا عنا
             </h1>
         <textarea class="mt-5 col-sm-12 cke_rtl" id="editor2"></textarea>
-            <button type="submit" class="btn btn-success btn-testimonial mt-5 mb-5">
+            <button type="submit" class="btn btn-primary btn-testimonial mt-5 mb-5">
                 حفظ
             </button>
         </form>
 
-        <form class="col-sm-5 d-flex  flex-column  ml-5 card" id="form-opening">
+        <form class="col-sm-5 offset-1   d-flex  flex-column  card" id="form-opening">
             {{csrf_field()}}
             <h1 class="h1 mt-5">
                 المواعيد
@@ -41,7 +41,7 @@
                 <div class="form-group col-sm-6 d-flex flex-column">
 
                     <label for="example-time-input" class=" col-form-label">من الوقت</label>
-                    <div class="col-10">
+                    <div class="col-sm-9">
                         <input class="form-control" name="from_time"  type="time" id="example-time-input">
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                 </label>
             </div>
 
-            <button class="btn btn-success btn-appoinments w-50">
+            <button class="btn btn-primary btn-appoinments w-50">
                 حفظ
             </button>
         </form>
