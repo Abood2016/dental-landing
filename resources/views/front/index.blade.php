@@ -65,7 +65,7 @@
                             <span class="text-white input-label">
                                 الفرع
                             </span>
-                        <select name="branch_id" class="form-control mt-2">
+                        <select name="branch_id" class="form-select mt-2">
                             <option selected disabled>اختيار الفرع</option>
                             @foreach($result as $r)
                                 <option value="{{$r->id}}">{{$r->branchName}}</option>
