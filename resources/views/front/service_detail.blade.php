@@ -48,14 +48,14 @@
     <div class="container-fluid service-content">
         <div class="row">
             <div class="col-sm-6 col-12 text-center">
-                <img class="service-image" src="{{asset('front_assets/images/service_three.jpg')}}" alt="">
+                <img class="service-image" src="{{URL::asset('/images/service/'.$service->image)}}" alt="">
             </div>
             <div class="col-sm-6 col-12 row d-flex flex-column">
             <div class="col-sm-12 title-content-service">
-                طب الأسنان الترميمي
+                {{ $service->title }}
             </div>
                 <div class="col-sm-12 col-12  text-justify content-contetn-service">
-                    شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح
+                    {!! $service->description !!}
                 </div>
             </div>
         </div>

@@ -98,7 +98,7 @@
                 </div>
                 <div class="col-lg-4">
                     <!--begin::Stats Widget 17-->
-                    <a href="#" class="card card-custom bg-info bg-hover-state-info card-stretch card-stretch gutter-b">
+                    <a href="{{ route('users.index') }}" class="card card-custom bg-info bg-hover-state-info card-stretch card-stretch gutter-b">
                         <!--begin::Body-->
                         <div class="card-body">
                             <span class="svg-icon svg-icon-white svg-icon-3x ml-n1">
@@ -130,7 +130,7 @@
                 </div>
                 <div class="col-lg-4">
                     <!--begin::Stats Widget 18-->
-                    <a href="#" class="card card-custom bg-dark bg-hover-state-dark card-stretch gutter-b">
+                    <a href="{{ route('appoinments.index') }}" class="card card-custom bg-dark bg-hover-state-dark card-stretch gutter-b">
                         <!--begin::Body-->
                         <div class="card-body">
                             <span class="svg-icon svg-icon-white svg-icon-3x ml-n1">

@@ -42,7 +42,9 @@ class ServiceController extends Controller
                     })->editColumn('username', function ($services) {
                     return view('admin.service.user', compact('services'));
                 
-                })->rawColumns(['image', 'actions', 'username'])->make(true);
+                })->editColumn('description', function ($data) {
+                return Str::limit($data->description, 50);
+            })->rawColumns(['image', 'actions', 'username'])->make(true);
             return response()->json(["data" => $services , 'draw' => $Draw]);
         }
         return view('admin.service.index');
@@ -110,9 +112,5 @@ class ServiceController extends Controller
         return response()->json(['status' => 200, 'success' => 'تم التحديث بنجاح']);
     }
 
-    public function serviceShow($id)
-    {
-        $service = Service::findOrFail($id);
-        return view('front.service_detail',compact('service'));
-    }
+   
 }
