@@ -27,7 +27,7 @@
                 قالوا عنا
             </h1>
         <textarea class="mt-5 col-sm-12 cke_rtl" id="editor2"></textarea>
-            <button type="submit" class="btn btn-success btn-testimonial mt-5 mb-5">
+            <button type="submit" class="btn btn-primary btn-testimonial mt-5 mb-5">
                 حفظ
             </button>
         </form>
@@ -80,7 +80,7 @@
                 </label>
             </div>
 
-            <button class="btn btn-success btn-appoinments w-50">
+            <button class="btn btn-primary btn-appoinments w-50">
                 حفظ
             </button>
         </form>
