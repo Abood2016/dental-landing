@@ -19,17 +19,7 @@
 
 @endsection
 @section('content')
-<div class="container-box conatiner-fluid">
-    <div class="row justify-content-center" style="margin-top: 20%">
 
-        <div class="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-</div>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <div class="container">
         <div class="card card-custom gutter-b">
@@ -481,8 +471,6 @@
     }});
     }})
     });
-    setTimeout(function (){
-    $('.container-box').fadeOut();
-    },1000)
+
 </script>
 @endpush

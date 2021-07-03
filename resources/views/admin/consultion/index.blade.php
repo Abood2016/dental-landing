@@ -21,17 +21,7 @@
 
 
 @section('content')
-    <div class="container-box conatiner-fluid">
-        <div class="row justify-content-center" style="margin-top: 20%">
-    
-            <div class="lds-ellipsis">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-    </div>
+
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <div class="container">
         <div class="card card-custom gutter-b">
@@ -41,7 +31,7 @@
                         <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; الإستشارات</span>
                     </h3>
                 </div>
-               
+
             </div>
             <div class="card-body">
                 <!--begin: Datatable-->
@@ -125,7 +115,7 @@
 <script>
     var oTable;
     $(function(){
-    
+
     BindDataTable();
     });
         function BindDataTable() {
@@ -151,7 +141,7 @@
                 visible: true
                 } ],
                 "language": {
-                  
+
                  emptyTable:"لا يوجد بيانات لعرضها",
                 "sProcessing": "جارٍ التحميل...",
                 "sLengthMenu": "أظهر _MENU_ مدخلات",
@@ -173,7 +163,7 @@
              dom: 'Bfrtip',
                 buttons: [
                     {extend: 'copy',text: 'نسخ'},
-                    
+
                    { extend: 'print',
                         text: 'طباعة الكل',
                         customize: function (win) {
@@ -187,7 +177,7 @@
                     { extend: 'print',
                     text: 'طباعة التحديد',
                     exportOptions: {
-                    
+
                     columns: ':visible',
                     modifier: {
                     selected: true}}},
@@ -197,18 +187,18 @@
                     exportOptions: {
                     columns: ':visible', } },
                     ],
-                  
-                
+
+
                     "order": [[ 0, "asc" ]],
 
                     ajax: {
                     type: "GET",
                     contentType: "application/json",
                     url: '/dashboard/consultions',
-                    
+
                     },
                     columns: [
-                    
+
                     { data: 'id', name: 'id' },
                     { data: 'email', name: 'email' },
                     { data: 'phone', name: 'phone' },
@@ -216,7 +206,7 @@
                     { data: 'createdAt', name: 'createdAt' },
                     {data: 'actions', name: 'actions',orderable:false,serachable:false,sClass:'text-center'},
                     ],
-                  
+
                     fnDrawCallback: function () {
                     }
            });
@@ -247,7 +237,7 @@
             response.success,
             'success'
             )
-          } 
+          }
             var oTable = $('#consultions_datatable').dataTable();
             oTable.fnDraw(false);
             },
@@ -264,10 +254,7 @@
             }
    })
     });
-        setTimeout(function (){
-        $('.container-box').fadeOut();
-        },1000)
-        
+
 </script>
 
 <script>
@@ -312,13 +299,13 @@
             })
             }
             else if (response.status ==200) {
-            
+
             Swal.fire({
             icon: 'success',
             title: 'تم',
             text: response.success,
             timer: 2000,
-       
+
             showCancelButton: false,
             showConfirmButton: false
             })

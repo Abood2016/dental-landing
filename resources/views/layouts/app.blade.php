@@ -181,6 +181,16 @@
             <!--end::Svg Icon-->
         </span>
     </div>
+    <div class="container-box conatiner-fluid">
+        <div class="row justify-content-center" style="margin-top: 20%">
+            <div class="lds-ellipsis">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
     <!--end::Scrolltop-->
 
 
@@ -189,7 +199,14 @@
     @include('layouts.footer-meta')
 
     @stack('js')
-
+    <script>
+        $( document ).ajaxStart(function() {
+            $('.container-box').fadeIn();
+        });
+        $( document ).ajaxComplete(function() {
+            $('.container-box').fadeOut();
+        });
+    </script>
 
     <!--end::Page Scripts-->
 </body>

@@ -21,7 +21,7 @@
 @push('css')
     <style>
         #refresh_table:hover{
-            color:darksalmon  
+            color:darksalmon
         }
         /* td{
             text-align: center !important;
@@ -29,16 +29,7 @@
     </style>
 @endpush
 @section('content')
-<div class="container-box conatiner-fluid">
-    <div class="row justify-content-center" style="margin-top: 20%">
-        <div class="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-</div>
+
 
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <div class="container">
@@ -55,7 +46,7 @@
                             <i class="ki ki-refresh icon-sm"></i>
                         </span>تحديث الجدول </a>
                     <!--end::Button-->
-                    
+
                     <!--begin::Button-->
                     <a href="" id="btn_show_modal" class="btn btn-primary font-weight-bolder">
                         <span class="svg-icon svg-icon-md">
@@ -64,7 +55,7 @@
                     <!--end::Button-->
 
                         <!--begin::Button-->
-                     
+
                 </div>
             </div>
             <div class="card-body">
@@ -204,6 +195,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 
 @push('js')
@@ -234,7 +226,7 @@
                 visible: true
                 } ],
                 "language": {
-                  
+
                  emptyTable:"لا يوجد بيانات لعرضها",
                 "sProcessing": "جارٍ التحميل...",
                 "sLengthMenu": "أظهر _MENU_ مدخلات",
@@ -258,7 +250,7 @@
                     type: "GET",
                     contentType: "application/json",
                     url: '/dashboard/services',
-                    
+
                     },
                     columns: [
                     { data: 'service_id', name: 'service_id' },
@@ -313,9 +305,7 @@
     }});
     }})
     });
-    setTimeout(function (){
-    $('.container-box').fadeOut();
-    },1000)
+
 </script>
 
 <script>
@@ -325,16 +315,16 @@
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
     });
-    
+
    $("#btn_show_modal").click(function(event) {
        event.preventDefault();
-    $("#modelHeading").html("أضافة خدمة جديد");    
+    $("#modelHeading").html("أضافة خدمة جديد");
     $("#service_form").trigger('reset');//to clear the form
     $("#thumb-output").html('');
-     $("#ServiceModal").modal('show');  
+     $("#ServiceModal").modal('show');
    });
     $(document).on('click','#saveBtn',function() {
-        
+
         $('#title_error').text('');
         $('#description_error').text('');
         $('#image_error').text('');
@@ -348,7 +338,7 @@
         processData: false,
         contentType: false,
         cache: false,
-        
+
         success: function (response) {
             if (response.status == 200) {
                 Swal.fire(
@@ -424,7 +414,7 @@
             title: 'تم',
             text: response.success,
             timer: 2000,
-            
+
             showCancelButton: false,
             showConfirmButton: false
             })
@@ -447,5 +437,6 @@
         var oTable = $('#service_datatable').dataTable();
         oTable.fnDraw(false);
     })
+
 </script>
 @endpush

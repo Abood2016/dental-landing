@@ -207,7 +207,7 @@
                 visible: true
                 } ],
                 "language": {
-                  
+
                  emptyTable:"لا يوجد بيانات لعرضها",
                 "sProcessing": "جارٍ التحميل...",
                 "sLengthMenu": "أظهر _MENU_ مدخلات",
@@ -306,7 +306,7 @@
             title: 'تم',
             text: response.success,
             timer: 2000,
-            
+
             showCancelButton: false,
             showConfirmButton: false
             })
@@ -322,6 +322,6 @@
             processData: false,
             })
           })
-});
+    });
 </script>
 @endpush

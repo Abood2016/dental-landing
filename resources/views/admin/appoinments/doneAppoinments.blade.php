@@ -14,17 +14,7 @@
 <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 @endpush
 @section('content')
-    <div class="container-box conatiner-fluid">
-        <div class="row justify-content-center" style="margin-top: 20%">
 
-            <div class="lds-ellipsis">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-    </div>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <div class="container">
         <div class="card card-custom gutter-b">
@@ -197,14 +187,9 @@
             else
             {
             alert('يرجى إختيار تاريخ');
-            }
+            }o
             });
          });
-        $( document ).ajaxStart(function() {
-            $('.container-box').fadeIn();
-        });
-        $( document ).ajaxComplete(function() {
-            $('.container-box').fadeOut();
-        });
+
     </script>
 @endpush
