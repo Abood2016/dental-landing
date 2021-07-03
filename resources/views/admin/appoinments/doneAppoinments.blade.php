@@ -207,5 +207,4 @@
             $('.container-box').fadeOut();
         });
     </script>
-
-    @endpush
+@endpush
