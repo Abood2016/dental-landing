@@ -51,6 +51,17 @@
         </div>
     </div>
 </div>
+<div class="container-box conatiner-fluid">
+    <div class="row justify-content-center" style="margin-top: 20%">
+
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
 @endsection
 @push('js')
 <script>
@@ -204,6 +215,12 @@ $(document).on('click','#refresh_table',function (event) {
     event.preventDefault();
    var oTable = $('#appoinments_table').dataTable();
         oTable.fnDraw(false);
+});
+$( document ).ajaxStart(function() {
+    $('.container-box').fadeIn();
+});
+$( document ).ajaxComplete(function() {
+    $('.container-box').fadeOut();
 });
 </script>
 @endpush
