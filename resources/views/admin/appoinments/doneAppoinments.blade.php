@@ -190,5 +190,4 @@
             });
          });
     </script>
-
-    @endpush
+@endpush

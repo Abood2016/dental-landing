@@ -16,7 +16,7 @@ class dashboardController extends Controller
 
         $branches = \Http::get("http://globaldentaldata.com/api/get_branches");
         $branches = json_decode($branches);
-        $appoinments = Appointment::latest()->limit(5)->get();
+        $appoinments = Appointment::latest()->limit(5)->where('status','=','0')->get();
         foreach ($appoinments as $item) {
             $item->branch_id = $branches[$item->branch_id - 1]->branchName;
         }
