@@ -200,6 +200,9 @@
 
     @stack('js')
     <script>
+        $(document).ready(function (){
+            $('.container-box').fadeOut();
+        })
         $( document ).ajaxStart(function() {
             $('.container-box').fadeIn();
         });
