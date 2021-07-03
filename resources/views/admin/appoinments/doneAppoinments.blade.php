@@ -14,6 +14,17 @@
 <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 @endpush
 @section('content')
+    <div class="container-box conatiner-fluid">
+        <div class="row justify-content-center" style="margin-top: 20%">
+
+            <div class="lds-ellipsis">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <div class="container">
         <div class="card card-custom gutter-b">
@@ -29,7 +40,7 @@
                 <div class="form-group col-sm-12 row ">
                     <div class="col-sm-12 row" style="margin-right: 0.01em">
                         <span class="mr-1" style="font-size: 1.2em;font-weight: 600">
-                            ابحث عن موظف
+                             فلترة المواعيد
                         </span>
                         <form class="col-sm-12 row mt-2 DTForm" id="search_form" method="GET">
                             @csrf
@@ -84,7 +95,7 @@
         });
 
         function BindDataTable(start_date = '', end_date = '') {
-          
+
             oTable = $('#appoinments_table').DataTable({
                 "paging": true,
                 "lengthChange": true,
@@ -128,7 +139,7 @@
                 },
 
                 "order": [[ 0, "asc" ]],
-               
+
                 ajax: {
                     type: "GET",
                     contentType: "application/json",
@@ -189,6 +200,12 @@
             }
             });
          });
+        $( document ).ajaxStart(function() {
+            $('.container-box').fadeIn();
+        });
+        $( document ).ajaxComplete(function() {
+            $('.container-box').fadeOut();
+        });
     </script>
 
     @endpush
