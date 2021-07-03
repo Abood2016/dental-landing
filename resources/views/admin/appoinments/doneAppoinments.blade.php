@@ -146,7 +146,6 @@
                 ],
 
                 fnDrawCallback: function () {
-                    
                 }
             });
         }
