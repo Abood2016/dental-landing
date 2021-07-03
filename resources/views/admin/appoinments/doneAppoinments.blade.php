@@ -151,18 +151,11 @@
                 }
             });
         }
-<<<<<<< HEAD
     </script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script>
         $(function() {
                 $("#start-date").datepicker({
-=======
-</script>
-        <script>
-            $(function() {
-                $("#startdate").datepicker({
->>>>>>> 7511e87b79489c4be181b227fd4b4c703520802e
                     dateFormat: "yy-mm-dd",
                     maxDate: 0,
                     onSelect: function (date) {
@@ -181,7 +174,6 @@
                     maxDate: 0
                 });
             });
-<<<<<<< HEAD
     </script>
     <script>
         $(document).ready(function (){
@@ -202,36 +194,3 @@
     </script>
 
     @endpush
-=======
-        </script>
-        <script>
-            $(document).ready(function (){
-                $('.js-example-basic-single').select2();
-                $.ajaxSetup({
-                    headers:{
-                        'X-CSRF-TOKEN':$('meta[name=csrf-token]').attr('content')
-                    }
-                })
-                $(document).on('click','.btn-submit',function (){
-
-                    let start_data= $("#startdate").val();
-                    let end_date = $("#end-date").val();
-                    $.ajax({
-                        type:'get',
-                        url:"/dashboard/appoinments/done-appoinments",
-                        data: {'start_date':start_data,
-                            'end_date':end_date,
-                        },
-                        contentType: false,
-                        dataType:'html',
-                        success:function (response){
-                            var oTable = $('#appoinments_table').dataTable();
-                            oTable.fnDraw(false);
-                        },
-                    })
-                })
-            });
-
-        </script>
-@endpush
->>>>>>> 7511e87b79489c4be181b227fd4b4c703520802e
