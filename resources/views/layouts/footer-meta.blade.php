@@ -19,6 +19,7 @@
 <script src="{{asset('backend_assets/js/ckeditor.js')}}"></script>
 <script src="{{asset('/backend_assets/js/pages/crud/forms/widgets/bootstrap-timepicker.js?v=7.2.8')}}"></script>
 <script src="{{asset('/backend_assets/js/bootstrap-timepicker.min.js')}}"></script>
+<script src="{{asset("/backend_assets/js/jquery-date-picker.js")}}"></script>
 {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script> --}}

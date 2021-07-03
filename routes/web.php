@@ -91,3 +91,4 @@ Route::group(['namespace' => 'front'], function () {
     Route::post('/appoinments/set',[frontController::class,'setAppoinments']);
     Route::get('/service/{id}',[frontController::class,'serviceShow'])->name('service.show');
 });
+

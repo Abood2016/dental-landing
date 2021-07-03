@@ -25,6 +25,26 @@
                 </div>
 
             </div>
+
+            <div class="container mt-4">
+                <div class="form-group col-sm-12 row ">
+                    <div  class="col-sm-12 row" style="margin-right: 0.01em">
+                    <span class="mr-1" style="font-size: 1.2em;font-weight: 600">
+                        ابحث عن موظف
+                    </span>
+                        <form class="col-sm-12 row mt-2" id="search_form" method="GET">
+                            @csrf
+
+                            <p class="col-sm-6 d-flex flex-row"> <span class="ml-3 mt-1"> من</span>
+                                <input name="start_date" autocomplete="off" type="text" id="startdate" class="datepicker form-control start-date">
+                                <span class="ml-3 mr-3 mt-1"> الى</span>
+                                <input name="end_date" autocomplete="off" type = "text" id = "end-date" class="datepicker form-control">
+
+                                <buttton class="btn btn-sm btn-success btn-submit mr-3">بحث</buttton>
+                            </p>
+                        </form>
+                    </div>
+                </div>
             <div class="card-body">
                 <!--begin: Datatable-->
                 <div id="" class="dataTables_wrapper dt-bootstrap4 no-footer">
@@ -125,5 +145,55 @@
             });
         }
 </script>
+        <script>
+            $(function() {
+                $("#startdate").datepicker({
+                    dateFormat: "yy-mm-dd",
+                    maxDate: 0,
+                    onSelect: function (date) {
+                        var dt2 = $('#end-date');
+                        var startDate = $(this).datepicker('getDate');
+                        var minDate = $(this).datepicker('getDate');
+                        if (dt2.datepicker('getDate') == null){
+                            dt2.datepicker('setDate', minDate);
+                        }
+                        //dt2.datepicker('option', 'maxDate', '0');
+                        dt2.datepicker('option', 'minDate', minDate);
+                    }
+                });
+                $('#end-date').datepicker({
+                    dateFormat: "yy-mm-dd",
+                    maxDate: 0
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function (){
+                $('.js-example-basic-single').select2();
+                $.ajaxSetup({
+                    headers:{
+                        'X-CSRF-TOKEN':$('meta[name=csrf-token]').attr('content')
+                    }
+                })
+                $(document).on('click','.btn-submit',function (){
 
+                    let start_data= $("#startdate").val();
+                    let end_date = $("#end-date").val();
+                    $.ajax({
+                        type:'get',
+                        url:"/dashboard/appoinments/done-appoinments",
+                        data: {'start_date':start_data,
+                            'end_date':end_date,
+                        },
+                        contentType: false,
+                        dataType:'html',
+                        success:function (response){
+                            var oTable = $('#appoinments_table').dataTable();
+                            oTable.fnDraw(false);
+                        },
+                    })
+                })
+            });
+
+        </script>
 @endpush

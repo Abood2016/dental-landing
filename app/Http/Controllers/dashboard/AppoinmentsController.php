@@ -49,8 +49,9 @@ class AppoinmentsController extends Controller
         }
     }
 
-    public function doneAppoinment()
+    public function doneAppoinment(Request $request)
     {
+
         $branches = \Http::get("http://globaldentaldata.com/api/get_branches");
         $branches = json_decode($branches);
 
@@ -60,7 +61,11 @@ class AppoinmentsController extends Controller
                 ->select([
                     'id', 'name', 'phone', 'branch_id', 'status',
                     DB::raw("DATE_FORMAT(appointments.date, '%Y-%m-%d') as appoinments_Date"),
-                ])->orderBy('id', 'DESC')->get();
+                ]);
+            if ($request->has('start_date') || $request->has('end_date')){
+                $appoinments->where('date',">=",$request->input('start_date'))->where("date","=<",$request->input('end_date'));
+                }
+                $appoinments->orderBy('id', 'DESC')->get();
             foreach ($appoinments as $item) {
                 $item->branch_id = $branches[$item->branch_id - 1]->branchName;
             }
@@ -88,4 +93,5 @@ class AppoinmentsController extends Controller
             return response()->json(['status' => 404]);
         }
     }
+
 }

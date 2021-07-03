@@ -50,4 +50,5 @@ class frontController extends Controller
         $service = Service::findOrFail($id);
         return view('front.service_detail', compact('service'));
     }
+
 }
