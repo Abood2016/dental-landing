@@ -41,7 +41,6 @@
                     <div class="d-flex flex-row">
                             <span class="icon icon-facebook">
                                 <span class="fab fa-facebook-f"  style="font-weight: 200;"></span>
-
                             </span>
                         <div class="num-call d-flex flex-column">
                                 <span class="contact-number">

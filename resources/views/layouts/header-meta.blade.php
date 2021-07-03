@@ -24,6 +24,8 @@
 <link rel="shortcut icon" href="{{ asset('backend_assets/media/logos/favicon.ico') }}" />
 <link href="{{ asset('backend_assets/plugins/custom/datatables/datatables.bundle.rtl.css') }}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="{{asset('backend_assets/css/sweetalert.css')}}">
+<link rel="stylesheet" href="{{asset("backend_assets/css/jquery-date-picker.css")}}">
+<link rel="stylesheet" href="{{asset("backend_assets/css/custom.css")}}">
 <style>
 
     td {

@@ -51,6 +51,7 @@ class AppoinmentsController extends Controller
 
     public function doneAppoinment(Request $request)
     {
+
         $branches = \Http::get("http://globaldentaldata.com/api/get_branches");
         $branches = json_decode($branches);
         if (request()->ajax()) {
@@ -88,4 +89,5 @@ class AppoinmentsController extends Controller
             return response()->json(['status' => 404]);
         }
     }
+
 }
