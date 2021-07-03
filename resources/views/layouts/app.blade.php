@@ -190,6 +190,7 @@
 
     @stack('js')
 
+
     <!--end::Page Scripts-->
 </body>
 <!--end::Body-->
