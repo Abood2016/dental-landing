@@ -4,6 +4,9 @@
 الحجوزات
 @endsection
 
+@push('css')
+
+@endpush
 
 @section('content')
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -27,7 +30,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card-body table-responsive p-0">
-                                <table class="table  table-condensed table-hover text-nowrap table-bordered"
+                                <table class="table  table-condensed table-hover text-nowrap table-bordered table_css"
                                     id="appoinments_table">
                                     <thead>
                                         <tr>

@@ -289,7 +289,7 @@
                     columns: [
                     { data: 'id', name: 'id' },
                     { data: 'name', name: 'name' },
-                   { data: 'image', name: 'image',class:'image_css' },
+                    { data: 'image', name: 'image',class:'image_css' },
                     { data: 'email', name: 'email' },
                     { data: 'phone', name: 'phone' },
                     { data: 'Date', name: 'Date' },

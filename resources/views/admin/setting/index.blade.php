@@ -140,8 +140,8 @@
                         <div class="form-group">
                             <label>العنوان الرئيسي :</label>
                             <div class="input-icon input-icon-right">
-                                <input name="sub_title" type="text" id="sub_title" class="form-control"
-                                    placeholder="" />
+                                <textarea name="sub_title" type="text" rows="5" cols="5" id="sub_title" class="form-control"
+                                    placeholder=""></textarea>
                             </div>
                         </div>
                         <input type="hidden" name="hidden_image" id="bg_hidden_image">
