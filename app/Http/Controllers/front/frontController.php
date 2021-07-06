@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Appointment;
 use App\Models\Service;
 use App\Models\Setting;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class frontController extends Controller
 {
@@ -47,8 +48,14 @@ class frontController extends Controller
 
     public function serviceShow($id)
     {
+
         $service = Service::findOrFail($id);
         return view('front.service_detail', compact('service'));
     }
+    public function permission(){
 
+
+        $role = Role::create(['name' => 'writer']);
+        $permission = Permission::create(['name' => 'edit articles']);
+    }
 }

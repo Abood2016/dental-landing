@@ -5,6 +5,7 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\UserRequest;
+use App\Models\PermissionsName;
 use App\Models\User;
 use App\Traits\ImageTrait;
 use Illuminate\Http\Request;
@@ -27,6 +28,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+
         $Draw = $request->input("Draw");
 
         if (request()->ajax()) {
@@ -37,8 +39,20 @@ class UserController extends Controller
 
             return DataTables::of($users)
                 ->addColumn('actions', function ($users) {
-                    return '<button type="button" class="btn btn-success btn-sm editUser" data-toggle="modal" data-target="#editUserModal" id="editUser" data-id="' . $users->id . '">تعديل</button>
-                    <button type="button" data-id="' . $users->id . '" data-username="' . $users->name . '" data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm " id="getDeleteId">حذف</button>';
+                  $data = '';
+                    if (auth()->user()->hasPermissionTo('user_add')){
+                    $data .=   '<button type="button" class="btn btn-success btn-sm editUser" data-toggle="modal" data-target="#editUserModal" id="editUser" data-id="' . $users->id . '">تعديل</button>';
+                  }
+                  if(auth()->user()->hasPermissionTo('user_delete')){
+                $data .= '<button type="button" data-id="' . $users->id . '" data-username="' . $users->name . '" data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm ml-2" id="getDeleteId">حذف</button>';
+                }
+
+                        if (auth()->user()->hasPermissionTo('permission')){
+                           $data .= '<button type="button" data-id="' . $users->id . '" data-toggle="modal" data-target="#permission" class="btn btn-primary btn-sm edit-permission ml-2">تعديل الصلاحيات</button>';
+                        }
+
+                     return $data;
+
                 })->addColumn('image', function ($users) {
                     $url = asset('images/users/' . $users->image);
                     return '<img src="' . $url . '" border="0" style="border-radius: 10px;" width="80" class="img-rounded" align="center" />';
@@ -47,7 +61,13 @@ class UserController extends Controller
 
             return response()->json(["data" => $users, 'draw' => $Draw]);
         }
-        return view('admin.users.index');
+        $permission = PermissionsName::get()->groupBy("group_id");
+        $permission->map(function ($item){
+            $item['group_name'] = $item->first()->group_name;
+        });
+
+        $users = User::select('name','id','email')->get();
+        return view('admin.users.index',compact('permission','users'));
     }
 
 
@@ -116,11 +136,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-       
+
         if (File::exists(public_path('images/users/') . $user->image)) {
             File::delete(public_path('images/users/') .  $user->image);
         }
-       
+
         $result = $user->delete($id);
         if ($result) {
             return response()->json(['status' => 200, 'success' => 'تم الحذف بنجاح']);

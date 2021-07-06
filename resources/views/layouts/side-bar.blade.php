@@ -31,6 +31,7 @@
                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
             </li>
             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+               @can('apppoinments_show')
                 <a href="javascript:;" class="menu-link menu-toggle">
                     <span class="svg-icon menu-icon">
                         <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
@@ -57,6 +58,7 @@
                     <span class="menu-text">الحجوزات</span>
                     <i class="menu-arrow"></i>
                 </a>
+                @endcan
                 <div class="menu-submenu">
                     <i class="menu-arrow"></i>
                     <ul class="menu-subnav">
@@ -75,9 +77,9 @@
                                                             <span class="label label-rounded label-primary">{{ App\Models\User::count() }}</span>
                                 </span> --}}
                             </a>
-            
+
                         </li>
-            
+                        @can('apppoinments_done')
                         <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                             <a href="{{ route('appoinments.done') }}" class="menu-link menu-toggle">
                                 <i class="menu-bullet menu-bullet-line">
@@ -88,9 +90,10 @@
                                                                                     <span class="label label-rounded label-primary">{{ App\Models\User::count() }}</span>
                                 </span> --}}
                             </a>
-            
+
                         </li>
-            
+                        @endcan
+
                     </ul>
                 </div>
             </li>
@@ -130,7 +133,7 @@
                     </ul>
                 </div>
             </li>  --}}
-
+            @can('user_show')
             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                 <a href="javascript:;" class="menu-link menu-toggle">
                     <span class="svg-icon menu-icon">
@@ -166,6 +169,8 @@
                     </ul>
                 </div>
             </li>
+            @endcan
+            @can('services_show')
             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                 <a href="javascript:;" class="menu-link menu-toggle">
                     <span class="svg-icon menu-icon">
@@ -201,8 +206,8 @@
                     </ul>
                 </div>
             </li>
-           
-
+            @endcan
+            @can('setting_show')
             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                 <a href="javascript:;" class="menu-link menu-toggle">
                     <span class="svg-icon menu-icon">
@@ -246,7 +251,7 @@
                                     <span class="label label-rounded label-primary">{{ App\Models\User::count() }}</span>
                                 </span> --}}
                             </a>
-            
+
                         </li>
 
                         <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
@@ -288,23 +293,19 @@
                                                 <span class="label label-rounded label-primary">{{ App\Models\Service::count() }}</span>
                                             </span>
                                         </a>
-                        
+
                                     </li>
-                        
+
                                 </ul>
                             </div>
                         </li>
-            
+
                     </ul>
                 </div>
-                
-            </li>
 
-         
-            <li class="menu-section">
-                <h4 class="menu-text">Layout</h4>
-                <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
             </li>
+            @endcan
+
 
         </ul>
         <!--end::Menu Nav-->
