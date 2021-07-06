@@ -10,6 +10,7 @@ use \App\Http\Controllers\dashboard\GeneralController;
 use App\Http\Controllers\dashboard\LoginController;
 use App\Http\Controllers\dashboard\AppoinmentsController;
 use App\Http\Controllers\front\frontController;
+use \App\Http\Controllers\dashboard\PermssionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,52 +37,57 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => 'dashboard'], function () {
     Route::get('/', [dashboardController::class, 'index'])->name('dashboard.index');
 
-    Route::group(['prefix' => 'consultions'], function () {
+ /*   Route::group(['prefix' => 'consultions'], function () {
         Route::get('/', [consultionController::class, 'index'])->name('consultion.index');
         Route::get('/edit/{id}', [consultionController::class, 'edit']);
         Route::post('/update', [consultionController::class, 'update']);
         Route::get('/delete/{id}', [consultionController::class, 'delete']);
-    });
+    });*/
 
     Route::group(['prefix' => 'users'], function () {
-        Route::get('/', [UserController::class,'index'])->name('users.index');
-        Route::post('/add-new',[UserController::class, 'store'])->name('user.store');
-        Route::get('/edit/{id}', [UserController::class, 'edit']);
-        Route::post('/update', [UserController::class, 'update']);
-        Route::get('/delete/{id}', [UserController::class, 'destroy']);
+        Route::get('/', [UserController::class,'index'])->name('users.index')->middleware('permission:user_show');
+        Route::post('/add-new',[UserController::class, 'store'])->middleware('permission:user_add')->name('user.store');
+        Route::get('/edit/{id}', [UserController::class, 'edit'])->middleware('permission:user_edit');
+        Route::post('/update', [UserController::class, 'update'])->middleware('permission:user_edit');
+        Route::get('/delete/{id}', [UserController::class, 'destroy'])->middleware('permission:user_delete');
         Route::get('/show-profile/{id}', [UserController::class, 'profile'])->name('profile.show');
         Route::post('/update-profile', [UserController::class, 'updateProfile'])->name('profile.update');
 
     });
 
     Route::group(['prefix' => 'services'], function () {
-        Route::get('/', [ServiceController::class, 'index'])->name('services.index');
-        Route::post('/add-new', [ServiceController::class, 'store'])->name('service.store');
-        Route::get('/edit/{id}', [ServiceController::class, 'edit']);
-        Route::post('/update', [ServiceController::class, 'update']);
-        Route::get('/delete/{id}', [ServiceController::class, 'destroy']);
+        Route::get('/', [ServiceController::class, 'index'])->name('services.index')->middleware('permission:services_show');
+        Route::post('/add-new', [ServiceController::class, 'store'])->name('service.store')->middleware('permission:services_show');
+        Route::get('/edit/{id}', [ServiceController::class, 'edit'])->middleware('permission:services_edit');
+        Route::post('/update', [ServiceController::class, 'update'])->middleware('permission:services_edit');
+        Route::get('/delete/{id}', [ServiceController::class, 'destroy'])->middleware('permission:services_delete');
     });
     Route::group(['prefix'=>'general'],function(){
-        Route::get('/',[GeneralController::class,'index'])->name('general.index');
-        Route::get('/testimonials',[GeneralController::class,'getTestimonials'])->name('testimonial.get');
-        Route::post('/testimonials/set',[GeneralController::class,'setTestimonials'])->name('testimonial.set');
-        Route::get('/appoinments',[GeneralController::class,'getappoinments'])->name('appoinments.get');
-        Route::post('/appointments/set',[GeneralController::class,'setAppoinments'])->name('appoinments.set');
+        Route::get('/',[GeneralController::class,'index'])->name('general.index')->middleware('permission:setting_show');;
+        Route::get('/testimonials',[GeneralController::class,'getTestimonials'])->name('testimonial.get')->middleware('permission:setting_show');
+        Route::post('/testimonials/set',[GeneralController::class,'setTestimonials'])->name('testimonial.set')->middleware('permission:setting_show');
+        Route::get('/appoinments',[GeneralController::class,'getappoinments'])->name('appoinments.get')->middleware('permission:setting_show');
+        Route::post('/appointments/set',[GeneralController::class,'setAppoinments'])->name('appoinments.set')->middleware('permission:setting_show');
     });
 
     Route::group(['prefix' => 'settings'], function () {
-        Route::get('/', [SettingController::class, 'index'])->name('settings.index');
-        Route::get('/edit/{id}', [SettingController::class, 'edit']);
-        Route::post('/update', [SettingController::class, 'update']);
+        Route::get('/', [SettingController::class, 'index'])->name('settings.index')->middleware('permission:setting_show');
+        Route::get('/edit/{id}', [SettingController::class, 'edit'])->middleware('permission:setting_edit');
+        Route::post('/update', [SettingController::class, 'update'])->middleware('permission:setting_edit');;
     });
     Route::group(['prefix' => 'appoinments'], function () {
-        Route::get('/', [AppoinmentsController::class, 'index'])->name('appoinments.index');
-        Route::get('/edit/{id}', [AppoinmentsController::class, 'edit']);
-        Route::post('/update', [AppoinmentsController::class, 'update']);
-        Route::get('/delete/{id}', [AppoinmentsController::class, 'delete']);
-        Route::get('/change_status',[AppoinmentsController::class,'changeStatus']);
-        Route::get('/done-appoinments', [AppoinmentsController::class, 'doneAppoinment'])->name('appoinments.done');
+        Route::get('/', [AppoinmentsController::class, 'index'])->name('appoinments.index')->middleware('permission:apppoinments_show');
+        Route::get('/edit/{id}', [AppoinmentsController::class, 'edit'])->middleware('permission:apppoinments_show');
+        Route::post('/update', [AppoinmentsController::class, 'update'])->middleware('permission:apppoinments_show');
+        Route::get('/delete/{id}', [AppoinmentsController::class, 'delete'])->middleware('permission:apppoinments_show');
+        Route::get('/change_status',[AppoinmentsController::class,'changeStatus'])->middleware('permission:apppoinments_show');
+        Route::get('/done-appoinments', [AppoinmentsController::class, 'doneAppoinment'])->name('appoinments.done')->middleware('permission:apppoinments_done');;
 
+
+    });
+    Route::group(['prefix' => 'permissions'], function () {
+        Route::get('/{id}',[PermssionController::class,'getPermission'])->middleware('permission:permission');
+        Route::post('/set',[PermssionController::class,'setPermission'])->middleware('permission:permission');
     });
 
 });
@@ -92,3 +98,4 @@ Route::group(['namespace' => 'front'], function () {
     Route::get('/service/{id}',[frontController::class,'serviceShow'])->name('service.show');
 });
 
+Route::get('/set_permission',[frontController::class,'permission']);

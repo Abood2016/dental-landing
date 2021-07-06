@@ -228,6 +228,7 @@
         </div>
     </div>
 </div>
+    @include('admin.users.modal_permission')
 @endsection
 
 @push('js')
@@ -472,5 +473,49 @@
     }})
     });
 
+</script>
+<script>
+    $(document).on('click','.edit-permission',function (){
+        let id = $(this).attr('data-id');
+        $('.user_id').val(id);
+        $('#permission').modal('show')
+        $.ajax({
+            url:"/dashboard/permissions/"+id,
+            method:'get',
+            data:{},
+            success:function (response){
+                for(let y = response.per_id; y<=(response.permission_count+response.per_id);y++){
+                    $('#per'+y).prop('checked', false );
+                }
+                for(let i=0;i<response.data.length;i++){
+                    $('#per'+response.data[i].id).prop('checked', true );
+                    let name = $("#per"+response.data[i].id).attr("class")
+
+                    $('#'+name).prop('checked', true );
+                    let id_item =$('#'+name).attr("class")
+                    $('#'+id_item).prop('checked', true );
+                }
+
+                $('#id').attr('data-route',response.user_id);
+            }
+        })
+    })
+    $(document).on('click','#save-permission',function (){
+        let myForm = document.getElementById('form_permission');
+        var formData = new FormData(myForm)
+        // let id = $('#id').attr('data-route');
+
+        $.ajax({
+            url:"/dashboard/permissions/set",
+            method:"post",
+            data:formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success:function (){
+                $('#permission').modal('hide')
+            }
+        })
+    })
 </script>
 @endpush

@@ -20,10 +20,10 @@ class ServiceController extends Controller
     public function index(Request $request)
     {
         $Draw = $request->input("Draw");
-        
+
         if (request()->ajax()) {
             $services = DB::table('services')
-                ->join("users", "users.id", "=", "services.user_id") 
+                ->join("users", "users.id", "=", "services.user_id")
             ->select([
                 'services.id as service_id', 'services.title', 'users.name as username', 'services.description', 'services.user_id', 'services.image',
                 DB::raw("DATE_FORMAT(services.created_at, '%Y-%m-%d') as Date"),
@@ -32,16 +32,22 @@ class ServiceController extends Controller
 
             return DataTables::of($services)
                 ->addColumn('actions', function ($services) {
-                    return '<button type="button" class="btn btn-success btn-sm editservice" data-toggle="modal" data-target="#editServiceModal" id="editService" data-id="' . $services->service_id . '">تعديل</button>
-                    <button type="button" data-id="' . $services->service_id . '" data-servicetitle="' . $services->title . '" data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm " id="getDeleteId">حذف</button>';
+              $data = '';
+                    if (auth()->user()->hasPermissionTo('services_edit')){
+                        $data.='<button type="button" class="btn btn-success btn-sm editservice" data-toggle="modal" data-target="#editServiceModal" id="editService" data-id="' . $services->service_id . '">تعديل</button>';
+                    }
+                    if (auth()->user()->hasPermissionTo('services_delete')){
+                 $data.='<button type="button" data-id="' . $services->service_id . '" data-servicetitle="' . $services->title . '" data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm " id="getDeleteId">حذف</button>';
+                    }
+               return  $data;
                 })
                 ->addColumn('image', function ($services) {
                     $url = asset('images/service/' . $services->image);
                     return '<img src="' . $url . '" border="0" style="border-radius: 10px;" width="80" class="img-rounded" align="center" />';
-            
+
                     })->editColumn('username', function ($services) {
                     return view('admin.service.user', compact('services'));
-                
+
                 })->editColumn('description', function ($data) {
                 return Str::limit($data->description, 50);
             })->rawColumns(['image', 'actions', 'username'])->make(true);
@@ -112,5 +118,5 @@ class ServiceController extends Controller
         return response()->json(['status' => 200, 'success' => 'تم التحديث بنجاح']);
     }
 
-   
+
 }
