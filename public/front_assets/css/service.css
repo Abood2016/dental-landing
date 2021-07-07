@@ -57,6 +57,9 @@
         outline: none;
         box-shadow: none;
     }
+    .btn-primary{
+        width: 50% !important;
+    }
 }
 @media (max-width: 380px) {
     .service-image{

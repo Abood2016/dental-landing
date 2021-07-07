@@ -177,6 +177,17 @@
 <script>
     $(document).on('click','.change-status',function (){
             let id = $(this).attr('data-id')
+        Swal.fire({
+            title: 'هل أنت متأكد ؟',
+            text: "هل أنت متأكد ",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonText: 'إلغاء',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'نعم , تأكيد'
+        }).then((result) => {
+            if (result.isConfirmed) {
             $.ajax({
                 url:'appoinments/change_status',
                 method:'get',
@@ -203,7 +214,11 @@
 
                 }
             })
-        })
+            }
+        else if (!result.isConfirmed){
+            $('.change-status').prop('checked',false)
+            }})
+    })
 </script>
 
 <script>

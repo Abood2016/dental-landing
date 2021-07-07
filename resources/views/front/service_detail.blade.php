@@ -54,7 +54,7 @@
                         <img class="service-image" src="{{URL::asset('/images/service/'.$service->image)}}" alt="">
                     </div>
                     <div class="col-12 justify-content-center mt-4">
-                        <button class="btn btn-primary  w-25" id="modal-btn">حجز الخدمة</button>
+                        <button style="background-color: #18afd3;border-color: #18afd3;" class="btn btn-primary  w-25" id="modal-btn">حجز الخدمة</button>
                     </div>
                 </div>
                 <div class="col-sm-6 col-12 row d-flex flex-column">
@@ -113,8 +113,8 @@
                                 <small class="text-danger badge badge-danger text-start"
                                     id="reserve_date_error"></small>
                             </label>
-                        
-                          
+
+
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -194,10 +194,10 @@
                             timer: 1500
                         })
                         $("#form_appoinments").trigger("reset");
-    
+
                     }else {
                         Swal.fire({
-    
+
                             icon: 'error',
                             title: 'حدث خطأ ما',
                             showConfirmButton: false,
@@ -214,7 +214,7 @@
                     contentType: false,
                     cache: false,
                     processData: false,
-    
+
                 })
             })
     </script>
