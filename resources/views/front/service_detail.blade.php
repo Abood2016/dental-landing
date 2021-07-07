@@ -72,7 +72,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header" style="background-color: #18afd3">
-                        <h5 class="modal-title" id="exampleModalLabel" style="color: white">حجز الخدمة</i></h5>
+                        <h5 class="modal-title" id="exampleModalLabel" style="color: white">حجز الخدمة</h5>
                         <button type="button" class="btn-close" style="color: white !important" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
