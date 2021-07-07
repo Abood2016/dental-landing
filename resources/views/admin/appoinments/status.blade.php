@@ -12,8 +12,7 @@
 
 <body>
     <div class="checkbook">
-        <input type="checkbox" class="change-status"
-            data-id="{{$appoinments->id}}" value="{{$appoinments->status}}">
+        <button type="checkbox" class="btn btn-primary btn-sm  change-status" data-id="{{$appoinments->id}}" value="{{$appoinments->status}}">تأكيد </button>
     </div>
 
 </body>

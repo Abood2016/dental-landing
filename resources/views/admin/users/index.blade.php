@@ -129,6 +129,7 @@
                             <label for="exampleFormControlFile1">أختيار</label>
                             <div id="thumb-output"></div><br>
                             <input type="file" name="image" class="form-control-file" id="file-image">
+                            <small style="font-weight: bold">أبعاد الصور jpg | png | jpeg </small>
                         </div>
                         <small id="image_error" class="form-text text-danger"></small>
 
@@ -208,6 +209,7 @@
                             <label for="exampleFormControlFile1">أختيار</label>
                             <div id="thumb-output"></div><br>
                             <input type="file" name="image" class="form-control-file" id="file-image">
+                            <small style="font-weight: bold">أبعاد الصور jpg | png | jpeg </small>
                         </div>
                      <small id="image_error" class="form-text text-danger"></small>
 

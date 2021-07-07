@@ -65,6 +65,7 @@
         <div class="container">
 
             <div class="row">
+                @can('apppoinments_show')
                 <div class="col-lg-4">
                     <!--begin::Stats Widget 18-->
                     <a href="{{ route('appoinments.index') }}"
@@ -75,8 +76,8 @@
                                 <!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Media/Equalizer.svg-->
                                 <span class="svg-icon svg-icon-primary svg-icon-2x">
                                     <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Devices/Server.svg--><svg
-                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                        height="24px" viewBox="0 0 24 24" version="1.1">
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24" />
                                             <path
@@ -101,6 +102,9 @@
                     </a>
                     <!--end::Stats Widget 18-->
                 </div>
+                @endcan
+                @can('services_show')
+
                 <div class="col-lg-4">
                     <!--begin::Stats Widget 16-->
                     <a href="{{ route('services.index') }}" class="card card-custom card-stretch gutter-b">
@@ -132,9 +136,13 @@
                     </a>
                     <!--end::Stats Widget 16-->
                 </div>
+                @endcan
+                @can('user_show')
+
                 <div class="col-lg-4">
                     <!--begin::Stats Widget 17-->
-                    <a href="{{ route('users.index') }}" class="card card-custom bg-info bg-hover-state-info card-stretch card-stretch gutter-b">
+                    <a href="{{ route('users.index') }}"
+                        class="card card-custom bg-info bg-hover-state-info card-stretch card-stretch gutter-b">
                         <!--begin::Body-->
                         <div class="card-body">
                             <span class="svg-icon svg-icon-white svg-icon-3x ml-n1">
@@ -164,10 +172,12 @@
                     </a>
                     <!--end::Stats Widget 17-->
                 </div>
-               
+                @endcan
             </div>
             <!--end::Row-->
             <!--begin::Advance Table Widget 5-->
+            @can('apppoinments_show')
+
             <div class="card card-custom gutter-b">
                 <!--begin::Header-->
                 <div class="card-header border-0 py-5">
@@ -182,8 +192,7 @@
                 <div class="card-body py-0">
                     <!--begin::Table-->
                     <div class="table-responsive">
-                        <table class="table  table-Success table-hover text-nowrap table-bordered"
-                            id="users_datatable">
+                        <table class="table  table-Success table-hover text-nowrap table-bordered" id="users_datatable">
                             <thead class="table-info">
                                 <tr>
                                     <th width="3%">#</th>
@@ -227,7 +236,7 @@
                 </div>
                 <!--end::Body-->
             </div>
-
+            @endcan
             <!--end::Dashboard-->
         </div>
         <!--end::Container-->

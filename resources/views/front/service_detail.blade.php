@@ -4,6 +4,7 @@
 <head>
     @include('front.layouts.header-meta')
     <link rel="stylesheet" href="{{asset('/front_assets/css/service.css')}}">
+    <link rel="stylesheet" href="{{asset('/front_assets/css/all.css')}}">
 </head>
 <style>
 
@@ -54,7 +55,7 @@
                         <img class="service-image" src="{{URL::asset('/images/service/'.$service->image)}}" alt="">
                     </div>
                     <div class="col-12 justify-content-center mt-4">
-                        <button style="background-color: #18afd3;border-color: #18afd3;" class="btn btn-primary  w-25" id="modal-btn">حجز الخدمة</button>
+                        <button style="background-color: #18afd3;border-color: #18afd3;" class="btn btn-primary ml-2 w-25" id="modal-btn"><i class="fas fa-calendar-week"></i>حجز الخدمة</button>
                     </div>
                 </div>
                 <div class="col-sm-6 col-12 row d-flex flex-column">
@@ -71,7 +72,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header" style="background-color: #18afd3">
-                        <h5 class="modal-title" id="exampleModalLabel" style="color: white">حجز الخدمة</h5>
+                        <h5 class="modal-title" id="exampleModalLabel" style="color: white">حجز الخدمة</i></h5>
                         <button type="button" class="btn-close" style="color: white !important" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -189,12 +190,12 @@
                     if (response.status == 200){
                         Swal.fire({
                             icon: 'success',
-                            title: 'تم حجز الموعد بنجاح',
+                           title: 'تم ارسال طلب حجز الموعد بنجاح',
                             showConfirmButton: false,
                             timer: 1500
                         })
                         $("#form_appoinments").trigger("reset");
-
+                        $('#ServiceModal').modal('hide');
                     }else {
                         Swal.fire({
 

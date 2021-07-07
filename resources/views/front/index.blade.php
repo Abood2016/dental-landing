@@ -280,7 +280,7 @@
                     Swal.fire({
 
                         icon: 'success',
-                        title: 'تم حجز الموعد بنجاح',
+                        title: 'تم ارسال طلب حجز الموعد بنجاح',
                         showConfirmButton: false,
                         timer: 1500
                     })

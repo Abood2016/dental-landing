@@ -19,14 +19,15 @@
 @endsection
 
 @push('css')
-    <style>
-        #refresh_table:hover{
-            color:darksalmon
-        }
-        /* td{
+<style>
+    #refresh_table:hover {
+        color: darksalmon
+    }
+
+    /* td{
             text-align: center !important;
         } */
-    </style>
+</style>
 @endpush
 @section('content')
 
@@ -41,7 +42,8 @@
                     </h3>
                 </div>
                 <div class="card-toolbar">
-                    <a href="" title="أنقر لتحديث الجدول" id="refresh_table" class="btn btn-primary-light font-weight-bolder mr-2">
+                    <a href="" title="أنقر لتحديث الجدول" id="refresh_table"
+                        class="btn btn-primary-light font-weight-bolder mr-2">
                         <span class="svg-icon svg-icon-md">
                             <i class="ki ki-refresh icon-sm"></i>
                         </span>تحديث الجدول </a>
@@ -54,7 +56,7 @@
                         </span>خدمة جديد </a>
                     <!--end::Button-->
 
-                        <!--begin::Button-->
+                    <!--begin::Button-->
 
                 </div>
             </div>
@@ -124,6 +126,7 @@
                             <label for="exampleFormControlFile1">أختيار</label>
                             <div id="thumb-output"></div><br>
                             <input type="file" name="image" class="form-control-file" id="file-image">
+                            <small style="font-weight: bold">أبعاد الصور jpg | png | jpeg </small>
                         </div>
                         <small id="image_error" class="form-text text-danger"></small>
 
@@ -177,6 +180,7 @@
                             <label for="exampleFormControlFile1">أختيار</label>
                             <div id="thumb-output"></div><br>
                             <input type="file" name="image" class="form-control-file" id="file-image">
+                            <small style="font-weight: bold">أبعاد الصور jpg | png | jpeg </small>
                         </div>
                         <small id="image_error" class="form-text text-danger"></small>
                         <img id="modal-preview" style="border-radius: 10px" src="https://via.placeholder.com/150"
