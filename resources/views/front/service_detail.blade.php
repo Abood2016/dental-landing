@@ -117,9 +117,9 @@
 
                         </form>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer" >
+                        <button type="button" style="background-color: #18afd3;border-color:#18afd3;" id= "btnsave" class="btn btn-primary">حجز</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
-                        <button type="button" id= "btnsave" class="btn btn-primary">حجز</button>
                     </div>
                 </div>
             </div>

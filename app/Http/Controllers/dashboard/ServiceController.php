@@ -34,10 +34,10 @@ class ServiceController extends Controller
                 ->addColumn('actions', function ($services) {
               $data = '';
                     if (auth()->user()->hasPermissionTo('services_edit')){
-                        $data.='<button type="button" class="btn btn-success btn-sm editservice" data-toggle="modal" data-target="#editServiceModal" id="editService" data-id="' . $services->service_id . '">تعديل</button>';
+                        $data.= '<button type="button" class="btn btn-success btn-sm ml-2 editservice" data-toggle="modal" data-target="#editServiceModal" id="editService" data-id="' . $services->service_id . '">تعديل</button>';
                     }
                     if (auth()->user()->hasPermissionTo('services_delete')){
-                 $data.='<button type="button" data-id="' . $services->service_id . '" data-servicetitle="' . $services->title . '" data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm " id="getDeleteId">حذف</button>';
+                 $data.='<button type="button" data-id="' . $services->service_id . '" data-servicetitle="' . $services->title . '" data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm ml-2 " id="getDeleteId">حذف</button>';
                     }
                return  $data;
                 })
