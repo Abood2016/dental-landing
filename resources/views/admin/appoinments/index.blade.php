@@ -38,9 +38,11 @@
                                             <th width="13%">الإسم</th>
                                             <th width="14%">الهاتف</th>
                                             <th width="13%">الفرع</th>
+                                            <th width="13%">نوع الخدمة</th>
                                             <th width="10%">تاريخ الحجز</th>
                                             <th width="10%">تاريخ الطلب</th>
                                             <th width="10%">الحالة</th>
+                                            <th width="10%">طبيعة الإستشارة</th>
                                             <th width="10%">الاجراء</th>
                                         </tr>
                                     </thead>
@@ -117,9 +119,11 @@
                     { data: 'name', name: 'name' },
                     { data: 'phone', name: 'phone',class:'image_css' },
                     { data: 'branch_id', name: 'branch_id' },
+                    { data: 'servicename', name: 'servicename' },
                     { data: 'appoinments_Date', name: 'appoinments_Date' },
                     { data: 'Date', name: 'Date' },
                     { data: 'status', name: 'status',orderable:false,serachable:false,class: 'checkbook' },
+                    { data: 'note', name: 'note',orderable:false,serachable:false,class: 'checkbook' },
                     {data: 'actions', name: 'actions',orderable:false,serachable:false,sClass:'text-center'},
                 ],
                 fnDrawCallback: function () {

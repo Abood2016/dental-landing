@@ -19,8 +19,9 @@ class AppoinmentsController extends Controller
         if (request()->ajax()) {
             $appoinments = DB::table('appointments')
                 ->where('status', '=', '0')
+                ->leftJoin("services", "services.id", "=", "appointments.service_id")
                 ->select([
-                    'id', 'name', 'phone', 'branch_id', 'status',
+                    'appointments.id', 'appointments.note', 'appointments.name', 'appointments.phone', 'appointments.branch_id', 'appointments.status', 'appointments.service_id', 'services.title as servicename',
                     DB::raw("DATE_FORMAT(appointments.date, '%Y-%m-%d') as appoinments_Date"),
                     DB::raw("DATE_FORMAT(appointments.created_at, '%Y-%m-%d') as Date"),
                 ])->orderBy('id', 'DESC')->get();
@@ -32,7 +33,11 @@ class AppoinmentsController extends Controller
                     return '<button type="button" data-id="' . $appoinments->id . '"  data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-delete btn-sm " id="getDeleteId">حذف</button>';
                 })->editColumn('status', function ($appoinments) {
                     return view('admin.appoinments.status', compact('appoinments'));
-                })->rawColumns(['actions', 'status'])
+                })->editColumn('note', function ($appoinments) {
+                    return view('admin.appoinments.note', compact('appoinments'));
+                })->editColumn('servicename', function ($appoinments) {
+                    return view('admin.appoinments.service', compact('appoinments'));
+                })->rawColumns(['actions', 'status', 'servicename'])
                 ->make(true);
         }
         return view('admin.appoinments.index');
@@ -60,9 +65,9 @@ class AppoinmentsController extends Controller
                 ->select([
                     'id', 'name', 'phone', 'branch_id', 'status',
                     DB::raw("DATE_FORMAT(appointments.date, '%Y-%m-%d') as appoinments_Date"),
-                    ])->whereBetween('date', [$request->start_date , $request->end_date])
-                    ->orderBy('id', 'DESC')->get();
-                    foreach ($appoinments as $item) {
+                ])->whereBetween('date', [$request->start_date, $request->end_date])
+                ->orderBy('id', 'DESC')->get();
+            foreach ($appoinments as $item) {
                 $item->branch_id = $branches[$item->branch_id - 1]->branchName;
             }
             return  DataTables::of($appoinments)
@@ -89,5 +94,4 @@ class AppoinmentsController extends Controller
             return response()->json(['status' => 404]);
         }
     }
-
 }

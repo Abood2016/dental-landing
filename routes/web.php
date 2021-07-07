@@ -96,6 +96,8 @@ Route::group(['namespace' => 'front'], function () {
     Route::get('/', [frontController::class, 'index'])->name('front.index');
     Route::post('/appoinments/set',[frontController::class,'setAppoinments']);
     Route::get('/service/{id}',[frontController::class,'serviceShow'])->name('service.show');
+    Route::post('/appoinments/service/set', [frontController::class, 'setAppoinmentsForService']);
+
 });
 
 Route::get('/set_permission',[frontController::class,'permission']);
