@@ -55,7 +55,7 @@
                         <img class="service-image" src="{{URL::asset('/images/service/'.$service->image)}}" alt="">
                     </div>
                     <div class="col-12 justify-content-center mt-4">
-                        <button style="background-color: #18afd3;border-color: #18afd3;" class="btn btn-primary ml-2 w-25" id="modal-btn"><i class="fas fa-calendar-week"></i>حجز الخدمة</button>
+                        <button style="background-color: #18afd3;border-color: #18afd3;font-size: 1em" class="btn btn-primary ml-2 w-25" id="modal-btn" >حجز الخدمة <i  class="far fa-calendar-plus" style="font-size: 1.5em; margin-right: 0.5em;"></i></button>
                     </div>
                 </div>
                 <div class="col-sm-6 col-12 row d-flex flex-column">
