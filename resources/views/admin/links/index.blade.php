@@ -25,11 +25,7 @@
                 <div class="card-header flex-wrap py-3">
                     <div class="card-title">
                         <h3 class="card-label">القوائم
-<<<<<<< HEAD
-                            <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; المستخدمين</span>
-=======
                             <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; القوائم</span>
->>>>>>> 702cc3307f9ea465f152f49b940d77b28708f521
                         </h3>
                     </div>
                     <div class="card-toolbar">
