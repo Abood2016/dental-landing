@@ -25,7 +25,11 @@
                 <div class="card-header flex-wrap py-3">
                     <div class="card-title">
                         <h3 class="card-label">القوائم
+<<<<<<< HEAD
                             <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; المستخدمين</span>
+=======
+                            <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; القوائم</span>
+>>>>>>> 702cc3307f9ea465f152f49b940d77b28708f521
                         </h3>
                     </div>
                     <div class="card-toolbar">
@@ -44,15 +48,14 @@
                             <div class="col-sm-12">
                                 <div class="card-body table-responsive p-0">
                                     <table class="table  table-condensed table-hover text-nowrap table-bordered"
-                                           id="users_datatable">
+                                           id="links_datatable">
                                         <thead>
                                         <tr>
                                             <th width="3%">#</th>
-                                            <th width="13%">الإسم</th>
-                                            <th width="13%">ألصورة</th>
-                                            <th width="13%">الإيميل</th>
-                                            <th width="14%">الهاتف</th>
-                                            <th width="10%">التاريخ</th>
+                                            <th width="13%">العنوان</th>
+                                            <th width="13%">الرابط</th>
+                                            <th width="13%">الإيقونة</th>
+                                            <th width="14%">حالة القائمة</th>
                                             <th width="10%">الإجراء</th>
                                         </tr>
                                         </thead>
@@ -67,8 +70,74 @@
         </div>
     </div>
 
+     <div class="modal fade" id="linksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modelHeading"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body pb-2">
+                    <form class="form" id="links_form">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>عنوان القائمة :</label>
+                                <div class="input-icon input-icon-right">
+                                    <input name="title" type="text" id="title" class="form-control" placeholder="" />
+                                    <small id="title_error" class="form-text text-danger"></small>
+                                </div>
+    
+                            </div>
+                            <div class="form-group">
+                                <label>رابط القائمة :</label>
+                                <div class="input-icon input-icon-right">
+                                    <input name="url" type="text" id="url" class="form-control" placeholder="" />
+                                    <small id="url_error" class="form-text text-danger"></small>
+                                </div>
+    
+                            </div>
+    
+                            <div class="form-group">
+                                <label>حالة القائمة :</label>
+                                <div class="input-icon input-icon-right">
+                                    <input name="showinmenu" type="text" id="showinmenu" class="form-control" placeholder="" />
+                                    <small id="showinmenu_error" class="form-text text-danger"></small>
+                                </div>
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">إيقومة القائمة</label>
+                                <div id="thumb-output"></div><br>
+                                <input type="file" name="icon" class="form-control-file" id="file-image">
+                                <small style="font-weight: bold">أبعاد الصور jpg | png | jpeg </small>
+                            </div>
+                            <small id="icon_error" class="form-text text-danger"></small>
+    
+                        </div>
+    
+                    </form>
+                    <!--end::Form-->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="CancelBtn" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                    <button type="button" id="saveBtn" class="btn btn-primary">حفظ</button>
+                </div>
+            </div>
+        </div>
+    </div> 
 @endsection
 
 @push('js')
-
+<script>
+    $(document).ready(function(e) {
+    $('#btn_show_modal').on('click',function () {
+        $('#linksModal').modal('show');
+        $('#modelHeading').text('اضافة قائمة');
+    })
+    
+    });
+</script>
 @endpush
