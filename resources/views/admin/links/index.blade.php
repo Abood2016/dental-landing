@@ -13,7 +13,7 @@
             <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200">
             </div>
             <span class="text-muted font-weight-bold mr-4">القوائم</span>
-            <!--end::Actions-->
+
         </div>
     </div>
 @endsection
@@ -25,14 +25,11 @@
                 <div class="card-header flex-wrap py-3">
                     <div class="card-title">
                         <h3 class="card-label">القوائم
-<<<<<<< HEAD
                             <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; المستخدمين</span>
 
                             <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; القوائم</span>
-
-=======
                             <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; القوائم</span>
->>>>>>> e6aa2396762533cf9185c83dfec9d14d344d71a9
+
                         </h3>
                     </div>
                     <div class="card-toolbar">
