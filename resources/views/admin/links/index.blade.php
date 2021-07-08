@@ -16,7 +16,6 @@
             <!--end::Actions-->
         </div>
     </div>
-
 @endsection
 @section('content')
 
@@ -25,7 +24,7 @@
             <div class="card card-custom gutter-b">
                 <div class="card-header flex-wrap py-3">
                     <div class="card-title">
-                        <h3 class="card-label">المستخدمين
+                        <h3 class="card-label">القوائم
                             <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; المستخدمين</span>
                         </h3>
                     </div>
