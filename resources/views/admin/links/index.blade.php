@@ -25,11 +25,10 @@
                 <div class="card-header flex-wrap py-3">
                     <div class="card-title">
                         <h3 class="card-label">القوائم
-<<<<<<< HEAD
                             <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; المستخدمين</span>
-=======
+
                             <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; القوائم</span>
->>>>>>> 702cc3307f9ea465f152f49b940d77b28708f521
+
                         </h3>
                     </div>
                     <div class="card-toolbar">
@@ -89,7 +88,7 @@
                                     <input name="title" type="text" id="title" class="form-control" placeholder="" />
                                     <small id="title_error" class="form-text text-danger"></small>
                                 </div>
-    
+
                             </div>
                             <div class="form-group">
                                 <label>رابط القائمة :</label>
@@ -97,9 +96,9 @@
                                     <input name="url" type="text" id="url" class="form-control" placeholder="" />
                                     <small id="url_error" class="form-text text-danger"></small>
                                 </div>
-    
+
                             </div>
-    
+
                             <div class="form-group">
                                 <label>حالة القائمة :</label>
                                 <div class="input-icon input-icon-right">
@@ -107,7 +106,7 @@
                                     <small id="showinmenu_error" class="form-text text-danger"></small>
                                 </div>
                             </div>
-    
+
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">إيقومة القائمة</label>
                                 <div id="thumb-output"></div><br>
@@ -115,9 +114,9 @@
                                 <small style="font-weight: bold">أبعاد الصور jpg | png | jpeg </small>
                             </div>
                             <small id="icon_error" class="form-text text-danger"></small>
-    
+
                         </div>
-    
+
                     </form>
                     <!--end::Form-->
                 </div>
@@ -127,7 +126,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 @endsection
 
 @push('js')
@@ -137,7 +136,7 @@
         $('#linksModal').modal('show');
         $('#modelHeading').text('اضافة قائمة');
     })
-    
+
     });
 </script>
 @endpush
