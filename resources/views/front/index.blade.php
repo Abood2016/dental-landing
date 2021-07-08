@@ -4,118 +4,122 @@
 <head>
     @include('front.layouts.header-meta')
     <style>
-        #bg_image::before{
-            background-image: url({{ URL::asset('/images/bg_image/'. $setting->bg_image )}});
+        #bg_image::before {
+            background-image: url({{ URL::asset('/images/bg_image/'. $setting->bg_image )
+        }
+        }
+
+        );
 
         }
     </style>
 </head>
 
 <body>
-<header id="bg_image" class="header-box" style="">
-    <div class="container">
-        <div class="row nav-container">
-            <div class="col-sm-3 col-12">
-                <img src="{{ URL::asset('/images/logo/'. $setting->logo )}}" class="logo" width="206px"
-                     height="63px" alt="">
-            </div>
-            <div class="col-sm-9 col-12">
-                <div class="float-end header-icon-mobile">
-                    <div class="d-flex flex-row">
+    <header id="bg_image" class="header-box" style="">
+        <div class="container">
+            <div class="row nav-container">
+                <div class="col-sm-3 col-12">
+                    <img src="{{ URL::asset('/images/logo/'. $setting->logo )}}" class="logo" width="206px"
+                        height="63px" alt="">
+                </div>
+                <div class="col-sm-9 col-12">
+                    <div class="float-end header-icon-mobile">
+                        <div class="d-flex flex-row">
                             <span class="icon">
                                 <span class="fa fa-phone-alt" style="font-weight: 200;"></span>
 
                             </span>
-                        <div class="num-call d-flex flex-column">
+                            <div class="num-call d-flex flex-column">
                                 <span class="contact-number">
                                     {{ $setting->contact_number }}
                                 </span>
 
+                            </div>
+
+
                         </div>
 
-
                     </div>
-
-                </div>
-                <a href="{{ $setting->facebook_url }}" class="float-end header-icon-mobile header-icon-facebook">
-                    <div class="d-flex flex-row">
+                    <a href="{{ $setting->facebook_url }}" class="float-end header-icon-mobile header-icon-facebook">
+                        <div class="d-flex flex-row">
                             <span class="icon icon-facebook">
-                                <span class="fab fa-facebook-f"  style="font-weight: 200;"></span>
+                                <span class="fab fa-facebook-f" style="font-weight: 200;"></span>
                             </span>
-                        <div class="num-call d-flex flex-column">
+                            <div class="num-call d-flex flex-column">
                                 <span class="contact-number">
-                                   فيسبوك
+                                    فيسبوك
                                 </span>
 
+                            </div>
+
+
                         </div>
 
+                    </a>
 
-                    </div>
-
-                </a>
-
-            </div>
-        </div>
-        <div class="row header-content">
-            <div class="col-sm-8 header-content-word" data-aos="fade-left" data-aos-easing="linear"
-                 data-aos-duration="1200">
-                {{$setting->sub_title}}
-            </div>
-            <div class="col-sm-4 d-flex flex-column card-header-box" data-aos-easing="linear"
-                 data-aos-duration="1200" data-aos="zoom-out">
-                <div class=" free-consult" style="height: 3px!important;">
-                    احجز الآن
                 </div>
-                <form id="form_appoinments" class="mt-5  form-consult"> <label for="email"
-                                                                               class="form-group d-flex flex-column">
+            </div>
+            <div class="row header-content">
+                <div class="col-sm-8 header-content-word" data-aos="fade-left" data-aos-easing="linear"
+                    data-aos-duration="1200">
+                    {{$setting->sub_title}}
+                </div>
+                <div class="col-sm-4 d-flex flex-column card-header-box" data-aos-easing="linear"
+                    data-aos-duration="1200" data-aos="zoom-out">
+                    <div class=" free-consult" style="height: 3px!important;">
+                        احجز الآن
+                    </div>
+                    <form id="form_appoinments" class="mt-5  form-consult"> <label for="email"
+                            class="form-group d-flex flex-column">
                             <span class="text-white input-label">
                                 الاسم
                             </span>
-                        <input name="name" placeholder="ادخل اسم الشخص المراد الحجز له" id="name" type="text"
-                               class="form-control mt-2">
-                        <small id="name_error" class="text-danger badge badge-danger text-start"></small>
-                    </label>
-                    <label class="form-group d-flex flex-column mt-2">
+                            <input name="name" placeholder="ادخل اسم الشخص المراد الحجز له" id="name" type="text"
+                                class="form-control mt-2">
+                            <small id="name_error" class="text-danger badge badge-danger text-start"></small>
+                        </label>
+                        <label class="form-group d-flex flex-column mt-2">
                             <span class="text-white input-label">
                                 رقم الجوال
                             </span>
-                        <input name="phone" placeholder="ادخل رقم الجوال" type="text" class="form-control mt-2">
-                        <small id="phone_error" class="text-danger badge badge-danger text-start"></small>
-                    </label>
-                    <label class="form-group d-flex flex-column mt-2">
+                            <input name="phone" placeholder="ادخل رقم الجوال" type="text" class="form-control mt-2">
+                            <small id="phone_error" class="text-danger badge badge-danger text-start"></small>
+                        </label>
+                        <label class="form-group d-flex flex-column mt-2">
                             <span class="text-white input-label">
                                 الفرع
                             </span>
-                        <select name="branch_id" class="form-select mt-2">
-                            <option selected disabled>اختيار الفرع</option>
-                            @foreach($result as $r)
+                            <select name="branch_id" class="form-select mt-2">
+                                <option selected disabled>اختيار الفرع</option>
+                                @foreach($result as $r)
                                 <option value="{{$r->id}}">{{$r->branchName}}</option>
-                            @endforeach
-                        </select>
-                        <small id="branch_id_error" class="text-danger badge badge-danger text-start"></small>
-                    </label>
-                    <label class="form-group d-flex flex-column mt-2">
+                                @endforeach
+                            </select>
+                            <small id="branch_id_error" class="text-danger badge badge-danger text-start"></small>
+                        </label>
+                        <label class="form-group d-flex flex-column mt-2">
                             <span class="text-white input-label">
                                 تاريخ الحجز
                             </span>
-                        <input name="reserve_date" class="form-control mt-2 text-start" type="date" id="date-input">
-                        <small class="text-danger badge badge-danger text-start" id="reserve_date_error"></small>
-                    </label>
-                    <label for="email" class="form-group d-flex flex-column mt-3">
+                            <input name="reserve_date" class="form-control mt-2 text-start" type="date" id="date-input">
+                            <small class="text-danger badge badge-danger text-start" id="reserve_date_error"></small>
+                        </label>
+                        <label for="email" class="form-group d-flex flex-column mt-3">
                             <span class="text-white input-label">
                                 طبيعة الاستشارة
                             </span>
-                        <textarea name="consultation" rows="2" type="text" class="form-control mt-2"></textarea>
-                        <small class="text-danger badge badge-danger text-start" id="consultation_error"></small>
-                    </label>
-                    <button class="button-card btn btn-primary mb-4 mt-4" id="reserve-appoinments">
-                        احجز الآن
-                    </button>
-                </form>
+                            <textarea name="consultation" rows="2" type="text" class="form-control mt-2"></textarea>
+                            <small class="text-danger badge badge-danger text-start" id="consultation_error"></small>
+                        </label>
+                        <button class="button-card btn btn-primary mb-4 mt-4" id="reserve-appoinments">
+                            احجز الآن
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <main>
         <div class="container">
@@ -126,9 +130,9 @@
                     </div>
                     <hr class="divider">
                     <p class="about-para">
-                    @isset($testimonial->testimonial)
-                     {!! $testimonial->testimonial !!}
-                    @endisset
+                        @isset($testimonial->testimonial)
+                        {!! $testimonial->testimonial !!}
+                        @endisset
 
                     </p>
                 </div>
@@ -150,22 +154,17 @@
                     @foreach ($services as $service)
                     <div class="col-sm-4 col-12 d-flex justify-content-center service-out">
                         <div class="col-sm-10 d-flex flex-column">
-                            <img src="{{ URL::asset('/images/service/'.$service->image) }}" width="320" height="320" style="border-radius: 10px"
-                                alt="service photo">
-                            <a href="{{ route('service.show',['id' => $service->id]) }}" class="service-button btn hvr-bounce-to-right">
+                            <img src="{{ URL::asset('/images/service/'.$service->image) }}" width="320" height="320"
+                                style="border-radius: 10px" alt="service photo">
+                            <a href="{{ route('service.show',['id' => $service->id]) }}"
+                                class="service-button btn hvr-bounce-to-right">
                                 {{ $service->title }}
                             </a>
                         </div>
                     </div>
                     @endforeach
                     @endisset
-
                 </div>
-            </div>
-            <div class="row justify-content-center more-box more-box-above">
-                <button class="btn btn-ellipse">
-                    المزيد
-                </button>
             </div>
         </div>
 
