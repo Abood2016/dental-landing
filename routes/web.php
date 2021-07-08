@@ -11,7 +11,7 @@ use App\Http\Controllers\dashboard\LoginController;
 use App\Http\Controllers\dashboard\AppoinmentsController;
 use App\Http\Controllers\front\frontController;
 use \App\Http\Controllers\dashboard\PermssionController;
-
+use \App\Http\Controllers\LinksController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -90,6 +90,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
         Route::post('/set',[PermssionController::class,'setPermission'])->middleware('permission:permission');
     });
 
+    Route::group(['prefix'=>'links'],function(){
+    Route::get('/',[LinksController::class,'index']);
+    });
 });
 
 Route::group(['namespace' => 'front'], function () {

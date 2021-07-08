@@ -30,6 +30,14 @@
                 <h4 class="menu-text">صفحة الهبوط</h4>
                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
             </li>
+            <?php
+            $parent = \DB::table('side_menu_links')->where('parent_id','=',null)->get();
+
+            foreach ($parent as $row){
+
+            }
+            ?>
+            @foreach($parent as $row)
             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                @can('apppoinments_show')
                 <a href="javascript:;" class="menu-link menu-toggle">
@@ -55,7 +63,7 @@
                     </span>
                     <!--end::Svg Icon-->
                     </span>
-                    <span class="menu-text">الحجوزات</span>
+                    <span class="menu-text">{{$row->title}}</span>
                     <i class="menu-arrow"></i>
                 </a>
                 @endcan
@@ -64,248 +72,33 @@
                     <ul class="menu-subnav">
                         <li class="menu-item menu-item-parent" aria-haspopup="true">
                             <span class="menu-link">
-                                <span class="menu-text">الحجوزات</span>
+                                <span class="menu-text">{{$row->title}}</span>
                             </span>
                         </li>
+                        <?php
+                        $child = \DB::table('side_menu_links')->where('parent_id','=',$row->id)->get();
+                        ?>
+
+                        @foreach($child as $item)
                         <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                             <a href="{{ route('appoinments.index') }}" class="menu-link menu-toggle">
                                 <i class="menu-bullet menu-bullet-line">
                                     <span></span>
                                 </i>
-                                <span class="menu-text">الحجوزات</span>
+                                <span class="menu-text">{{$item->title}}</span>
                                 {{-- <span class="menu-label">
                                                             <span class="label label-rounded label-primary">{{ App\Models\User::count() }}</span>
                                 </span> --}}
                             </a>
 
                         </li>
-                        @can('apppoinments_done')
-                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                            <a href="{{ route('appoinments.done') }}" class="menu-link menu-toggle">
-                                <i class="menu-bullet menu-bullet-line">
-                                    <span></span>
-                                </i>
-                                <span class="menu-text">الحجوزات التامة</span>
-                                {{-- <span class="menu-label">
-                                                                                    <span class="label label-rounded label-primary">{{ App\Models\User::count() }}</span>
-                                </span> --}}
-                            </a>
+                        @endforeach
 
-                        </li>
-                        @endcan
 
                     </ul>
                 </div>
             </li>
-
-            {{-- <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                <a href="javascript:;" class="menu-link menu-toggle">
-                    <span class="svg-icon menu-icon">
-                        <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
-                        <i class="fa fa-quote-right text-info mr-5"></i>
-                        <!--end::Svg Icon-->
-                    </span>
-                    <span class="menu-text ">الإستشارات</span>
-                    <i class="menu-arrow"></i>
-                </a>
-                <div class="menu-submenu">
-                    <i class="menu-arrow"></i>
-                    <ul class="menu-subnav">
-                        <li class="menu-item menu-item-parent" aria-haspopup="true">
-                            <span class="menu-link">
-                                <span class="menu-text">Applications</span>
-                            </span>
-                        </li>
-                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                            <a href="{{ route('consultion.index') }}" class="menu-link menu-toggle">
-                                <i class="menu-bullet menu-bullet-line">
-                                    <span></span>
-                                </i>
-                                <span class="menu-text">الإستشارات</span>
-                                <span class="menu-label">
-                                    <span
-                                        class="label label-rounded label-primary">{{ App\Models\Consultion::count() }}</span>
-                                </span>
-                            </a>
-
-                        </li>
-
-                    </ul>
-                </div>
-            </li>  --}}
-            @can('user_show')
-            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                <a href="javascript:;" class="menu-link menu-toggle">
-                    <span class="svg-icon menu-icon">
-                        <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
-                        <i class="ki ki-reload text-warning"></i>
-                        <!--end::Svg Icon-->
-                    </span>
-                    <span class="menu-text">المستخدمين</span>
-                    <i class="menu-arrow"></i>
-                </a>
-                <div class="menu-submenu">
-                    <i class="menu-arrow"></i>
-                    <ul class="menu-subnav">
-                        <li class="menu-item menu-item-parent" aria-haspopup="true">
-                            <span class="menu-link">
-                                <span class="menu-text">المستخدمين</span>
-                            </span>
-                        </li>
-                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                            <a href="{{ route('users.index') }}" class="menu-link menu-toggle">
-                                <i class="menu-bullet menu-bullet-line">
-                                    <span></span>
-                                </i>
-                                <span class="menu-text">المتسخدمين</span>
-                                <span class="menu-label">
-                                    <span
-                                        class="label label-rounded label-primary">{{ App\Models\User::count() }}</span>
-                                </span>
-                            </a>
-
-                        </li>
-
-                    </ul>
-                </div>
-            </li>
-            @endcan
-            @can('services_show')
-            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                <a href="javascript:;" class="menu-link menu-toggle">
-                    <span class="svg-icon menu-icon">
-                        <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
-                       <i class="ki ki-refresh text-info"></i>
-                        <!--end::Svg Icon-->
-                    </span>
-                    <span class="menu-text">الخدمات</span>
-                    <i class="menu-arrow"></i>
-                </a>
-                <div class="menu-submenu">
-                    <i class="menu-arrow"></i>
-                    <ul class="menu-subnav">
-                        <li class="menu-item menu-item-parent" aria-haspopup="true">
-                            <span class="menu-link">
-                                <span class="menu-text">الخدمات</span>
-                            </span>
-                        </li>
-                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                            <a href="{{ route('services.index') }}" class="menu-link menu-toggle">
-                                <i class="menu-bullet menu-bullet-line">
-                                    <span></span>
-                                </i>
-                                <span class="menu-text">الخدمات</span>
-                                <span class="menu-label">
-                                    <span
-                                        class="label label-rounded label-primary">{{ App\Models\Service::count() }}</span>
-                                </span>
-                            </a>
-
-                        </li>
-
-                    </ul>
-                </div>
-            </li>
-            @endcan
-            @can('setting_show')
-            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                <a href="javascript:;" class="menu-link menu-toggle">
-                    <span class="svg-icon menu-icon">
-                        <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
-                      <span class="svg-icon menu-icon">
-                            <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
-                            <span class="svg-icon svg-icon-primary svg-icon-2x">
-                                <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/General/Settings-2.svg--><svg
-                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                    viewBox="0 0 24 24" version="1.1">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24" />
-                                        <path
-                                            d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,5 L19,5 L19,9.51471863 L21.4852814,12 L19,14.4852814 L19,19 L14.4852814,19 L11.5857864,21.8994949 L8.6862915,19 L5,19 L5,15.3137085 L1.6862915,12 L5,8.6862915 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z"
-                                            fill="#000000" />
-                                    </g>
-                                </svg>
-                                <!--end::Svg Icon--></span>
-                            <!--end::Svg Icon-->
-                        </span>
-                        <!--end::Svg Icon-->
-                    </span>
-                    <span class="menu-text">إعدادات الموقع</span>
-                    <i class="menu-arrow"></i>
-                </a>
-                <div class="menu-submenu">
-                    <i class="menu-arrow"></i>
-                    <ul class="menu-subnav">
-                        <li class="menu-item menu-item-parent" aria-haspopup="true">
-                            <span class="menu-link">
-                                <span class="menu-text">إعدادات الموقع</span>
-                            </span>
-                        </li>
-                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                            <a href="{{ route('settings.index') }}" class="menu-link menu-toggle">
-                                <i class="menu-bullet menu-bullet-line">
-                                    <span></span>
-                                </i>
-                                <span class="menu-text">إعدادات الموقع</span>
-                                {{-- <span class="menu-label">
-                                    <span class="label label-rounded label-primary">{{ App\Models\User::count() }}</span>
-                                </span> --}}
-                            </a>
-
-                        </li>
-
-                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                            <a href="javascript:;" class="menu-link menu-toggle">
-                                <span class="svg-icon menu-icon">
-                                    <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                        height="24px" viewBox="0 0 24 24" version="1.1">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24"></rect>
-                                            <path
-                                                d="M7,3 L17,3 C19.209139,3 21,4.790861 21,7 C21,9.209139 19.209139,11 17,11 L7,11 C4.790861,11 3,9.209139 3,7 C3,4.790861 4.790861,3 7,3 Z M7,9 C8.1045695,9 9,8.1045695 9,7 C9,5.8954305 8.1045695,5 7,5 C5.8954305,5 5,5.8954305 5,7 C5,8.1045695 5.8954305,9 7,9 Z"
-                                                fill="#000000"></path>
-                                            <path
-                                                d="M7,13 L17,13 C19.209139,13 21,14.790861 21,17 C21,19.209139 19.209139,21 17,21 L7,21 C4.790861,21 3,19.209139 3,17 C3,14.790861 4.790861,13 7,13 Z M17,19 C18.1045695,19 19,18.1045695 19,17 C19,15.8954305 18.1045695,15 17,15 C15.8954305,15 15,15.8954305 15,17 C15,18.1045695 15.8954305,19 17,19 Z"
-                                                fill="#000000" opacity="0.3"></path>
-                                        </g>
-                                    </svg>
-                                    <!--end::Svg Icon-->
-                                </span>
-                                <span class="menu-text">عام الصفحة الرئيسية</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="menu-submenu">
-                                <i class="menu-arrow"></i>
-                                <ul class="menu-subnav">
-                                    <li class="menu-item menu-item-parent" aria-haspopup="true">
-                                        <span class="menu-link">
-                                            <span class="menu-text">عام</span>
-                                        </span>
-                                    </li>
-                                    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                        <a href="{{ route('general.index') }}" class="menu-link menu-toggle">
-                                            <i class="menu-bullet menu-bullet-line">
-                                                <span></span>
-                                            </i>
-                                            <span class="menu-text">عام</span>
-                                            <span class="menu-label">
-                                                <span class="label label-rounded label-primary">{{ App\Models\Service::count() }}</span>
-                                            </span>
-                                        </a>
-
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
-
-            </li>
-            @endcan
-
+            @endforeach
 
         </ul>
         <!--end::Menu Nav-->
