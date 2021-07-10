@@ -5,11 +5,7 @@
     @include('front.layouts.header-meta')
     <style>
         #bg_image::before {
-            background-image: url({{ URL::asset('/images/bg_image/'. $setting->bg_image )
-        }
-        }
-
-        );
+            background-image: url({{URL::asset('/images/bg_image/' . $setting->bg_image )}});
 
         }
     </style>

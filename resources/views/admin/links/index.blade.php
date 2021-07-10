@@ -27,8 +27,6 @@
                         <h3 class="card-label">القوائم
                             <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; المستخدمين</span>
 
-                            <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; القوائم</span>
-                            <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; القوائم</span>
 
                         </h3>
                     </div>
