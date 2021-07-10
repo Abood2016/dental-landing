@@ -133,7 +133,6 @@
         $('#linksModal').modal('show');
         $('#modelHeading').text('اضافة قائمة');
     })
-    
     });
 </script>
 @endpush
