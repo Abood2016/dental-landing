@@ -92,6 +92,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
 
     Route::group(['prefix'=>'links'],function(){
     Route::get('/',[LinksController::class,'index']);
+    Route::post('/set_links',[LinksController::class,'create']);
+    Route::get('/get_main',[LinksController::class,'get_main']);
     });
 });
 
