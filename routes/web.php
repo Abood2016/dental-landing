@@ -56,7 +56,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
     });
 
     Route::group(['prefix' => 'services'], function () {
-        Route::get('/', [ServiceController::class, 'index'])->name('services.index')->middleware('permission:services_show');
+        Route::get('/', [ServiceController::class, 'index'])->name('services_index')->middleware('permission:services_show');
         Route::post('/add-new', [ServiceController::class, 'store'])->name('service.store')->middleware('permission:services_show');
         Route::get('/edit/{id}', [ServiceController::class, 'edit'])->middleware('permission:services_edit');
         Route::post('/update', [ServiceController::class, 'update'])->middleware('permission:services_edit');
@@ -71,17 +71,17 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
     });
 
     Route::group(['prefix' => 'settings'], function () {
-        Route::get('/', [SettingController::class, 'index'])->name('settings.index')->middleware('permission:setting_show');
+        Route::get('/', [SettingController::class, 'index'])->name('settings_index')->middleware('permission:setting_show');
         Route::get('/edit/{id}', [SettingController::class, 'edit'])->middleware('permission:setting_edit');
         Route::post('/update', [SettingController::class, 'update'])->middleware('permission:setting_edit');;
     });
     Route::group(['prefix' => 'appoinments'], function () {
-        Route::get('/', [AppoinmentsController::class, 'index'])->name('appoinments.index')->middleware('permission:apppoinments_show');
+        Route::get('/', [AppoinmentsController::class, 'index'])->name('appoinments_index')->middleware('permission:apppoinments_show');
         Route::get('/edit/{id}', [AppoinmentsController::class, 'edit'])->middleware('permission:apppoinments_show');
         Route::post('/update', [AppoinmentsController::class, 'update'])->middleware('permission:apppoinments_show');
         Route::get('/delete/{id}', [AppoinmentsController::class, 'delete'])->middleware('permission:apppoinments_show');
         Route::get('/change_status',[AppoinmentsController::class,'changeStatus'])->middleware('permission:apppoinments_show');
-        Route::get('/done-appoinments', [AppoinmentsController::class, 'doneAppoinment'])->name('appoinments.done')->middleware('permission:apppoinments_done');;
+        Route::get('/done-appoinments', [AppoinmentsController::class, 'doneAppoinment'])->name('appoinments_done')->middleware('permission:apppoinments_done');;
 
 
     });

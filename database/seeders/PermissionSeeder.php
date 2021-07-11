@@ -15,7 +15,7 @@ class PermissionSeeder extends Seeder
     public function run()
     {
       PermissionsName::create([
-            'name'=>'apppoinments_show',
+            'name'=>'apppoinments_index',
             'guard_name'=>'web',
             'preview_name'=>'عرض المواعيد',
             'group_id'=>1,
@@ -29,7 +29,7 @@ class PermissionSeeder extends Seeder
             'group_name'=>'المواعيد'
         ]);
         PermissionsName::create([
-            'name'=>'user_show',
+            'name'=>'user_index',
             'guard_name'=>'web',
             'preview_name'=>'عرض المستخدمين',
             'group_id'=>2,
@@ -57,7 +57,7 @@ class PermissionSeeder extends Seeder
             'group_name'=>'المستخدمين'
         ]);
         PermissionsName::create([
-            'name'=>'services_show',
+            'name'=>'services_index',
             'guard_name'=>'web',
             'preview_name'=>'عرض الخدمات',
             'group_id'=>3,
@@ -78,7 +78,7 @@ class PermissionSeeder extends Seeder
             'group_name'=>'الخدمات'
         ]);
         PermissionsName::create([
-            'name'=>'setting_show',
+            'name'=>'setting_index',
             'guard_name'=>'web',
             'preview_name'=>'عرض اعدادات الموقع',
             'group_id'=>4,
@@ -100,7 +100,7 @@ class PermissionSeeder extends Seeder
         ]);
 
         PermissionsName::create([
-            'name' => 'links_show',
+            'name' => 'links_index',
             'guard_name' => 'web',
             'preview_name' => 'عرض الروابط',
             'group_id' => 6,
