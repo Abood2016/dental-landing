@@ -45,7 +45,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
     });*/
 
     Route::group(['prefix' => 'users'], function () {
-        Route::get('/', [UserController::class,'index'])->name('users.index')->middleware('permission:user_show');
+        Route::get('/', [UserController::class,'index'])->name('users_index')->middleware('permission:users_index');
         Route::post('/add-new',[UserController::class, 'store'])->middleware('permission:user_add')->name('user.store');
         Route::get('/edit/{id}', [UserController::class, 'edit'])->middleware('permission:user_edit');
         Route::post('/update', [UserController::class, 'update'])->middleware('permission:user_edit');

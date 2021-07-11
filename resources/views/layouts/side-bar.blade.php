@@ -30,13 +30,11 @@
             <?php
             $parent = \DB::table('side_menu_links')->where('parent_id','=',null)->get();
 
-            foreach ($parent as $row){
-
-            }
             ?>
             @foreach($parent as $row)
+
             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-               @can('apppoinments_show')
+            @can($row->url)
                 <a href="javascript:;" class="menu-link menu-toggle">
                     <span class="svg-icon menu-icon">
                         <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
@@ -67,18 +65,18 @@
                         ?>
 
                         @foreach($child as $item)
+                            @can($item->url)
                         <li class="menu-item menu-item-submenu {{request()->is('appoinments.index')?" menu-item-active":" "}}" aria-haspopup="true" data-menu-toggle="hover">
                             <a href="{{ route($item->url) }}" class="menu-link menu-toggle">
                                 <i class="menu-bullet {{$item->icon}}">
                                     <span class="mr-2"></span>
                                 </i>
                                 <span class="menu-text">{{$item->title}}</span>
-                                {{-- <span class="menu-label">
-                                                            <span class="label label-rounded label-primary">{{ App\Models\User::count() }}</span>
-                                </span> --}}
+
                             </a>
 
                         </li>
+                            @endcan
                         @endforeach
 
 
