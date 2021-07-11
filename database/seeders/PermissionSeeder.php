@@ -29,7 +29,7 @@ class PermissionSeeder extends Seeder
             'group_name'=>'المواعيد'
         ]);
         PermissionsName::create([
-            'name'=>'user_index',
+            'name'=>'users_index',
             'guard_name'=>'web',
             'preview_name'=>'عرض المستخدمين',
             'group_id'=>2,
