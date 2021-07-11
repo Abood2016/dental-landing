@@ -18,7 +18,7 @@ class CreateSideMenuLinksTable extends Migration
             $table->string('title', 50);
             $table->string('url', 50);
             $table->string('icon', 50);
-            $table->integer('parent_id')->default(0);
+            $table->integer('parent_id')->default(0)->nullable();
             $table->integer('order_id');
             $table->tinyInteger('showinmenu')->default(1);
             $table->timestamp('created_at')->useCurrent();

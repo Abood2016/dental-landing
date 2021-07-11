@@ -99,5 +99,30 @@ class PermissionSeeder extends Seeder
             'group_name'=>'اعطاء الصلاحيات'
         ]);
 
+        PermissionsName::create([
+            'name' => 'links_show',
+            'guard_name' => 'web',
+            'preview_name' => 'عرض الروابط',
+            'group_id' => 6,
+            'group_name' => 'الروابط'
+        ]);
+
+
+        PermissionsName::create([
+            'name' => 'links_delete',
+            'guard_name' => 'web',
+            'preview_name' => 'حذف الرابط',
+            'group_id' => 6,
+            'group_name' => 'الروابط'
+        ]);
+
+        PermissionsName::create([
+            'name' => 'links_add',
+            'guard_name' => 'web',
+            'preview_name' => 'اضافة الرابط',
+            'group_id' => 6,
+            'group_name' => 'الروابط'
+        ]);
+
     }
 }

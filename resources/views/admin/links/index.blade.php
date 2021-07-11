@@ -131,6 +131,74 @@
 @endsection
 
 @push('js')
+
+    <script>
+        var oTable;
+        $(function(){
+        BindDataTable();
+        });
+            function BindDataTable() {
+                oTable = $('#links_datatable').DataTable({
+                    "paging": true,
+                    "lengthChange": true,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": true,
+                    "responsive": true,
+                    serverSide: true,
+                    "bDestroy": true,
+                    "bSort": true,
+                     visible: true,
+                     "iDisplayLength": 10,
+                    "sPaginationType": "full_numbers",
+                    "bAutoWidth":false,
+                    "bStateSave": true,
+                    columnDefs: [ {
+                    // targets: 0,
+                    visible: true
+                    } ],
+                    "language": {
+    
+                     emptyTable:"لا يوجد بيانات لعرضها",
+                    "sProcessing": "جارٍ التحميل...",
+                    "sLengthMenu": "أظهر _MENU_ مدخلات",
+                    "sZeroRecords": "لم يعثر على أية سجلات",
+                    "sInfo": "إظهار _START_ إلى _END_ ",
+                    "sInfoEmpty": "يعرض 0 إلى 0 من أصل 0 سجل",
+                    "sInfoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
+                    "sInfoPostFix": "",
+                    "sSearch": "بحث:",
+                    'selectedRow': 'مجمل المحدد',
+                    "sUrl": "",
+                    "oPaginate": {
+                    "sFirst": "الأول",
+                    "sPrevious": "السابق",
+                    "sNext": "التالي",
+                    "sLast": "الأخير",
+                    }
+                    },
+                     "order": [[ 0, "asc" ]],
+                        ajax: {
+                        type: "GET",
+                        contentType: "application/json",
+                        url: '/dashboard/links',
+    
+                        },
+                        columns: [
+                        { data: 'id', name: 'id' },
+                        { data: 'title', name: 'title' },
+                        { data: 'url', name: 'url' },
+                        { data: 'icon', name: 'icon' },
+                        { data: 'show-menu', name: 'show-menu' },
+                        {data: 'actions', name: 'actions',orderable:false,serachable:false,sClass:'text-center'},
+                        ],
+                        fnDrawCallback: function () {
+                        }
+               });
+            }
+</script>
+
 <script>
     $(document).ready(function(e) {
     $('#btn_show_modal').on('click',function () {
@@ -163,6 +231,8 @@
             data:form_data,
             success:function (){
                 $("#linksModal").modal('hide');
+                var oTable = $('#links_datatable').dataTable();
+                oTable.fnDraw(false);
             },
             processData:false,
             cache:false,

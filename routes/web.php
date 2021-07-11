@@ -11,7 +11,7 @@ use App\Http\Controllers\dashboard\LoginController;
 use App\Http\Controllers\dashboard\AppoinmentsController;
 use App\Http\Controllers\front\frontController;
 use \App\Http\Controllers\dashboard\PermssionController;
-use \App\Http\Controllers\LinksController;
+use \App\Http\Controllers\dashboard\LinksController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -96,6 +96,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
     Route::get('/get_main',[LinksController::class,'get_main']);
     });
 });
+
+
 
 Route::group(['namespace' => 'front'], function () {
     Route::get('/', [frontController::class, 'index'])->name('front.index');
