@@ -26,10 +26,7 @@
                     <span class="menu-text">لوحة التحكم</span>
                 </a>
             </li>
-            <li class="menu-section">
-                <h4 class="menu-text">صفحة الهبوط</h4>
-                <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
-            </li>
+
             <?php
             $parent = \DB::table('side_menu_links')->where('parent_id','=',null)->get();
 
@@ -70,7 +67,7 @@
                         ?>
 
                         @foreach($child as $item)
-                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                        <li class="menu-item menu-item-submenu {{request()->is('appoinments.index')?" menu-item-active":" "}}" aria-haspopup="true" data-menu-toggle="hover">
                             <a href="{{ route($item->url) }}" class="menu-link menu-toggle">
                                 <i class="menu-bullet {{$item->icon}}">
                                     <span class="mr-2"></span>

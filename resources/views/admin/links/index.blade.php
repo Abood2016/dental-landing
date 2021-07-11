@@ -159,7 +159,7 @@
                     visible: true
                     } ],
                     "language": {
-    
+
                      emptyTable:"لا يوجد بيانات لعرضها",
                     "sProcessing": "جارٍ التحميل...",
                     "sLengthMenu": "أظهر _MENU_ مدخلات",
@@ -183,7 +183,7 @@
                         type: "GET",
                         contentType: "application/json",
                         url: '/dashboard/links',
-    
+
                         },
                         columns: [
                         { data: 'id', name: 'id' },
