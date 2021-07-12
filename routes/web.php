@@ -36,7 +36,7 @@ Route::post('/login-store',   [LoginController::class, 'login'])->name('login.st
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'dashboard'], function () {
-    Route::get('/', [dashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/', [dashboardController::class, 'index'])->name('dash_index');
 
     /*   Route::group(['prefix' => 'consultions'], function () {
         Route::get('/', [consultionController::class, 'index'])->name('consultion.index');
@@ -101,12 +101,12 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'd
     });
 
 
-    Route::group(['namespace' => 'front'], function () {
-        Route::get('/', [frontController::class, 'index'])->name('front.index');
-        Route::post('/appoinments/set', [frontController::class, 'setAppoinments']);
-        Route::get('/service/{id}', [frontController::class, 'serviceShow'])->name('service.show');
-        Route::post('/appoinments/service/set', [frontController::class, 'setAppoinmentsForService']);
-    });
-
     Route::get('/set_permission', [frontController::class, 'permission']);
+});
+
+Route::group(['namespace' => 'front'], function () {
+    Route::get('/', [frontController::class, 'index'])->name('front.index');
+    Route::post('/appoinments/set', [frontController::class, 'setAppoinments']);
+    Route::get('/service/{id}', [frontController::class, 'serviceShow'])->name('service.show');
+    Route::post('/appoinments/service/set', [frontController::class, 'setAppoinmentsForService']);
 });
