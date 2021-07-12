@@ -93,6 +93,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
     Route::get('/',[LinksController::class,'index']);
     Route::post('/set_links',[LinksController::class,'create']);
     Route::get('/get_main',[LinksController::class,'get_main']);
+    Route::get('/test_status',[LinksController::class,'test_status']);
+    Route::get('/confirm_delete',[LinksController::class,'confirm_delete']);
     });
 });
 

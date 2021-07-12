@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Links;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use League\CommonMark\Inline\Element\Link;
@@ -16,7 +17,7 @@ class LinksController extends Controller
     {
 
         if (request()->ajax()) {
-            $links = DB::table('side_menu_links')->select([
+            $links = DB::table('side_menu_links')->where('deleted_at',null)->select([
                 'id', 'title', 'url', 'icon', 'showinmenu',
             ])->orderBy('id', 'DESC')->get();
 
@@ -24,7 +25,7 @@ class LinksController extends Controller
                 ->addColumn('actions', function ($links) {
                     $data = '';
                     if (auth()->user()->hasPermissionTo('links_delete')) {
-                        $data .= '<button type="button" data-id="' . $links->id . '"  data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm ml-2" id="getDeleteId">حذف</button>';
+                        $data .= '<button type="button" data-id="' . $links->id . '"  data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm btn-delete ml-2" id="getDeleteId">حذف</button>';
                     }
                     return $data;
                 })->editColumn('show-menu', function ($links) {
@@ -61,5 +62,29 @@ class LinksController extends Controller
     {
         $links = Links::where('parent_id', NULL)->select(['id', 'title'])->get();
         return response()->json(['status' => 200, 'data' => $links]);
+    }
+    public function test_status(Request $request){
+        $links_id = Links::where('id',$request->input('id'))->where('parent_id',null)->first();
+
+        if (is_null($links_id)){
+            return response()->json(['status'=>404]);
+        }
+        else{
+            return response()->json(['status'=>200,'data'=>$links_id]);
+        }
+    }
+    public function confirm_delete(Request $request){
+       $delete= Links::where('parent_id',$request->input('id'))->delete();
+        try {
+            $parent = Links::findOrFail($request->input('id'));
+           $deleted= $parent->delete();
+            if ($deleted){
+                return response()->json(['status'=>200]);
+            }else{
+                return response()->json(['status'=>500]);
+            }
+        }catch (ModelNotFoundException $exception){
+            return response()->json(['status'=>404]);
+        }
     }
 }

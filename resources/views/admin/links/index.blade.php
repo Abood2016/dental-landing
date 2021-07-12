@@ -251,4 +251,98 @@
         return size;
     };
 </script>
+    <script>
+        $(document).on('click','.btn-delete',function (){
+            var id = $(this).attr('data-id');
+            $.ajax({
+                url:"/dashboard/links/test_status",
+                method:'get',
+                data:{
+                    id:id
+                }
+                ,success:function (res){
+                if (res.status==200){
+                    Swal.fire({
+                        title: 'هذه قائمة رئيسية هل أنت متأكد؟',
+                        text: "",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'نعم!',
+                        cancelButtonText: 'لأ'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+
+                            $.ajax({
+                                url:"/dashboard/links/confirm_delete",
+                                method:'get',
+                                data:{
+                                    id:id
+                                },success:function (res){
+                                    if (res.status ==200){
+                                        Swal.fire(
+                                            'تم!',
+                                            '',
+                                            'success'
+                                        )
+                                        var oTable = $('#links_datatable').dataTable();
+                                        oTable.fnDraw(false);
+                                    }else {
+                                        Swal.fire(
+                                            'هناك خطا ما!',
+                                            '',
+                                            'error'
+                                        )
+                                    }
+                                }
+                            })
+                        }
+                    })
+                }else if (res.status==404){
+                    Swal.fire({
+                        title: 'هل أنت متأكد؟',
+                        text: "",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'نعم!',
+                        cancelButtonText: 'لأ'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+
+                            $.ajax({
+                                url:"/dashboard/links/confirm_delete",
+                                method:'get',
+                                data:{
+                                    id:id
+                                },success:function (res){
+
+                                    if (res.status ==200){
+                                        Swal.fire(
+                                            'تم!',
+                                            '',
+                                            'success'
+                                        )
+                                        var oTable = $('#links_datatable').dataTable();
+                                        oTable.fnDraw(false);
+                                    }else {
+                                        Swal.fire(
+                                            'هناك خطا ما!',
+                                            '',
+                                            'error'
+                                        )
+                                    }
+
+                                }
+                            })
+                        }
+                    })
+
+                }
+                }
+            })
+        })
+    </script>
 @endpush

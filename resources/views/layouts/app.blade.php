@@ -1,7 +1,4 @@
-<?php
-
-?>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html direction="rtl" dir="rtl" style="direction: rtl">
 
 <head>

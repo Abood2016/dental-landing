@@ -28,7 +28,7 @@
             </li>
 
             <?php
-            $parent = \DB::table('side_menu_links')->where('showinmenu',1)->where('parent_id','=',null)->get();
+            $parent = \DB::table('side_menu_links')->where('deleted_at',null)->where('showinmenu',1)->where('parent_id','=',null)->get();
 
             ?>
             @foreach($parent as $row)
@@ -61,7 +61,7 @@
                             </span>
                         </li>
                         <?php
-                        $child = \DB::table('side_menu_links')->where('showinmenu',1)->where('parent_id','=',$row->id)->get();
+                        $child = \DB::table('side_menu_links')->where('deleted_at',null)->where('showinmenu',1)->where('parent_id','=',$row->id)->get();
                         ?>
 
                         @foreach($child as $item)
