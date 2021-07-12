@@ -142,4 +142,5 @@ class LinksController extends Controller
             return response()->json(['status'=>404]);
         }
     }
+
 }

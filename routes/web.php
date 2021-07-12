@@ -90,31 +90,23 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'd
         Route::post('/set', [PermssionController::class, 'setPermission'])->middleware('permission:permission');
     });
 
-<<<<<<< HEAD
-    Route::group(['prefix'=>'links'],function(){
-    Route::get('/',[LinksController::class,'index']);
-    Route::post('/set_links',[LinksController::class,'create']);
-    Route::get('/get_main',[LinksController::class,'get_main']);
-    Route::get('/test_status',[LinksController::class,'test_status']);
-    Route::get('/confirm_delete',[LinksController::class,'confirm_delete']);
-=======
-Route::group(['prefix' => 'links'], function () {
+    Route::group(['prefix' => 'links'], function () {
         Route::get('/', [LinksController::class, 'index']);
         Route::post('/set_links', [LinksController::class, 'create']);
         Route::get('/get_main', [LinksController::class, 'get_main']);
         Route::get('/edit/{id}', [LinksController::class, 'edit'])->middleware('permission:links_edit');
         Route::post('/update', [LinksController::class, 'update']);
->>>>>>> a0499972e798bd8860184556986679acd6e75626
+        Route::get('/test_status', [LinksController::class, 'test_status']);
+        Route::get('/confirm_delete', [LinksController::class, 'confirm_delete']);
     });
+
+
+    Route::group(['namespace' => 'front'], function () {
+        Route::get('/', [frontController::class, 'index'])->name('front.index');
+        Route::post('/appoinments/set', [frontController::class, 'setAppoinments']);
+        Route::get('/service/{id}', [frontController::class, 'serviceShow'])->name('service.show');
+        Route::post('/appoinments/service/set', [frontController::class, 'setAppoinmentsForService']);
+    });
+
+    Route::get('/set_permission', [frontController::class, 'permission']);
 });
-
-
-
-Route::group(['namespace' => 'front'], function () {
-    Route::get('/', [frontController::class, 'index'])->name('front.index');
-    Route::post('/appoinments/set', [frontController::class, 'setAppoinments']);
-    Route::get('/service/{id}', [frontController::class, 'serviceShow'])->name('service.show');
-    Route::post('/appoinments/service/set', [frontController::class, 'setAppoinmentsForService']);
-});
-
-Route::get('/set_permission', [frontController::class, 'permission']);
