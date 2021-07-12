@@ -40,10 +40,10 @@ class UserController extends Controller
             return DataTables::of($users)
                 ->addColumn('actions', function ($users) {
                   $data = '';
-                    if (auth()->user()->hasPermissionTo('user_add')){
+                    if (auth()->user()->hasPermissionTo('users_add')){
                     $data .=   '<button type="button" class="btn btn-success btn-sm editUser" data-toggle="modal" data-target="#editUserModal" id="editUser" data-id="' . $users->id . '">تعديل</button>';
                   }
-                  if(auth()->user()->hasPermissionTo('user_delete')){
+                  if(auth()->user()->hasPermissionTo('users_delete')){
                 $data .= '<button type="button" data-id="' . $users->id . '" data-username="' . $users->name . '" data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm ml-2" id="getDeleteId">حذف</button>';
                 }
 

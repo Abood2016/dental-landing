@@ -15,14 +15,14 @@ class PermissionSeeder extends Seeder
     public function run()
     {
       PermissionsName::create([
-            'name'=>'apppoinments_index',
+            'name'=>'appoinments_index',
             'guard_name'=>'web',
             'preview_name'=>'عرض المواعيد',
             'group_id'=>1,
             'group_name'=>'المواعيد'
         ]);
            PermissionsName::create([
-            'name'=>'apppoinments_done',
+            'name'=>'appoinments_done',
             'guard_name'=>'web',
             'preview_name'=>'عرض المواعيد التامة',
             'group_id'=>1,
@@ -36,21 +36,21 @@ class PermissionSeeder extends Seeder
             'group_name'=>'المستخدمين'
         ]);
         PermissionsName::create([
-            'name'=>'user_add',
+            'name'=>'users_add',
             'guard_name'=>'web',
             'preview_name'=>'اضافة المستخدمين',
             'group_id'=>2,
             'group_name'=>'المستخدمين'
         ]);
         PermissionsName::create([
-            'name'=>'user_edit',
+            'name'=>'users_edit',
             'guard_name'=>'web',
             'preview_name'=>'تعديل المستخدمين',
             'group_id'=>2,
             'group_name'=>'المستخدمين'
         ]);
         PermissionsName::create([
-            'name'=>'user_delete',
+            'name'=>'users_delete',
             'guard_name'=>'web',
             'preview_name'=>'حذف المستخدمين',
             'group_id'=>2,
@@ -78,14 +78,14 @@ class PermissionSeeder extends Seeder
             'group_name'=>'الخدمات'
         ]);
         PermissionsName::create([
-            'name'=>'setting_index',
+            'name'=>'settings_index',
             'guard_name'=>'web',
             'preview_name'=>'عرض اعدادات الموقع',
             'group_id'=>4,
             'group_name'=>'اعدادات الموقع'
         ]);
         PermissionsName::create([
-            'name'=>'setting_edit',
+            'name'=>'settings_edit',
             'guard_name'=>'web',
             'preview_name'=>'تعديل اعدادات الموقع',
             'group_id'=>4,
@@ -123,6 +123,12 @@ class PermissionSeeder extends Seeder
             'group_id' => 6,
             'group_name' => 'الروابط'
         ]);
-
+        PermissionsName::create([
+            'name' => 'links_edit',
+            'guard_name' => 'web',
+            'preview_name' => 'تعديل الرابط',
+            'group_id' => 6,
+            'group_name' => 'الروابط'
+        ]);
     }
 }

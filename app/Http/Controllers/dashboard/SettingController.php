@@ -28,7 +28,7 @@ class SettingController extends Controller
 
             return DataTables::of($settings)
                 ->addColumn('actions', function ($settings) {
-                    if (auth()->user()->hasPermissionTo('setting_edit')){
+                    if (auth()->user()->hasPermissionTo('settings_edit')){
                     return '<button type="button" class="btn btn-success btn-sm editSetting" data-toggle="modal" data-target="#editSettingModal" id="editSetting" data-id="' . $settings->id . '">تعديل</button>';
                     }
                 })->addColumn('logo', function ($settings) {
