@@ -47,7 +47,7 @@
                         <!--end::Svg Icon-->
                     </span>
                 </a>
-                
+
             </div>
             <!--end::Dropdowns-->
         </div> --}}
@@ -65,10 +65,10 @@
         <div class="container">
 
             <div class="row">
-                @can('apppoinments_show')
+                @can('appoinments_index')
                 <div class="col-lg-4">
                     <!--begin::Stats Widget 18-->
-                    <a href="{{ route('appoinments.index') }}"
+                    <a href="{{ route('appoinments_index') }}"
                         class="card card-custom bg-success bg-hover-state-success card-stretch gutter-b">
                         <!--begin::Body-->
                         <div class="card-body">
@@ -103,11 +103,11 @@
                     <!--end::Stats Widget 18-->
                 </div>
                 @endcan
-                @can('services_show')
+                @can('services_index')
 
                 <div class="col-lg-4">
                     <!--begin::Stats Widget 16-->
-                    <a href="{{ route('services.index') }}" class="card card-custom card-stretch gutter-b">
+                    <a href="{{ route('services_index') }}" class="card card-custom card-stretch gutter-b">
                         <!--begin::Body-->
                         <div class="card-body">
                             <span class="svg-icon svg-icon-info svg-icon-3x ml-n1">
@@ -137,11 +137,11 @@
                     <!--end::Stats Widget 16-->
                 </div>
                 @endcan
-                @can('user_show')
+                @can('users_index')
 
                 <div class="col-lg-4">
                     <!--begin::Stats Widget 17-->
-                    <a href="{{ route('users.index') }}"
+                    <a href="{{ route('users_index') }}"
                         class="card card-custom bg-info bg-hover-state-info card-stretch card-stretch gutter-b">
                         <!--begin::Body-->
                         <div class="card-body">
@@ -176,7 +176,7 @@
             </div>
             <!--end::Row-->
             <!--begin::Advance Table Widget 5-->
-            @can('apppoinments_show')
+            @can('appoinments_index')
 
             <div class="card card-custom gutter-b">
                 <!--begin::Header-->

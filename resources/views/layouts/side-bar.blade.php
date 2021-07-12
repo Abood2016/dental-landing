@@ -4,7 +4,7 @@
         data-menu-dropdown-timeout="500">
         <!--begin::Menu Nav-->
         <ul class="menu-nav">
-            <li class="menu-item menu-item-active" aria-haspopup="true">
+            <li class="menu-item " aria-haspopup="true">
                 <a href="{{ route('dashboard.index') }}" class="menu-link">
                     <span class="svg-icon menu-icon">
                         <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
@@ -28,12 +28,12 @@
             </li>
 
             <?php
-            $parent = \DB::table('side_menu_links')->where('parent_id','=',null)->get();
+            $parent = \DB::table('side_menu_links')->where('showinmenu',1)->where('parent_id','=',null)->get();
 
             ?>
             @foreach($parent as $row)
 
-            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+            <li class="menu-item menu-item-submenu" id="parent_{{$row->id}}" aria-haspopup="true" data-menu-toggle="hover">
             @can($row->url)
                 <a href="javascript:;" class="menu-link menu-toggle">
                     <span class="svg-icon menu-icon">
@@ -55,24 +55,38 @@
                 <div class="menu-submenu">
                     <i class="menu-arrow"></i>
                     <ul class="menu-subnav">
-                        <li class="menu-item menu-item-parent" aria-haspopup="true">
+                        <li class="menu-item menu-item-parent " aria-haspopup="true">
                             <span class="menu-link">
                                 <span class="menu-text">{{$row->title}}</span>
                             </span>
                         </li>
                         <?php
-                        $child = \DB::table('side_menu_links')->where('parent_id','=',$row->id)->get();
+                        $child = \DB::table('side_menu_links')->where('showinmenu',1)->where('parent_id','=',$row->id)->get();
                         ?>
 
                         @foreach($child as $item)
                             @can($item->url)
-                        <li class="menu-item menu-item-submenu {{request()->is('appoinments.index')?" menu-item-active":" "}}" aria-haspopup="true" data-menu-toggle="hover">
-                            <a href="{{ route($item->url) }}" class="menu-link menu-toggle">
+                                <?php
+                                $current_domain = env('APP_URL');
+                                $result = str_replace($current_domain."/","",route($item->url));
+                             if (request()->is($result)){
+                                 ?>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function(){
+                                    let parent = `{{$item->parent_id}}`;
+
+                                    $("#parent_"+parent).addClass('menu-item-open');
+                                });
+                            </script>
+                                <?php } ?>
+                        <li class="menu-item {{
+                request()->is($result)?"menu-item-active":" "}}" aria-haspopup="true" data-menu-toggle="hover">
+                            <a href="{{ route($item->url) }}" class="menu-link menu-toggle ">
                                 <i class="menu-bullet {{$item->icon}}">
                                     <span class="mr-2"></span>
                                 </i>
                                 <span class="menu-text">{{$item->title}}</span>
-
                             </a>
 
                         </li>

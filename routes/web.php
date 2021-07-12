@@ -23,13 +23,13 @@ use \App\Http\Controllers\dashboard\LinksController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('layouts.app');
-// });
+/* Route::get('/', function () {
+     return view('layouts.app');
+ });*/
 
-Route::get('/dashboard', function () {
+/*Route::get('/dashboard', function () {
     return view('admin.dashboard');
-});
+});*/
 Route::get('/login',   [LoginController::class, 'index'])->name('login');
 Route::post('/login-store',   [LoginController::class, 'login'])->name('login.store');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
@@ -46,13 +46,12 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
 
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', [UserController::class,'index'])->name('users_index')->middleware('permission:users_index');
-        Route::post('/add-new',[UserController::class, 'store'])->middleware('permission:user_add')->name('user.store');
-        Route::get('/edit/{id}', [UserController::class, 'edit'])->middleware('permission:user_edit');
-        Route::post('/update', [UserController::class, 'update'])->middleware('permission:user_edit');
-        Route::get('/delete/{id}', [UserController::class, 'destroy'])->middleware('permission:user_delete');
+        Route::post('/add-new',[UserController::class, 'store'])->middleware('permission:users_add')->name('user.store');
+        Route::get('/edit/{id}', [UserController::class, 'edit'])->middleware('permission:users_edit');
+        Route::post('/update', [UserController::class, 'update'])->middleware('permission:users_edit');
+        Route::get('/delete/{id}', [UserController::class, 'destroy'])->middleware('permission:users_delete');
         Route::get('/show-profile/{id}', [UserController::class, 'profile'])->name('profile.show');
         Route::post('/update-profile', [UserController::class, 'updateProfile'])->name('profile.update');
-
     });
 
     Route::group(['prefix' => 'services'], function () {
@@ -63,28 +62,28 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
         Route::get('/delete/{id}', [ServiceController::class, 'destroy'])->middleware('permission:services_delete');
     });
     Route::group(['prefix'=>'general'],function(){
-        Route::get('/',[GeneralController::class,'index'])->name('general.index')->middleware('permission:setting_index');;
-        Route::get('/testimonials',[GeneralController::class,'getTestimonials'])->name('testimonial.get')->middleware('permission:setting_show');
-        Route::post('/testimonials/set',[GeneralController::class,'setTestimonials'])->name('testimonial.set')->middleware('permission:setting_show');
-        Route::get('/appoinments',[GeneralController::class,'getappoinments'])->name('appoinments.get')->middleware('permission:setting_show');
-        Route::post('/appointments/set',[GeneralController::class,'setAppoinments'])->name('appoinments.set')->middleware('permission:setting_show');
+        Route::get('/',[GeneralController::class,'index'])->name('general.index')->middleware('permission:settings_index');;
+        Route::get('/testimonials',[GeneralController::class,'getTestimonials'])->name('testimonial.get')->middleware('permission:settings_show');
+        Route::post('/testimonials/set',[GeneralController::class,'setTestimonials'])->name('testimonial.set')->middleware('permission:settings_show');
+        Route::get('/appoinments',[GeneralController::class,'getappoinments'])->name('appoinments.get')->middleware('permission:settings_show');
+        Route::post('/appointments/set',[GeneralController::class,'setAppoinments'])->name('appoinments.set')->middleware('permission:settings_show');
     });
 
     Route::group(['prefix' => 'settings'], function () {
         Route::get('/', [SettingController::class, 'index'])->name('settings_index')->middleware('permission:settings_index');
-        Route::get('/edit/{id}', [SettingController::class, 'edit'])->middleware('permission:setting_edit');
-        Route::post('/update', [SettingController::class, 'update'])->middleware('permission:setting_edit');;
+        Route::get('/edit/{id}', [SettingController::class, 'edit'])->middleware('permission:settings_edit');
+        Route::post('/update', [SettingController::class, 'update'])->middleware('permission:settings_edit');;
     });
+
     Route::group(['prefix' => 'appoinments'], function () {
         Route::get('/', [AppoinmentsController::class, 'index'])->name('appoinments_index')->middleware('permission:appoinments_index');
-        Route::get('/edit/{id}', [AppoinmentsController::class, 'edit'])->middleware('permission:apppoinments_show');
-        Route::post('/update', [AppoinmentsController::class, 'update'])->middleware('permission:apppoinments_show');
-        Route::get('/delete/{id}', [AppoinmentsController::class, 'delete'])->middleware('permission:apppoinments_show');
-        Route::get('/change_status',[AppoinmentsController::class,'changeStatus'])->middleware('permission:apppoinments_show');
-        Route::get('/done-appoinments', [AppoinmentsController::class, 'doneAppoinment'])->name('appoinments_done')->middleware('permission:apppoinments_done');;
-
-
+        Route::get('/edit/{id}', [AppoinmentsController::class, 'edit'])->middleware('permission:appoinments_show');
+        Route::post('/update', [AppoinmentsController::class, 'update'])->middleware('permission:appoinments_show');
+        Route::get('/delete/{id}', [AppoinmentsController::class, 'delete'])->middleware('permission:appoinments_show');
+        Route::get('/change_status',[AppoinmentsController::class,'changeStatus'])->middleware('permission:appoinments_show');
+        Route::get('/done-appoinments', [AppoinmentsController::class, 'doneAppoinment'])->name('appoinments_done')->middleware('permission:appoinments_done');;
     });
+
     Route::group(['prefix' => 'permissions'], function () {
         Route::get('/{id}',[PermssionController::class,'getPermission'])->middleware('permission:permission');
         Route::post('/set',[PermssionController::class,'setPermission'])->middleware('permission:permission');
