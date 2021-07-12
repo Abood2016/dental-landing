@@ -69,10 +69,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'd
     });
     Route::group(['prefix' => 'appoinments'], function () {
         Route::get('/', [AppoinmentsController::class, 'index'])->name('appoinments_index')->middleware('permission:appoinments_index');
-        Route::get('/edit/{id}', [AppoinmentsController::class, 'edit'])->middleware('permission:appoinments_show');
-        Route::post('/update', [AppoinmentsController::class, 'update'])->middleware('permission:appoinments_show');
-        Route::get('/delete/{id}', [AppoinmentsController::class, 'delete'])->middleware('permission:appoinments_show');
-        Route::get('/change_status', [AppoinmentsController::class, 'changeStatus'])->middleware('permission:appoinments_show');
+        Route::get('/edit/{id}', [AppoinmentsController::class, 'edit'])->middleware('permission:appoinments_index');
+        Route::post('/update', [AppoinmentsController::class, 'update'])->middleware('permission:appoinments_index');
+        Route::get('/delete/{id}', [AppoinmentsController::class, 'delete'])->middleware('permission:appoinments_index');
+        Route::get('/change_status', [AppoinmentsController::class, 'changeStatus'])->middleware('permission:appoinments_index');
         Route::get('/done-appoinments', [AppoinmentsController::class, 'doneAppoinment'])->name('appoinments_done')->middleware('permission:appoinments_done');;
     });
     Route::group(['prefix' => 'permissions'], function () {
