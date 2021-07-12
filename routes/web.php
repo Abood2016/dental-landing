@@ -57,10 +57,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'd
     });
     Route::group(['prefix' => 'general'], function () {
         Route::get('/', [GeneralController::class, 'index'])->name('general.index')->middleware('permission:settings_index');;
-        Route::get('/testimonials', [GeneralController::class, 'getTestimonials'])->name('testimonial.get')->middleware('permission:settings_show');
-        Route::post('/testimonials/set', [GeneralController::class, 'setTestimonials'])->name('testimonial.set')->middleware('permission:settings_show');
-        Route::get('/appoinments', [GeneralController::class, 'getappoinments'])->name('appoinments.get')->middleware('permission:settings_show');
-        Route::post('/appointments/set', [GeneralController::class, 'setAppoinments'])->name('appoinments.set')->middleware('permission:settings_show');
+        Route::get('/testimonials', [GeneralController::class, 'getTestimonials'])->name('testimonial.get')->middleware('permission:settings_index');
+        Route::post('/testimonials/set', [GeneralController::class, 'setTestimonials'])->name('testimonial.set')->middleware('permission:settings_index');
+        Route::get('/appoinments', [GeneralController::class, 'getappoinments'])->name('appoinments.get')->middleware('permission:settings_index');
+        Route::post('/appointments/set', [GeneralController::class, 'setAppoinments'])->name('appoinments.set')->middleware('permission:settings_index');
     });
     Route::group(['prefix' => 'settings'], function () {
         Route::get('/', [SettingController::class, 'index'])->name('settings_index')->middleware('permission:settings_index');
@@ -88,8 +88,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'd
         Route::get('/test_status', [LinksController::class, 'test_status']);
         Route::get('/confirm_delete', [LinksController::class, 'confirm_delete']);
     });
-
-
 
 
     Route::get('/set_permission', [frontController::class, 'permission']);
