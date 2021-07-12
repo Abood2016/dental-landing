@@ -27,9 +27,9 @@ use \App\Http\Controllers\dashboard\LinksController;
      return view('layouts.app');
  });*/
 
-/*Route::get('/dashboard', function () {
+Route::get('/dashboard', function () {
     return view('admin.dashboard');
-});*/
+});
 
 Route::get('/login',   [LoginController::class, 'index'])->name('login');
 Route::post('/login-store',   [LoginController::class, 'login'])->name('login.store');
@@ -37,14 +37,6 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'dashboard'], function () {
     Route::get('/', [dashboardController::class, 'index'])->name('dashboard.index');
-
-    /*   Route::group(['prefix' => 'consultions'], function () {
-        Route::get('/', [consultionController::class, 'index'])->name('consultion.index');
-        Route::get('/edit/{id}', [consultionController::class, 'edit']);
-        Route::post('/update', [consultionController::class, 'update']);
-        Route::get('/delete/{id}', [consultionController::class, 'delete']);
-    });*/
-
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', [UserController::class, 'index'])->name('users_index')->middleware('permission:users_index');
         Route::post('/add-new', [UserController::class, 'store'])->middleware('permission:users_add')->name('user.store');
@@ -54,7 +46,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'd
         Route::get('/show-profile/{id}', [UserController::class, 'profile'])->name('profile.show');
         Route::post('/update-profile', [UserController::class, 'updateProfile'])->name('profile.update');
     });
-
     Route::group(['prefix' => 'services'], function () {
         Route::get('/', [ServiceController::class, 'index'])->name('services_index')->middleware('permission:services_index');
         Route::post('/add-new', [ServiceController::class, 'store'])->name('service.store')->middleware('permission:services_index');
@@ -69,13 +60,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'd
         Route::get('/appoinments', [GeneralController::class, 'getappoinments'])->name('appoinments.get')->middleware('permission:settings_show');
         Route::post('/appointments/set', [GeneralController::class, 'setAppoinments'])->name('appoinments.set')->middleware('permission:settings_show');
     });
-
     Route::group(['prefix' => 'settings'], function () {
         Route::get('/', [SettingController::class, 'index'])->name('settings_index')->middleware('permission:settings_index');
         Route::get('/edit/{id}', [SettingController::class, 'edit'])->middleware('permission:settings_edit');
         Route::post('/update', [SettingController::class, 'update'])->middleware('permission:settings_edit');;
     });
-
     Route::group(['prefix' => 'appoinments'], function () {
         Route::get('/', [AppoinmentsController::class, 'index'])->name('appoinments_index')->middleware('permission:appoinments_index');
         Route::get('/edit/{id}', [AppoinmentsController::class, 'edit'])->middleware('permission:appoinments_show');
@@ -84,12 +73,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'd
         Route::get('/change_status', [AppoinmentsController::class, 'changeStatus'])->middleware('permission:appoinments_show');
         Route::get('/done-appoinments', [AppoinmentsController::class, 'doneAppoinment'])->name('appoinments_done')->middleware('permission:appoinments_done');;
     });
-
     Route::group(['prefix' => 'permissions'], function () {
         Route::get('/{id}', [PermssionController::class, 'getPermission'])->middleware('permission:permission');
         Route::post('/set', [PermssionController::class, 'setPermission'])->middleware('permission:permission');
     });
-
     Route::group(['prefix' => 'links'], function () {
         Route::get('/', [LinksController::class, 'index']);
         Route::post('/set_links', [LinksController::class, 'create']);
@@ -99,7 +86,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'd
         Route::get('/test_status', [LinksController::class, 'test_status']);
         Route::get('/confirm_delete', [LinksController::class, 'confirm_delete']);
     });
-
 
     Route::group(['namespace' => 'front'], function () {
         Route::get('/', [frontController::class, 'index'])->name('front.index');
