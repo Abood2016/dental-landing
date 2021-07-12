@@ -16,7 +16,7 @@ class CreateSideMenuLinksTable extends Migration
         Schema::create('side_menu_links', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 50);
-            $table->string('url', 50);
+            $table->string('url', 50)->nullable();
             $table->string('icon', 50);
             $table->integer('parent_id')->default(0)->nullable();
             $table->integer('order_id');

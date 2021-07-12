@@ -94,6 +94,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
     Route::get('/',[LinksController::class,'index']);
     Route::post('/set_links',[LinksController::class,'create']);
     Route::get('/get_main',[LinksController::class,'get_main']);
+    Route::get('/edit/{id}', [LinksController::class, 'edit'])->middleware('permission:links_edit');
+
     });
 });
 

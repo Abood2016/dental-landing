@@ -23,6 +23,9 @@ class LinksController extends Controller
             return DataTables::of($links)
                 ->addColumn('actions', function ($links) {
                     $data = '';
+                // if (auth()->user()->hasPermissionTo('links_edit')) {
+                    $data .=   '<button type="button" class="btn btn-success btn-sm editLinks" data-toggle="modal" data-target="#editLinksModal" id="editLink" data-id="' . $links->id . '">تعديل</button>';
+                // }
                     if (auth()->user()->hasPermissionTo('links_delete')) {
                         $data .= '<button type="button" data-id="' . $links->id . '"  data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm ml-2" id="getDeleteId">حذف</button>';
                     }
@@ -34,6 +37,15 @@ class LinksController extends Controller
             return response()->json(["data" => $links]);
         }
         return view('admin.links.index');
+    }
+
+    public function edit($id)
+    {
+        if (request()->ajax()) {
+            $whereID = array('id' => $id);
+            $data = Links::where($whereID)->first();
+            return response()->json(['result' => $data]);
+        }
     }
 
 
