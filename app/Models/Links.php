@@ -10,5 +10,6 @@ class Links extends Model
 {
     use SoftDeletes;
     use HasFactory;
+    protected $guarded;
     protected $table= 'side_menu_links';
 }

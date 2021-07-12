@@ -15,22 +15,14 @@ class PermissionSeeder extends Seeder
     public function run()
     {
       PermissionsName::create([
-<<<<<<< HEAD
-            'name'=> 'appoinments_index',
-=======
             'name'=>'appoinments_index',
->>>>>>> 1d4fecaea483e545b688792173976b172aa6da74
             'guard_name'=>'web',
             'preview_name'=>'عرض المواعيد',
             'group_id'=>1,
             'group_name'=>'المواعيد'
         ]);
            PermissionsName::create([
-<<<<<<< HEAD
-            'name'=> 'appoinments_done',
-=======
             'name'=>'appoinments_done',
->>>>>>> 1d4fecaea483e545b688792173976b172aa6da74
             'guard_name'=>'web',
             'preview_name'=>'عرض المواعيد التامة',
             'group_id'=>1,
