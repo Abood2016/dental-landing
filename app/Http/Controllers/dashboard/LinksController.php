@@ -24,6 +24,9 @@ class LinksController extends Controller
             return DataTables::of($links)
                 ->addColumn('actions', function ($links) {
                     $data = '';
+                    // if (auth()->user()->hasPermissionTo('links_edit')) {
+                    $data .=   '<button type="button" class="btn btn-success btn-sm editLinks" data-toggle="modal" data-target="#editLinksModal" id="editLink" data-id="' . $links->id . '">تعديل</button>';
+                    // }
                     if (auth()->user()->hasPermissionTo('links_delete')) {
                         $data .= '<button type="button" data-id="' . $links->id . '"  data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm btn-delete ml-2" id="getDeleteId">حذف</button>';
                     }
@@ -35,6 +38,58 @@ class LinksController extends Controller
             return response()->json(["data" => $links]);
         }
         return view('admin.links.index');
+    }
+
+    public function edit($id)
+    {
+        if (request()->ajax()) {
+            $whereID = array('id' => $id);
+            $data = Links::where($whereID)->first();
+            return response()->json(['result' => $data]);
+        }
+    }
+
+    public function update(Request $request)
+    {
+        // dd($request->showinmenu);
+        $link = Links::findOrFail($request->link_id);
+
+        $array = [];
+
+        if ($request->title != $link->title) {
+            $array['title'] = $request->title;
+        }
+
+        if ($request->url != $link->url) {
+            $array['url'] = $request->url;
+        }
+
+        if ($request->icon != $link->icon) {
+            $array['icon'] = $request->icon;
+        }
+
+        if ($request->input('showinmenu') == null) {
+            $array['showinmenu'] = 0;
+        } else {
+            $array['showinmenu'] = 1;
+        }
+
+        $link->parent_id = $request->input('link_type') == 0 ? null : $request->input('link_type');
+        if ($request->input('link_type') != 0) {
+            $order_id = \DB::table('side_menu_links')->where('parent_id', (int)$request->input('link_type'))->orderBy('order_id', 'desc')->first();
+            if (is_null($order_id)) {
+                $link->order_id = 1;
+            } else {
+                $link->order_id = $order_id->order_id + 1;
+            }
+        } else {
+            $link->order_id = 0;
+        }
+
+        if (!empty($array)) {
+            $link->update($array);
+        }
+        return response()->json(['status' => 200, 'success' => 'تم التحديث بنجاح']);
     }
 
 

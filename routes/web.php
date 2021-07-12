@@ -30,14 +30,15 @@ use \App\Http\Controllers\dashboard\LinksController;
 /*Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });*/
+
 Route::get('/login',   [LoginController::class, 'index'])->name('login');
 Route::post('/login-store',   [LoginController::class, 'login'])->name('login.store');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => 'dashboard'], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'dashboard'], function () {
     Route::get('/', [dashboardController::class, 'index'])->name('dashboard.index');
 
- /*   Route::group(['prefix' => 'consultions'], function () {
+    /*   Route::group(['prefix' => 'consultions'], function () {
         Route::get('/', [consultionController::class, 'index'])->name('consultion.index');
         Route::get('/edit/{id}', [consultionController::class, 'edit']);
         Route::post('/update', [consultionController::class, 'update']);
@@ -45,8 +46,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
     });*/
 
     Route::group(['prefix' => 'users'], function () {
-        Route::get('/', [UserController::class,'index'])->name('users_index')->middleware('permission:users_index');
-        Route::post('/add-new',[UserController::class, 'store'])->middleware('permission:users_add')->name('user.store');
+        Route::get('/', [UserController::class, 'index'])->name('users_index')->middleware('permission:users_index');
+        Route::post('/add-new', [UserController::class, 'store'])->middleware('permission:users_add')->name('user.store');
         Route::get('/edit/{id}', [UserController::class, 'edit'])->middleware('permission:users_edit');
         Route::post('/update', [UserController::class, 'update'])->middleware('permission:users_edit');
         Route::get('/delete/{id}', [UserController::class, 'destroy'])->middleware('permission:users_delete');
@@ -61,12 +62,12 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
         Route::post('/update', [ServiceController::class, 'update'])->middleware('permission:services_edit');
         Route::get('/delete/{id}', [ServiceController::class, 'destroy'])->middleware('permission:services_delete');
     });
-    Route::group(['prefix'=>'general'],function(){
-        Route::get('/',[GeneralController::class,'index'])->name('general.index')->middleware('permission:settings_index');;
-        Route::get('/testimonials',[GeneralController::class,'getTestimonials'])->name('testimonial.get')->middleware('permission:settings_show');
-        Route::post('/testimonials/set',[GeneralController::class,'setTestimonials'])->name('testimonial.set')->middleware('permission:settings_show');
-        Route::get('/appoinments',[GeneralController::class,'getappoinments'])->name('appoinments.get')->middleware('permission:settings_show');
-        Route::post('/appointments/set',[GeneralController::class,'setAppoinments'])->name('appoinments.set')->middleware('permission:settings_show');
+    Route::group(['prefix' => 'general'], function () {
+        Route::get('/', [GeneralController::class, 'index'])->name('general.index')->middleware('permission:settings_index');;
+        Route::get('/testimonials', [GeneralController::class, 'getTestimonials'])->name('testimonial.get')->middleware('permission:settings_show');
+        Route::post('/testimonials/set', [GeneralController::class, 'setTestimonials'])->name('testimonial.set')->middleware('permission:settings_show');
+        Route::get('/appoinments', [GeneralController::class, 'getappoinments'])->name('appoinments.get')->middleware('permission:settings_show');
+        Route::post('/appointments/set', [GeneralController::class, 'setAppoinments'])->name('appoinments.set')->middleware('permission:settings_show');
     });
 
     Route::group(['prefix' => 'settings'], function () {
@@ -80,21 +81,30 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
         Route::get('/edit/{id}', [AppoinmentsController::class, 'edit'])->middleware('permission:appoinments_show');
         Route::post('/update', [AppoinmentsController::class, 'update'])->middleware('permission:appoinments_show');
         Route::get('/delete/{id}', [AppoinmentsController::class, 'delete'])->middleware('permission:appoinments_show');
-        Route::get('/change_status',[AppoinmentsController::class,'changeStatus'])->middleware('permission:appoinments_show');
+        Route::get('/change_status', [AppoinmentsController::class, 'changeStatus'])->middleware('permission:appoinments_show');
         Route::get('/done-appoinments', [AppoinmentsController::class, 'doneAppoinment'])->name('appoinments_done')->middleware('permission:appoinments_done');;
     });
 
     Route::group(['prefix' => 'permissions'], function () {
-        Route::get('/{id}',[PermssionController::class,'getPermission'])->middleware('permission:permission');
-        Route::post('/set',[PermssionController::class,'setPermission'])->middleware('permission:permission');
+        Route::get('/{id}', [PermssionController::class, 'getPermission'])->middleware('permission:permission');
+        Route::post('/set', [PermssionController::class, 'setPermission'])->middleware('permission:permission');
     });
 
+<<<<<<< HEAD
     Route::group(['prefix'=>'links'],function(){
     Route::get('/',[LinksController::class,'index']);
     Route::post('/set_links',[LinksController::class,'create']);
     Route::get('/get_main',[LinksController::class,'get_main']);
     Route::get('/test_status',[LinksController::class,'test_status']);
     Route::get('/confirm_delete',[LinksController::class,'confirm_delete']);
+=======
+Route::group(['prefix' => 'links'], function () {
+        Route::get('/', [LinksController::class, 'index']);
+        Route::post('/set_links', [LinksController::class, 'create']);
+        Route::get('/get_main', [LinksController::class, 'get_main']);
+        Route::get('/edit/{id}', [LinksController::class, 'edit'])->middleware('permission:links_edit');
+        Route::post('/update', [LinksController::class, 'update']);
+>>>>>>> a0499972e798bd8860184556986679acd6e75626
     });
 });
 
@@ -102,10 +112,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth' , 'namespace' => '
 
 Route::group(['namespace' => 'front'], function () {
     Route::get('/', [frontController::class, 'index'])->name('front.index');
-    Route::post('/appoinments/set',[frontController::class,'setAppoinments']);
-    Route::get('/service/{id}',[frontController::class,'serviceShow'])->name('service.show');
+    Route::post('/appoinments/set', [frontController::class, 'setAppoinments']);
+    Route::get('/service/{id}', [frontController::class, 'serviceShow'])->name('service.show');
     Route::post('/appoinments/service/set', [frontController::class, 'setAppoinmentsForService']);
-
 });
 
-Route::get('/set_permission',[frontController::class,'permission']);
+Route::get('/set_permission', [frontController::class, 'permission']);
