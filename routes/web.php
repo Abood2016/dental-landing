@@ -36,7 +36,9 @@ Route::post('/login-store',   [LoginController::class, 'login'])->name('login.st
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'dashboard'], function () {
+
     Route::get('/', [dashboardController::class, 'index'])->name('dashboard.index');
+
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', [UserController::class, 'index'])->name('users_index')->middleware('permission:users_index');
         Route::post('/add-new', [UserController::class, 'store'])->middleware('permission:users_add')->name('user.store');
@@ -87,12 +89,22 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'd
         Route::get('/confirm_delete', [LinksController::class, 'confirm_delete']);
     });
 
+<<<<<<< HEAD
     Route::group(['namespace' => 'front'], function () {
         Route::get('/', [frontController::class, 'index'])->name('front.index');
         Route::post('/appoinments/set', [frontController::class, 'setAppoinments']);
         Route::get('/service/{id}', [frontController::class, 'serviceShow'])->name('service.show');
         Route::post('/appoinments/service/set', [frontController::class, 'setAppoinmentsForService']);
     });
+=======
+>>>>>>> 07ea7c7a166a849930f0a661c0efab21e6ab8ccc
 
     Route::get('/set_permission', [frontController::class, 'permission']);
+});
+
+Route::group(['namespace' => 'front'], function () {
+    Route::get('/', [frontController::class, 'index'])->name('front.index');
+    Route::post('/appoinments/set', [frontController::class, 'setAppoinments']);
+    Route::get('/service/{id}', [frontController::class, 'serviceShow'])->name('service.show');
+    Route::post('/appoinments/service/set', [frontController::class, 'setAppoinmentsForService']);
 });
