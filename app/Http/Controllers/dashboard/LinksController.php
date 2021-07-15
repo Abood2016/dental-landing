@@ -42,16 +42,16 @@ class LinksController extends Controller
 
     public function edit($id)
     {
-        if (request()->ajax()) {
+            $links = Links::where('parent_id',NULL)->get();
             $whereID = array('id' => $id);
-            $data = Links::where($whereID)->first();
-            return response()->json(['result' => $data]);
+            $data = Links::find($id);
+            return view('admin.links.edit',compact('data','links'));
+   
         }
-    }
 
-    public function update(Request $request)
+  
+      public function update(Request $request)
     {
-        // dd($request->showinmenu);
         $link = Links::findOrFail($request->link_id);
 
         $array = [];

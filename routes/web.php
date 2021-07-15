@@ -84,7 +84,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'd
         Route::post('/set_links', [LinksController::class, 'create']);
         Route::get('/get_main', [LinksController::class, 'get_main']);
         Route::get('/edit/{id}', [LinksController::class, 'edit'])->middleware('permission:links_edit');
-        Route::post('/update', [LinksController::class, 'update']);
+        Route::post('/update', [LinksController::class, 'update'])->name('links_update');
         Route::get('/test_status', [LinksController::class, 'test_status']);
         Route::get('/confirm_delete', [LinksController::class, 'confirm_delete']);
     });
