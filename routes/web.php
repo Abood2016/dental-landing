@@ -50,13 +50,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'd
     });
     Route::group(['prefix' => 'services'], function () {
         Route::get('/', [ServiceController::class, 'index'])->name('services_index')->middleware('permission:services_index');
-        Route::post('/add-new', [ServiceController::class, 'store'])->name('service.store')->middleware('permission:services_index');
+        Route::post('/add-new', [ServiceController::class, 'store'])->name('service_store')->middleware('permission:services_index');
         Route::get('/edit/{id}', [ServiceController::class, 'edit'])->middleware('permission:services_edit');
         Route::post('/update', [ServiceController::class, 'update'])->middleware('permission:services_edit');
         Route::get('/delete/{id}', [ServiceController::class, 'destroy'])->middleware('permission:services_delete');
     });
     Route::group(['prefix' => 'general'], function () {
-        Route::get('/', [GeneralController::class, 'index'])->name('general.index')->middleware('permission:settings_index');;
+        Route::get('/', [GeneralController::class, 'index'])->name('general_index')->middleware('permission:settings_index');;
         Route::get('/testimonials', [GeneralController::class, 'getTestimonials'])->name('testimonial.get')->middleware('permission:settings_index');
         Route::post('/testimonials/set', [GeneralController::class, 'setTestimonials'])->name('testimonial.set')->middleware('permission:settings_index');
         Route::get('/appoinments', [GeneralController::class, 'getappoinments'])->name('appoinments.get')->middleware('permission:settings_index');
