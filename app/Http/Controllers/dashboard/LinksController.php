@@ -12,26 +12,39 @@ use Yajra\DataTables\DataTables;
 
 class LinksController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
+
         if (request()->ajax()) {
-            $links = DB::table('side_menu_links')->where('deleted_at',null)->select([
-                'id', 'title', 'url', 'icon', 'showinmenu',
-            ])->orderBy('id', 'DESC')->get();
+            if ($request->show_menu == '1') {
+                $links = DB::table('side_menu_links')->where('deleted_at', null)->select([
+                    'id', 'title', 'url', 'icon', 'showinmenu', 'parent_id as main_menu'
+                ])->where('showinmenu', $request->show_menu)->orderBy('id', 'DESC')->get();
+            } elseif ($request->show_menu == '0') {
+                $links = DB::table('side_menu_links')->where('deleted_at', null)->select([
+                    'id', 'title', 'url', 'icon', 'showinmenu', 'parent_id as main_menu'
+                ])->where('showinmenu', $request->show_menu)->orderBy('id', 'DESC')->get();
+            } else {
+                $links = DB::table('side_menu_links')->where('deleted_at', null)->select([
+                    'id', 'title', 'url', 'icon', 'showinmenu', 'parent_id as main_menu'
+                ])->orderBy('id', 'DESC')->get();
+            }
 
             return DataTables::of($links)
                 ->addColumn('actions', function ($links) {
                     $data = '';
-                    // if (auth()->user()->hasPermissionTo('links_edit')) {
-                    $data .=   '<button type="button" class="btn btn-success btn-sm editLinks" data-toggle="modal" data-target="#editLinksModal" id="editLink" data-id="' . $links->id . '">تعديل</button>';
-                    // }
+                    if (auth()->user()->hasPermissionTo('links_edit')) {
+                        $data .= '<a  href="/dashboard/links/edit/' . $links->id . '" class="btn btn-success btn-sm editLinks" >تعديل</a>';
+                    }
                     if (auth()->user()->hasPermissionTo('links_delete')) {
                         $data .= '<button type="button" data-id="' . $links->id . '"  data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm btn-delete ml-2" id="getDeleteId">حذف</button>';
                     }
                     return $data;
                 })->editColumn('show-menu', function ($links) {
                     return view('admin.links.show-menu', compact('links'));
+                })->editColumn('menu-type', function ($links) {
+                    return view('admin.links.menu-type', compact('links'));
                 })->rawColumns(['actions', 'show-menu'])->make(true);
 
             return response()->json(["data" => $links]);
@@ -41,17 +54,17 @@ class LinksController extends Controller
 
     public function edit($id)
     {
-            $links = Links::where('parent_id',NULL)->get();
-            $whereID = array('id' => $id);
-            $data = Links::find($id);
-            return view('admin.links.edit',compact('data','links'));
-   
-        }
+        $links = Links::where('parent_id', NULL)->get();
+        $whereID = array('id' => $id);
+        $data = Links::find($id);
+        return view('admin.links.edit', compact('data', 'links'));
+    }
 
-  
-      public function update(Request $request)
+    public function update(Request $request)
     {
         $link = Links::findOrFail($request->link_id);
+
+        // dd($request->all());
 
         $array = [];
 
@@ -117,29 +130,29 @@ class LinksController extends Controller
         $links = Links::where('parent_id', NULL)->select(['id', 'title'])->get();
         return response()->json(['status' => 200, 'data' => $links]);
     }
-    public function test_status(Request $request){
-        $links_id = Links::where('id',$request->input('id'))->where('parent_id',null)->first();
+    public function test_status(Request $request)
+    {
+        $links_id = Links::where('id', $request->input('id'))->where('parent_id', null)->first();
 
-        if (is_null($links_id)){
-            return response()->json(['status'=>404]);
-        }
-        else{
-            return response()->json(['status'=>200,'data'=>$links_id]);
+        if (is_null($links_id)) {
+            return response()->json(['status' => 404]);
+        } else {
+            return response()->json(['status' => 200, 'data' => $links_id]);
         }
     }
-    public function confirm_delete(Request $request){
-       $delete= Links::where('parent_id',$request->input('id'))->delete();
+    public function confirm_delete(Request $request)
+    {
+        $delete = Links::where('parent_id', $request->input('id'))->delete();
         try {
             $parent = Links::findOrFail($request->input('id'));
-           $deleted= $parent->delete();
-            if ($deleted){
-                return response()->json(['status'=>200]);
-            }else{
-                return response()->json(['status'=>500]);
+            $deleted = $parent->delete();
+            if ($deleted) {
+                return response()->json(['status' => 200]);
+            } else {
+                return response()->json(['status' => 500]);
             }
-        }catch (ModelNotFoundException $exception){
-            return response()->json(['status'=>404]);
+        } catch (ModelNotFoundException $exception) {
+            return response()->json(['status' => 404]);
         }
     }
-
 }

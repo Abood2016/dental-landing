@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('bar_title')
-    تعديل قائمة
+تعديل قائمة
 @endsection
 
 @section('content')
@@ -17,9 +17,8 @@
 
             </div>
             <div class="modal-body pb-2">
-                <form class="form" method="POST" action="{{ route('links_update') }}"
-                    id="Edit_links_form">
-                  
+                <form class="form" method="POST" action="{{ route('links_update') }}" id="Edit_links_form">
+
                     <input type="hidden" value="{{csrf_token()}}" name="_token">
                     <div class="card-body">
                         <div class="form-group">
@@ -52,12 +51,15 @@
                         <div class="form-group">
                             <label for="">حالة القائمة</label>
                             <select class="form-control pb-2" name="link_type" id="editlink_type">
+                                @if (is_null($data->parent_id))
+                                <option value="" selected disabled>قائمة رئيسية</option>
+                                @else
                                 @foreach($links as $link)
                                 <option value="{{$link->id}}" {{ ($data->parent_id == $link->id ? "selected":"") }}>
                                     {{$link->title}}</option>
                                 @endforeach
+                                @endif
                             </select>
-
                         </div>
                         <div class="form-group">
                             <label>اظهار القائمة؟</label>
@@ -66,7 +68,7 @@
                         </div>
 
                         <div class="card-toolbar" style="text-align: left">
-                            <a  id="EditsaveBtn" class="btn btn-success mr-2">حفظ البيانات</a>
+                            <a id="EditsaveBtn" class="btn btn-success mr-2">حفظ البيانات</a>
                             <button type="reset" class="btn btn-secondary">إلغاء</button>
                         </div>
 
@@ -82,7 +84,7 @@
 
 @push('js')
 <script>
-   $(function () {
+    $(function () {
     $.ajaxSetup({
     headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -119,9 +121,7 @@
     showCancelButton: false,
     showConfirmButton: false
     })
-    var oTable = $('#service_datatable').dataTable();
-    oTable.fnDraw(false);
-    $('#editServiceModal').modal('hide');
+   
     }
     },
     contentType: false,

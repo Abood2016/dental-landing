@@ -80,10 +80,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'd
         Route::post('/set', [PermssionController::class, 'setPermission'])->middleware('permission:permission');
     });
     Route::group(['prefix' => 'links'], function () {
-        Route::get('/', [LinksController::class, 'index']);
+        Route::get('/', [LinksController::class, 'index'])->middleware('permission:links_index');
         Route::post('/set_links', [LinksController::class, 'create']);
         Route::get('/get_main', [LinksController::class, 'get_main']);
-        Route::get('/edit/{id}', [LinksController::class, 'edit'])->middleware('permission:links_edit');
+        Route::get('/edit/{id}', [LinksController::class, 'edit'])->name('links_edit')->middleware('permission:links_edit');
         Route::post('/update', [LinksController::class, 'update'])->name('links_update');
         Route::get('/test_status', [LinksController::class, 'test_status']);
         Route::get('/confirm_delete', [LinksController::class, 'confirm_delete']);
