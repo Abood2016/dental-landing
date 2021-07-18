@@ -26,17 +26,41 @@
                 <div class="card-title">
                     <h3 class="card-label">القوائم
                         <span class="d-block text-muted pt-2 font-size-sm">عرض جميع &amp; المستخدمين</span>
-
-
                     </h3>
                 </div>
                 <div class="card-toolbar">
                     <!--begin::Button-->
+                    <a href="#" id="reset" style="display: none;" class="btn btn-info font-weight-bolder mr-2">
+                        <span class="svg-icon svg-icon-md">
+                            {{-- <i class="ki ki-plus icon-sm"></i> --}}
+                        </span>تحديث الجدول</a>
+
                     <a href="#" id="btn_show_modal" class="btn btn-primary font-weight-bolder">
                         <span class="svg-icon svg-icon-md">
                             <i class="ki ki-plus icon-sm"></i>
                         </span>تسجيل جديد </a>
                     <!--end::Button-->
+                </div>
+            </div>
+
+            <div class="form-group col-sm-12 row ">
+                <div class="col-sm-12 row" style="margin-right: 0.01em">
+                    <span class="mr-1" style="font-size: 1.2em;font-weight: 600;margin-top: 10px;margin-right: 33px;">
+                        فلترة الروابط
+                    </span>
+                    <form class="col-sm-12 row mt-2 DTForm" id="search_form" method="GET">
+                        @csrf
+                        <p class="col-sm-6 d-flex flex-row">
+                            <span class="ml-3 mr-3 mt-1"></span>
+                            <select name="showinmenu" id="showinmenu" class="form-control">
+                                <option selected disabled id="disable-option">إختار حسب الحالة</option>
+                                <option value="1">مفعلة</option>
+                                <option value="0">غير مفعلة</option>
+                            </select>
+                            <button type="button" id="filter" class="btn btn-sm btn-success btn-submi"
+                                style="margin-right: 10px">بحث</button>
+                        </p>
+                    </form>
                 </div>
             </div>
             <div class="card-body">
@@ -53,6 +77,7 @@
                                             <th width="13%">العنوان</th>
                                             <th width="13%">الرابط</th>
                                             <th width="13%">الإيقونة</th>
+                                            <th width="14%">نوع القائمة</th>
                                             <th width="14%">حالة القائمة</th>
                                             <th width="10%">الإجراء</th>
                                         </tr>
@@ -131,7 +156,6 @@
 </div>
 <!--Edit Modal-->
 
-
 @endsection
 
 @push('js')
@@ -140,7 +164,7 @@
         $(function(){
         BindDataTable();
         });
-            function BindDataTable() {
+            function BindDataTable(show_menu = '') {
                 oTable = $('#links_datatable').DataTable({
                     "paging": true,
                     "lengthChange": true,
@@ -186,13 +210,15 @@
                         type: "GET",
                         contentType: "application/json",
                         url: '/dashboard/links',
-
+                        data: {show_menu:show_menu
+                        }
                         },
                         columns: [
                         { data: 'id', name: 'id' },
                         { data: 'title', name: 'title' },
                         { data: 'url', name: 'url' },
                         { data: 'icon', name: 'icon' },
+                        { data: 'menu-type', name: 'menu-type' },
                         { data: 'show-menu', name: 'show-menu' },
                         {data: 'actions', name: 'actions',orderable:false,serachable:false,sClass:'text-center'},
                         ],
@@ -241,17 +267,34 @@
             contentType:false
         })
     })
-    $(document).ready(function (){
-
-    })
-    function size(obj) {
-        var size = 0,
-            key;
-        for (key in obj) {
-            if (obj.hasOwnProperty(key)) size++;
-        }
-        return size;
-    };
+   
 </script>
-
+<script>
+    $(document).ready(function(e) {
+        $('#filter').click(function(){
+         var show_menu = $('#showinmenu').val();
+        var dis = $('#disable-option').is(':disabled');
+            if(show_menu != '')
+            {
+                $('#links_datatable').DataTable().destroy();
+                BindDataTable(show_menu);
+                $('#reset').css({"display": "block",});
+            }else
+            {
+                alert('dd');
+            }
+    });
+    });
+</script>
+<script>
+    $(document).ready(function(e) {
+        $('#reset').click(function(){
+        $('#search_form').trigger('reset');
+        $('#reset').css({"display": "none",});
+         $(function(){
+            BindDataTable();
+            });
+    });
+    });
+</script>
 @endpush
