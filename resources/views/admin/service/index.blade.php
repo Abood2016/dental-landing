@@ -336,7 +336,7 @@
         let formData = new FormData($('#service_form')[0]);
         $.ajax({
         type: 'POST',
-        url: "{{route('service.store')}}",
+        url: "{{route('service_store')}}",
         enctype: 'multipart/form-data',
         data:formData,
         processData: false,

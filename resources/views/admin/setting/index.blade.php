@@ -157,7 +157,7 @@
                             <label for="exampleFormControlFile1">صورة الخلفية الرئيسية</label>
                             <div id="thumb-output"></div><br>
                             <input type="file" name="bg_image" class="form-control-file" id="bg_file-image">
-                            <small style="font-weight: bold">أبعاد الصور jpg | png | jpeg </small>
+                            <small style="font-weight: bold">امتداد الصور jpg | png | jpeg>>ابعاد الصورة 1920x900 </small>
                         </div>
                         <small id="bg_image_error" class="form-text text-danger"></small>
 
