@@ -126,7 +126,7 @@
                             <label for="exampleFormControlFile1">أختيار</label>
                             <div id="thumb-output"></div><br>
                             <input type="file" name="image" class="form-control-file" id="file-image">
-                            <small style="font-weight: bold">أبعاد الصور jpg | png | jpeg </small>
+                            <small style="font-weight: bold">امتداد الصور jpg | png | jpeg >>>>ابعاد الصور 320x320</small>
                         </div>
                         <small id="image_error" class="form-text text-danger"></small>
 
