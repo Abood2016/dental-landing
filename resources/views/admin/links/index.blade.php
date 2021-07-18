@@ -281,7 +281,7 @@
                 $('#reset').css({"display": "block",});
             }else
             {
-                alert('dd');
+                alert('الحالة مطلوبة');
             }
     });
     });

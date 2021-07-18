@@ -55,6 +55,7 @@
 </div>
 @endsection
 
+
 @section('content')
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
@@ -208,8 +209,8 @@
                                 <tr style="text-align: center">
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $appoinment->name }}</td>
-                                    <td>{{$appoinment->phone}}</td>
-                                    <td>{{$appoinment->date}}</td>
+                                    <td>{{ $appoinment->phone}}</td>
+                                    <td>{{ $appoinment->date}}</td>
                                     <td>{{ $appoinment->branch_id }}</td>
                                     <td>
                                         @if ($appoinment->status == '1')

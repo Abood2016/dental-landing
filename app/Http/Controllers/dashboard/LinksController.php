@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
+use function PHPUnit\Framework\isEmpty;
 
 class LinksController extends Controller
 {
@@ -56,8 +57,12 @@ class LinksController extends Controller
     {
         $links = Links::where('parent_id', NULL)->get();
         $whereID = array('id' => $id);
-        $data = Links::find($id);
-        return view('admin.links.edit', compact('data', 'links'));
+
+        $data = Links::where('id', $id)->get();
+        if ($data->isNotEmpty()) {
+            return view('admin.links.edit', compact('data', 'links'));
+        }
+         return abort(404);
     }
 
     public function update(Request $request)
