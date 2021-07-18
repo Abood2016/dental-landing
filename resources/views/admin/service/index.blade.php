@@ -126,7 +126,7 @@
                             <label for="exampleFormControlFile1">أختيار</label>
                             <div id="thumb-output"></div><br>
                             <input type="file" name="image" class="form-control-file" id="file-image">
-                            <small style="font-weight: bold">أبعاد الصور jpg | png | jpeg </small>
+                            <small style="font-weight: bold">امتداد الصور jpg | png | jpeg >>>>ابعاد الصور 320x320</small>
                         </div>
                         <small id="image_error" class="form-text text-danger"></small>
 
@@ -336,7 +336,7 @@
         let formData = new FormData($('#service_form')[0]);
         $.ajax({
         type: 'POST',
-        url: "{{route('service.store')}}",
+        url: "{{route('service_store')}}",
         enctype: 'multipart/form-data',
         data:formData,
         processData: false,

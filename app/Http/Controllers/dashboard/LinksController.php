@@ -55,15 +55,18 @@ class LinksController extends Controller
 
     public function edit($id)
     {
-        $links = Links::where('parent_id', NULL)->get();
-        $whereID = array('id' => $id);
+            $links = Links::where('parent_id',NULL)->get();
+            $whereID = array('id' => $id);
+            $data = Links::find($id);
+         if (is_null($data->parent_id)){
+             return  abort(404);
+         }
+            return view('admin.links.edit',compact('data','links'));
 
-        $data = Links::where('id', $id)->get();
-        if ($data->isEmpty()) {
-            return view('admin.links.edit', compact('data', 'links'));
         }
-         return abort(404);
-    }
+
+
+
 
     public function update(Request $request)
     {

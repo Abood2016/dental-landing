@@ -27,14 +27,14 @@
             </div>
 
             <div class="container mt-4">
-                <div class="form-group col-sm-12 row ">
+                <div class="col-sm-12 row ">
                     <div class="col-sm-12 row" style="margin-right: 0.01em">
                         <span class="mr-1" style="font-size: 1.2em;font-weight: 600">
                              فلترة المواعيد
                         </span>
                         <form class="col-sm-12 row mt-2 DTForm" id="search_form" method="GET">
                             @csrf
-                            <p class="col-sm-6 d-flex flex-row"> <span class="ml-3 mt-1"> من</span>
+                            <p class="col-sm-6 d-flex flex-row"> <span class="ml-3 mt-1 mr-3"> من</span>
                                 <input name="start_date" type="text" id="start-date" autocomplete="off"
                                     class="datepicker form-control start-date">
                                 <span class="ml-3 mr-3 mt-1"> الى</span>
@@ -42,7 +42,7 @@
                                     class="datepicker form-control">
 
                                 <button type="button" id="filter"
-                                    class="btn btn-sm btn-success btn-submit mr-3">بحث</button>
+                                    class="btn btn-sm btn-success btn-submit ml-3">بحث</button>
                             </p>
                         </form>
                     </div>

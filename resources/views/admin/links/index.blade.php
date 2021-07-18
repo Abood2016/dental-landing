@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-            <div class="form-group col-sm-12 row ">
+            <div class="col-sm-12 row ">
                 <div class="col-sm-12 row" style="margin-right: 0.01em">
                     <span class="mr-1" style="font-size: 1.2em;font-weight: 600;margin-top: 10px;margin-right: 33px;">
                         فلترة الروابط
@@ -267,7 +267,7 @@
             contentType:false
         })
     })
-   
+
 </script>
 <script>
     $(document).ready(function(e) {
