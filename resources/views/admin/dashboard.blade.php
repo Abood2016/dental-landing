@@ -97,7 +97,7 @@
                             </span>
                             <div class="text-inverse-dark font-weight-bolder font-size-h5 mb-2 mt-5">الحجوزات</div>
                             <div class="font-weight-bold text-inverse-dark font-size-sm">
-                                {{ App\Models\Appointment::count() }}</div>
+                                {{ $appoinments->count() }}</div>
                         </div>
                         <!--end::Body-->
                     </a>
