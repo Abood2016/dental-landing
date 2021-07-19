@@ -273,15 +273,14 @@
     $(document).ready(function(e) {
         $('#filter').click(function(){
          var show_menu = $('#showinmenu').val();
-        var dis = $('#disable-option').is(':disabled');
-            if(show_menu != '')
+            if(show_menu != null)
             {
                 $('#links_datatable').DataTable().destroy();
                 BindDataTable(show_menu);
                 $('#reset').css({"display": "block",});
             }else
             {
-                alert('الحالة مطلوبة');
+                alert('حالة القائمة مطلوبة');
             }
     });
     });
